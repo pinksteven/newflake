@@ -10,4 +10,7 @@
       enable = true;
     };
   };
+
+  # For system packages completion
+  environment.pathsToLink = ["/share/zsh"];
 }

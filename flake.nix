@@ -6,8 +6,9 @@
     hardware.url = "github:NixOS/nixos-hardware/master";
     systems.url = "github:nix-systems/default-linux";
     impermanence.url = "github:nix-community/impermanence";
+    # Use the yet to be merged matugen color generation
+    stylix.url = "github:make-42/stylix/matugen"; #"github:nix-community/stylix";
 
-    stylix.url = "github:nix-community/stylix";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -22,6 +23,10 @@
     };
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.2";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nur = {
+      url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -40,7 +45,6 @@
     };
 
     # Personal repos
-    # nixos-secrets.url = "git+ssh://git@github.com/pinksteven/nix-secrets?shallow=1&ref=main";
     wallpapers = {
       url = "github:pinksteven/wallpapers";
       flake = false;
@@ -62,19 +66,21 @@
     lib = nixpkgs.lib // home-manager.lib;
     forEachSystem = f: lib.genAttrs (import systems) (system: f pkgsFor.${system});
     pkgsFor = lib.genAttrs (import systems) (
-      system:
-        import nixpkgs {
+      system: let
+        pkgs = import nixpkgs {
           inherit system;
           config.allowUnfree = true;
-        }
+        };
+        extendedPkgs = pkgs // (import ./pkgs {inherit pkgs;});
+      in
+        extendedPkgs
     );
   in {
     inherit lib;
     nixosModules = import ./modules/nixos;
     homeManagerModules = import ./modules/home-manager;
 
-    # I don't use any overlays currently, but might in the future
-    # overlays = import ./overlays {inherit inputs outputs;};
+    overlays = import ./overlays {inherit inputs outputs;};
 
     packages = forEachSystem (pkgs: import ./pkgs {inherit pkgs;});
     devShells = forEachSystem (pkgs: import ./shell.nix {inherit pkgs;});

@@ -13,7 +13,7 @@
     ../common/users/steven
 
     ../common/optional/greetd.nix
-    ../common/optional/gamemode.nix
+    ../common/optional/gaming.nix
     ../common/optional/kdeconnect.nix
     ../common/optional/quietboot.nix
     ../common/optional/pipewire.nix
@@ -54,10 +54,10 @@
       name = "eDP-1";
       width = 2256;
       height = 1504;
-      workspace = "1";
+      workspace = [1 2 3 4 5 6 7 8 9 10];
       primary = true;
       refreshRate = 60;
-      scale = "1.5";
+      scale = 1.5;
     }
   ];
 

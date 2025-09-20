@@ -1,4 +1,6 @@
 {
   wallpaper = import ./wallpaper.nix;
-  fonts = import ../nixos/fonts.nix;
+  fontProfiles = import ../nixos/fonts.nix;
+  cursor = import ./cursor.nix;
+  opacity = import ./opacity.nix;
 }

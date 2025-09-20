@@ -35,16 +35,32 @@ in {
             default = "auto";
           };
           scale = mkOption {
-            type = types.str;
-            default = "1";
+            type = types.float;
+            default = 1.0;
           };
           enabled = mkOption {
             type = types.bool;
             default = true;
           };
           workspace = mkOption {
-            type = types.nullOr types.str;
+            type = types.nullOr (types.listOf types.int);
             default = null;
+          };
+          transform = mkOption {
+            type = types.int;
+            default = 0;
+            apply = v:
+              if v < 0 || v > 7
+              then throw "monitor.transform must be between 0 and 7 (got: ${toString v})"
+              else v;
+          };
+          hdr = mkOption {
+            type = types.bool;
+            default = false;
+          };
+          vrr = mkOption {
+            type = types.bool;
+            default = false;
           };
         };
       }
