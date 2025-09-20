@@ -7,6 +7,7 @@
     [
       inputs.home-manager.nixosModules.home-manager
       ./auto-upgrade.nix
+      ./impermanence.nix
       ./initrd-systemd.nix
       ./locale.nix
       ./nh.nix

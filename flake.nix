@@ -4,6 +4,8 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     hardware.url = "github:NixOS/nixos-hardware/master";
+    systems.url = "github:nix-systems/default-linux";
+    impermanence.url = "github:nix-community/impermanence";
 
     stylix.url = "github:nix-community/stylix";
     home-manager = {
@@ -19,10 +21,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     lanzaboote = {
-      url = "github:nix-community/lanzaboote";
+      url = "github:nix-community/lanzaboote/v0.4.2";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    impermanence.url = "github:nix-community/impermanence";
 
     # Some programs
     spicetify = {
@@ -39,7 +40,7 @@
     };
 
     # Personal repos
-    nixos-secrets.url = "git+ssh://git@github.com/pinksteven/nix-secrets?shallow=1&ref=main";
+    # nixos-secrets.url = "git+ssh://git@github.com/pinksteven/nix-secrets?shallow=1&ref=main";
     wallpapers = {
       url = "github:pinksteven/wallpapers";
       flake = false;
@@ -80,13 +81,13 @@
     formatter = forEachSystem (pkgs: pkgs.alejandra);
 
     nixosConfigurations = {
-      # TODO: Main desktop
-      # gwynbleidd = lib.nixosSystem {
-      #   modules = [./hosts/gwynbleidd];
-      #   specialArgs = {
-      #     inherit inputs outputs;
-      #   };
-      # };
+      # Main desktop
+      gwynbleidd = lib.nixosSystem {
+        modules = [./hosts/gwynbleidd];
+        specialArgs = {
+          inherit inputs outputs;
+        };
+      };
 
       # Personal laptop
       zireael = lib.nixosSystem {
