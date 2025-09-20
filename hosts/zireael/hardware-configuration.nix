@@ -1,4 +1,5 @@
 {
+  lib,
   config,
   inputs,
   ...
@@ -24,7 +25,7 @@
       kernelModules = ["amdgpu"];
     };
   };
-  networking.useDHCP = true;
+  networking.useDHCP = lib.mkDefault true;
 
   #Disk formatting also from Misterio77
   disko.devices.disk.main = let

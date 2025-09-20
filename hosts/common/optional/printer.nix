@@ -13,12 +13,13 @@
   };
   hardware.sane = {
     enable = true;
-    extraBackends = [
-      pkgs.epsonscan2.override
-      {
+    extraBackends = let
+      epsonscan2 = pkgs.epsonscan2.override {
         withNonFreePlugins = true;
         withGui = false;
-      }
+      };
+    in [
+      epsonscan2
       pkgs.sane-airscan
     ];
   };

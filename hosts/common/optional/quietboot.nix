@@ -13,7 +13,7 @@
     plymouth = {
       enable = true;
       theme = "spinner-monochrome";
-      themePackages = [pkgs.plymouth-spinner-monochrome];
+      themePackages = [pkgs.plymouth-blahaj-theme];
     };
     loader.timeout = 0;
     kernelParams = [

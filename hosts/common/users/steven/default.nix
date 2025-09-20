@@ -1,4 +1,5 @@
 {
+  lib,
   pkgs,
   config,
   ...
@@ -27,6 +28,7 @@ in {
         "gamemode"
         "bluetooth"
       ];
+    openssh.authorizedKeys.keys = lib.splitString "\n" (builtins.readFile ../../../../home/steven/id_masterkey.pub);
     hashedPasswordFile = config.sops.secrets."passwords/steven".path;
     packages = [pkgs.home-manager];
   };
