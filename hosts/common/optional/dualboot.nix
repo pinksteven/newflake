@@ -3,7 +3,7 @@
     efi.canTouchEfiVariables = true;
     grub = {
       enable = lib.mkForce true;
-      devices = "nodev";
+      devices = ["nodev"];
       efiSupport = true;
       useOSProber = true;
     };

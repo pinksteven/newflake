@@ -1,0 +1,13 @@
+keys:
+  - &users:
+    - &steven age16m0f9xm3ndllut4l2pj0je03vmxj0sdfvwvs90x8y9ftreka9ccs2rz8fp
+  # - &hosts:
+  #   - &gwynbleidd keyfile
+  #   - &zireael keyfile
+creation_rules:
+  - path_regex: hosts/common/secrets.yaml$
+    key_groups:
+      - age:
+        - *steven
+        # - *gwynbleidd
+        # - *zireael

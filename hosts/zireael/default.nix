@@ -23,7 +23,7 @@
     ../common/optional/secure-boot.nix
   ];
 
-  networking.hostname = "zireael";
+  networking.hostName = "zireael";
 
   boot = {
     kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;

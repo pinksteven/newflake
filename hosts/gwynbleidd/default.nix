@@ -20,10 +20,14 @@
     ../common/optional/pipewire.nix
     ../common/optional/printer.nix
     ../common/optional/quietboot.nix
-    ../common/optional/stylix
+    ../common/optional/stylix.nix
   ];
 
-  networking.hostname = "gwynbleidd";
+  networking.hostName = "gwynbleidd";
+
+  boot = {
+    kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
+  };
 
   programs = {
     dconf.enable = true;

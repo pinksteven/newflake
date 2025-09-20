@@ -1,15 +1,19 @@
-{lib, ...}: let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   inherit (lib) types mkOption;
   mkFontOption = kind: {
     name = mkOption {
       type = types.str;
-      default = null;
+      default = "Fira Code";
       description = "Family name for ${kind} font profile";
       example = "Fira Code";
     };
     package = mkOption {
       type = types.package;
-      default = null;
+      default = pkgs.nerd-fonts.fira-code;
       description = "Package for ${kind} font profile";
       example = "pkgs.fira-code";
     };
@@ -22,7 +26,7 @@
       example = 16;
     };
 in {
-  options.fonts = {
+  options.fontProfiles = {
     monospace = mkFontOption "monospace";
     sansSerif = mkFontOption "sansSerif";
     serif = mkFontOption "serif";
