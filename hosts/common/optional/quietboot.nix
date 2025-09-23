@@ -12,7 +12,7 @@
   boot = {
     plymouth = {
       enable = true;
-      theme = "spinner-monochrome";
+      theme = "blahaj";
       themePackages = [pkgs.plymouth-blahaj-theme];
     };
     loader.timeout = 0;
