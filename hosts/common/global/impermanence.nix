@@ -23,6 +23,7 @@
         "/var/lib/nixos"
         "/var/log"
         "/srv"
+        "/etc/shh"
       ];
     };
   };

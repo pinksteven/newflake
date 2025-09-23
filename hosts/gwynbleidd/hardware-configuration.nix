@@ -50,7 +50,7 @@
   in {
     # Same formatting as zireael, so also From Misterio77, only different device path and larger swap
     main = {
-      device = "/dev/nvme1n1";
+      device = "/dev/nvme0n1";
       type = "disk";
       content = {
         type = "gpt";
@@ -116,7 +116,7 @@
     };
     # A 2TB drive i use mainly to store games
     games = {
-      device = "/dev/nvme0n1";
+      device = "/dev/nvme1n1";
       type = "disk";
       content = {
         type = "gpt";
