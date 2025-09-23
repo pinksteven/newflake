@@ -62,5 +62,5 @@
       ];
     };
   };
-  home.persistence."/persist".files = [".zsh_history"];
+  home.persistence."/persist/home/steven".files = [".zsh_history"];
 }

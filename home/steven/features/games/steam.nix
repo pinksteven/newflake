@@ -1,7 +1,7 @@
 {
   # Steam is basically installed already
   home.persistence = {
-    "/persist".directories = [
+    "/persist/home/steven".directories = [
       ".local/share/Steam"
     ];
   };

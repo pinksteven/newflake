@@ -20,6 +20,6 @@ in {
   home = {
     packages = [nvim];
     sessionVariables.EDITOR = "nvim";
-    persistence."/persist".files = [".wakatime.cfg"];
+    persistence."/persist/home/steven".files = [".wakatime.cfg"];
   };
 }

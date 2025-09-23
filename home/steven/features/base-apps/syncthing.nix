@@ -3,7 +3,7 @@
     enable = true;
   };
 
-  home.persistence."/persist" = {
+  home.persistence."/persist/home/steven" = {
     directories = [".local/state/syncthing"];
   };
 }

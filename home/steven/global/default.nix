@@ -42,7 +42,7 @@
       NH_FLAKE = "$HOME/Documents/nixos-config";
     };
 
-    persistence."/persist" = {
+    persistence."/persist/home/steven" = {
       directories = [
         "Documents"
         "Downloads"

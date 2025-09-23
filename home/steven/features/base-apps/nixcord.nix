@@ -4,7 +4,7 @@
   ...
 }: {
   home.persistence = {
-    "/persist" = {
+    "/persist/home/steven" = {
       directories = [
         ".config/vesktop/sessionData"
         ".config/vesktop/settings"

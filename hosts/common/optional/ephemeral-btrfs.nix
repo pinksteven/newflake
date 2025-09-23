@@ -5,42 +5,29 @@
 }: let
   hostname = config.networking.hostName;
   wipeScript = ''
-    mkdir /btrfs_tmp
-    mount /dev/disk/by-label/${hostname} /btrfs_tmp
-    if [[ -e /btrfs_tmp/root ]]; then
-        mkdir -p /btrfs_tmp/old_roots
-        timestamp=$(date --date="@$(stat -c %Y /btrfs_tmp/root)" "+%Y-%m-%-d_%H:%M:%S")
-        mv /btrfs_tmp/root "/btrfs_tmp/old_roots/$timestamp"
-    fi
+    mkdir /tmp -p
+    MNTPOINT=$(mktemp -d)
+    (
+      mount -t btrfs -o subvol=/ /dev/disk/by-label/${hostname} "$MNTPOINT"
+      trap 'umount "$MNTPOINT"' EXIT
 
-    delete_subvolume_recursively() {
-        IFS=$'\n'
-        for i in $(btrfs subvolume list -o "$1" | cut -f 9- -d ' '); do
-            delete_subvolume_recursively "/btrfs_tmp/$i"
-        done
-        btrfs subvolume delete "$1"
-    }
-
-    for i in $(ls -1t /btrfs_tmp/old_roots | tail -n +6); do
-        delete_subvolume_recursively "$i"
-    done
-
-    btrfs subvolume snapshot /btrfs_tmp/root-blank /btrfs_tmp/root
-    umount /btrfs_tmp
+      echo "Creating needed directories"
+      mkdir -p "$MNTPOINT"/persist/var/{log,lib/{nixos,systemd}}
+      if [ -e "$MNTPOINT/persist/dont-wipe" ]; then
+        echo "Skipping wipe"
+      else
+        echo "Cleaning root subvolume"
+        btrfs subvolume delete -R "$MNTPOINT/root"
+        echo "Restoring blank subvolume"
+        btrfs subvolume snapshot "$MNTPOINT/root-blank" "$MNTPOINT/root"
+      fi
+    )
   '';
   phase1Systemd = config.boot.initrd.systemd.enable;
 in {
-  fileSystems."/" = lib.mkDefault {
-    device = "/dev/disk/by-label/${hostname}";
-    fsType = "btrfs";
-    options = [
-      "subvol=root"
-      "compress=zstd"
-    ];
-  };
   boot.initrd = {
     supportedFilesystems = ["btrfs"];
-    postResumeCommands = lib.mkIf (!phase1Systemd) (lib.mkAfter wipeScript);
+    postDeviceCommands = lib.mkIf (!phase1Systemd) (lib.mkBefore wipeScript);
     systemd.services.restore-root = lib.mkIf phase1Systemd {
       description = "Rollback btrfs rootfs";
       wantedBy = ["initrd.target"];
@@ -57,6 +44,15 @@ in {
   };
 
   fileSystems = {
+    "/" = lib.mkDefault {
+      device = "/dev/disk/by-label/${hostname}";
+      fsType = "btrfs";
+      options = [
+        "subvol=root"
+        "compress=zstd"
+      ];
+    };
+
     "/nix" = lib.mkDefault {
       device = "/dev/disk/by-label/${hostname}";
       fsType = "btrfs";

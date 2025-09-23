@@ -40,4 +40,8 @@ in {
   # };
 
   home-manager.users.steven = import ../../../../home/steven/${config.networking.hostName}.nix;
+
+  environment.persistence."/persist" = {
+    users.steven = {};
+  };
 }
