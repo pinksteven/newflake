@@ -8,7 +8,7 @@
   imports = [
     ./binds.nix
     ./cliphist.nix
-    ./dynamic-cursor.nix
+    # ./dynamic-cursor.nix #Borked??
     ./hypridle.nix
     ./hyprlock.nix
     ./kitty.nix
