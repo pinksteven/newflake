@@ -13,6 +13,8 @@ in {
       "*" = {
         compression = true;
         userKnownHostsFile = "~/.ssh/known_hosts";
+        identityFile = "~/.ssh/id_masterkey";
+        addKeysToAgent = true;
       };
       net = {
         host = lib.concatStringsSep " " hostnames;
