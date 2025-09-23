@@ -1,6 +1,8 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  hasBattery = builtins.pathExists "/sys/class/power_supply/BAT0";
+in {
   services.hypridle = {
-    enable = true;
+    enable = hasBattery;
     settings = {
       general = {
         ignore_dbus_inhibit = false;
