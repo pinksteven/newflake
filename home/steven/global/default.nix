@@ -41,6 +41,7 @@
 
     persistence."/persist/home/steven" = {
       directories = [
+        "Desktop"
         "Documents"
         "Downloads"
         "Pictures"

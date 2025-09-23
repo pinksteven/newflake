@@ -16,7 +16,7 @@
       ./nix.nix
       ./openssh.nix
       ./podman.nix
-      # ./sops.nix
+      ./sops.nix
       ./tailscale.nix
       ./tpm.nix
       ./upower.nix
