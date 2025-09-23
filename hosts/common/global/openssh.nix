@@ -1,7 +1,6 @@
 {
   services.openssh = {
     enable = true;
-    startWhenNeeded = true;
     settings = {
       # Harden
       PasswordAuthentication = false;
