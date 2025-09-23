@@ -126,7 +126,7 @@
             content = {
               type = "btrfs";
               extraArgs = ["-L BIGDISK"];
-              mountpoint = "/srv/bigdisk";
+              mountpoint = "/bigdisk";
               mountOptions = ["compress=zstd" "noatime"];
             };
           };

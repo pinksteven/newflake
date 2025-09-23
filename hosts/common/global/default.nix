@@ -20,6 +20,7 @@
       ./sops.nix
       ./tailscale.nix
       ./tpm.nix
+      ./udisks2.nix
       ./upower.nix
       ./zsh.nix
     ]
