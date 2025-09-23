@@ -14,7 +14,7 @@ in {
         compression = true;
         userKnownHostsFile = "~/.ssh/known_hosts";
         identityFile = "~/.ssh/id_masterkey";
-        addKeysToAgent = true;
+        addKeysToAgent = "1h";
       };
       net = {
         host = lib.concatStringsSep " " hostnames;
