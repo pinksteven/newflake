@@ -38,6 +38,9 @@
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
     stateVersion = lib.mkDefault "25.05";
     sessionPath = ["$HOME/.local/bin"];
+    sessionVariables = {
+      NH_FLAKE = "$HOME/Documents/newflake";
+    };
 
     persistence."/persist/home/steven" = {
       directories = [
