@@ -15,7 +15,10 @@
       theme = "blahaj";
       themePackages = [pkgs.plymouth-blahaj-theme];
     };
-    loader.timeout = 0;
+    loader = {
+      grub.timeoutStyle = "hidden";
+      timeout = 2;
+    };
     kernelParams = [
       "quiet"
       "loglevel=3"
