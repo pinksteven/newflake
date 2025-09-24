@@ -13,6 +13,7 @@ in {
     extraGroups =
       ifTheyExist
       [
+        "users"
         "audio"
         "docker"
         "git"

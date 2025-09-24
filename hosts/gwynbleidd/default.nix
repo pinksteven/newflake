@@ -27,6 +27,9 @@
 
   boot = {
     kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
+    # Hopefully will fullscreen my tty without breaking graphical session
+    # thanks to nvidia drivers i can't control monitors separately
+    kernelParams = ["video=DP-2:1920x1080"];
   };
 
   programs = {
@@ -65,9 +68,12 @@
     }
   ];
 
-  # Hopefully will fullscreen my tty without breaking graphical session
-  # thanks to nvidia drivers i can't control monitors separately
-  boot.kernelParams = ["video=DP-2:1920x1080"];
+  # Steam does not like folders outside of home, apparently due to FHS.
+  # This is hacky, and goes aganist modularity but oh well
+  fileSystems."home/steven/BigDisk" = {
+    device = "/mnt/bigdisk";
+    options = ["bind"];
+  };
 
   base16-theme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
 
