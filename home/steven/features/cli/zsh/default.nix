@@ -18,10 +18,9 @@
     };
 
     initContent = lib.mkAfter ''
-      bindkey -vd
+      bindkey -v
       bindkey "^[[3~" delete-char
       pfetch
-      tailscale completion zsh > "$\{fpath[1]}/_tailscale"
       ZSH_AUTOSUGGEST_STRATEGY=( abbreviations $ZSH_AUTOSUGGEST_STRATEGY )
     '';
 
@@ -56,7 +55,6 @@
       plugins = [
         "olets/zsh-autosuggestions-abbreviations-strategy"
         "zsh-users/zsh-completions"
-        "zsh-users/zsh-autocorrect"
         "ohmyzsh/ohmyzsh path:plugins/git"
         "chrissicool/zsh-256color"
       ];
