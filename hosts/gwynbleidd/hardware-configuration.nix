@@ -132,8 +132,8 @@
             content = {
               type = "btrfs";
               extraArgs = ["-L BIGDISK"];
-              mountpoint = "/bigdisk";
-              mountOptions = ["compress=zstd" "noatime"];
+              mountpoint = "/mnt/bigdisk";
+              mountOptions = ["compress=zstd" "noatime" "user"];
             };
           };
         };
