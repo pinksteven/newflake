@@ -30,7 +30,8 @@
   networking.useDHCP = lib.mkDefault true;
 
   hardware.nvidia = {
-    modesetting.enable = true;
+    # Setting kernelParams manually to not load framebuffer drivers
+    modesetting.enable = false;
 
     # Experimental power management (might fix sleep issues)
     powerManagement = {
@@ -45,8 +46,8 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
-  # Force disable fbdev driver
-  boot.kernelParams = builtins.filter (x: x != "nvidia-drm.fbdev=1") config.boot.kernelParams;
+  # Manually enable modesetting, but without fbdev
+  boot.kernelParams = ["nvidia-drm.modeset=1"];
 
   disko.devices.disk = let
     inherit (config.networking) hostName;
