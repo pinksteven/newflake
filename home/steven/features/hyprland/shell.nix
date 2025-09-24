@@ -6,6 +6,8 @@
     systemd.enable = true;
     settings = {
       background.enabled = false;
+      # Disables my shell from being more then a shell
+      idle.timeouts = [];
     };
   };
 }
