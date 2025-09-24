@@ -45,6 +45,9 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
+  # Force disable fbdev driver
+  boot.kernelParams = builtins.filter (x: x != "nvidia-drm.fbdev=1") config.boot.kernelParams;
+
   disko.devices.disk = let
     inherit (config.networking) hostName;
   in {
