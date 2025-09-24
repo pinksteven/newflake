@@ -9,9 +9,4 @@
       useOSProber = true;
     };
   };
-
-  environment.persistence."/persist" = {
-    files = ["/etc/default/grub"];
-    directories = ["/etc/grub.d"];
-  };
 }
