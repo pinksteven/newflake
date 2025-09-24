@@ -34,8 +34,6 @@
       enable = true;
       abbreviations = {
         cd = "z";
-        ls = "eza --icons=always --no-quotes";
-        tree = "eza --icons=always --tree --no-quotes";
         g = "lazygit";
 
         nos = "nh os switch -a";
@@ -47,6 +45,11 @@
 
         nl = "nix-locate";
       };
+    };
+
+    shellAliases = {
+      ls = "eza --icons=always --no-quotes";
+      tree = "eza --icons=always --tree --no-quotes";
     };
 
     antidote = {
