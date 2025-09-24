@@ -65,6 +65,10 @@
     }
   ];
 
+  # Hopefully will fullscreen my tty without breaking graphical session
+  # thanks to nvidia drivers i can't control monitors separately
+  boot.kernelParams = ["video=DP-2:1920x1080"];
+
   base16-theme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
 
   system.stateVersion = "25.05";
