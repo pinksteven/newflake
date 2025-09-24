@@ -38,4 +38,8 @@
     };
     Install.WantedBy = ["timers.target"];
   };
+
+  home.persistence."/persist/home/steven" = {
+    directories = [".cache/nix-index"];
+  };
 }
