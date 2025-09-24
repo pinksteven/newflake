@@ -6,12 +6,7 @@
   home.persistence = {
     "/persist/home/steven" = {
       directories = [
-        ".config/vesktop/sessionData"
-        ".config/vesktop/settings"
-      ];
-      files = [
-        ".config/vesktop/settings.json"
-        ".config/vesktop/state.json"
+        ".config/vesktop"
       ];
     };
   };
