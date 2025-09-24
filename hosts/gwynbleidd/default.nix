@@ -35,6 +35,11 @@
 
   hardware.graphics.enable = true;
 
+  services.logind.settings.Login = {
+    HandlePowerKey = "suspend";
+    HandlePowerKeyLongPress = "poweroff";
+  };
+
   monitors = [
     {
       name = "DP-2";
