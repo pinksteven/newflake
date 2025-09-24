@@ -39,4 +39,12 @@
     };
   };
   hardware.enableRedistributableFirmware = true;
+
+  boot.kernelParams =
+    map (m: "video=${m.name}:${
+      if m.primary
+      then "e"
+      else "d"
+    }")
+    config.monitors;
 }
