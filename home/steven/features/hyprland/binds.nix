@@ -2,7 +2,52 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+  ws-cycle = pkgs.writeShellScriptBin "ws-cycle" ''
+    command="$1"
+    direction="$2"
+
+    if [[ "$command" == "go" ]]; then
+      CMD="workspace"
+    elif [[ "$command" == "move" ]]; then
+      CMD="movetoworkspace"
+    else
+      echo "Usage: $0 go|move next|prev"
+      exit 1
+    fi
+
+    CURRENT_MONITOR=$(hyprctl activeworkspace -j | jq -r '.monitor')
+    CURRENT_WS=$(hyprctl activeworkspace -j | jq -r '.id')
+
+    WS_LIST=$(hyprctl workspacerules -j | jq -r ".[] | select(.monitor==\"$CURRENT_MONITOR\") | .workspaceString")
+    WS_LIST=($(printf "%s\n" "''${WS_LIST[@]}" | sort -n))
+
+    FIRST=''${WS_LIST[0]}
+    LAST=''${WS_LIST[-1]}
+
+    if [[ "$direction" == "next" ]]; then
+      if [[ "$CURRENT_WS" == "$LAST" ]]; then
+        hyprctl dispatch $CMD $FIRST
+        exit
+      else
+        hyprctl dispatch $CMD r+1
+        exit
+      fi
+    elif [[ "$direction" == "prev" ]]; then
+      if [[ "$CURRENT_WS" == "$FIRST" ]]; then
+        hyprctl dispatch $CMD $LAST
+        exit
+      else
+        hyprctl dispatch $CMD r-1
+        exit
+      fi
+    else
+      echo "Usage: $0 go|move next|prev"
+      exit 1
+    fi
+  '';
+in {
+  home.packages = [ws-cycle];
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
     "$shiftMod" = "SUPER_SHIFT";
@@ -39,14 +84,12 @@
 
         "$mod, up, fullscreen, 1" # Toggle Maximize
         "$mod, down, togglefloating" # Toggle floating
-        "$mod, right, workspace, r+1" # Move to next workspace
-        "$mod, left, workspace, r-1" # Move to previous workspace
 
-        "$mod SHIFT, right, movetoworkspace, r+1" # Move with window to next workspace
-        "$mod SHIFT, left, movetoworkspace, r-1" # Move with window to previous workspace
+        "$mod, right, exec, ws-cycle go next" # Move to next workspace
+        "$mod, left, exec, ws-cycle go prev" # Move to previous workspace
 
-        "$mod $ctrl, right, movetoworkspacesilent, r+1" # Move window to next workspace
-        "$mod $ctrl, left, movetoworkspacesilent, r-1" # Move window to previous workspace_swipe_use_r
+        "$mod SHIFT, right, exec, ws-cycle move next" # Move with window to next workspace
+        "$mod SHIFT, left, exec, ws-cycle move prev" # Move with window to previous workspace
 
         "$mod, V, exec, uwsm app -- clipboard" # Custom clipboard script defined in ./cliphist.nix
       ]
@@ -55,11 +98,11 @@
           i: let
             ws = i + 1;
           in [
-            "$mod,code:1${toString i}, workspace, ${toString ws}"
-            "$mod SHIFT,code:1${toString i}, movetoworkspace, ${toString ws}"
+            "$mod,code:1${toString i}, workspace, r~${toString ws}"
+            "$mod SHIFT,code:1${toString i}, movetoworkspace, r~${toString ws}"
           ]
         )
-        9
+        10
       ));
 
     bindlp = [
