@@ -31,7 +31,10 @@
   };
 
   services.hyprpaper.enable = true;
-  home.pointerCursor.hyprcursor.enable = true;
+  home = {
+    packages = with pkgs; [playerctl];
+    pointerCursor.hyprcursor.enable = true;
+  };
   # I want to manage hyprland colors myself
   stylix.targets.hyprland.enable = false;
   wayland.windowManager.hyprland = {
