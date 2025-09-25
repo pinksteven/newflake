@@ -9,5 +9,5 @@
     ./features/dnd
   ];
 
-  wallpaper = "${inputs.wallpapers}/" + "dandadan_yes.jpg";
+  wallpaper = "${inputs.wallpapers}/" + "more_dandadan.jpeg";
 }
