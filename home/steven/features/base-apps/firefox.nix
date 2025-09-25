@@ -58,6 +58,8 @@
         "toolkit.telemetry.updatePing.enabled" = false;
 
         # Layout
+        "sidebar.verticalTabs" = true;
+        "sidebar.verticalTabs.dragToPinPromo.dismissed" = true;
         "browser.uiCustomization.state" = builtins.toJSON {
           currentVersion = 23;
           newElementCount = 3;

@@ -9,13 +9,13 @@
     ./fzf.nix
     ./git.nix
     ./nix-index.nix
-    ./pfetch.nix
     ./ssh.nix
     ./zoxide.nix
   ];
 
   home.packages = with pkgs; [
     comma # don't care about nix shell and shit just run
+    microfetch # a really fast hardcoded nixos fetcher
 
     octaveFull # Big boy calc for all my needs
     ripgrep

@@ -20,7 +20,7 @@
     initContent = lib.mkAfter ''
       bindkey -v
       bindkey "^[[3~" delete-char
-      pfetch
+      microfetch
       ZSH_AUTOSUGGEST_STRATEGY=( abbreviations $ZSH_AUTOSUGGEST_STRATEGY )
     '';
 
