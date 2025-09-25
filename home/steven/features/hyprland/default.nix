@@ -96,7 +96,7 @@
                 ", transform, ${toString m.transform}"
                 ", cm, auto"
               ]
-              ++ lib.optional m.vrr ", vrr, 1")
+              ++ lib.optional m.vrr ", vrr, 3")
           else "${m.name}, disabled";
       in
         map toHyprMonitor monitors;
