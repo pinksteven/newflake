@@ -13,8 +13,9 @@
     ./hyprlock.nix
     ./kitty.nix
     ./looks.nix
+    ./panel.nix
     ./rules.nix
-    ./shell.nix
+    ./runner.nix
     ./startup.nix
     ./udiskie.nix
   ];

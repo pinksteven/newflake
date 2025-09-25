@@ -1,14 +1,10 @@
-{pkgs, ...}: let
-  clipboard-clear = pkgs.writeShellScriptBin "clipboard-clear" ''
-    cliphist wipe
-  '';
-
+{
+  lib,
+  pkgs,
+  ...
+}: let
   clipboard = pkgs.writeShellScriptBin "clipboard" ''
-    if pgrep tofi; then
-      	pkill tofi
-    else
-      cliphist list | tofi --padding-left 20% --padding-right 20% | cliphist decode | wl-copy
-    fi
+    cliphist list | ${lib.getExe pkgs.anyrun} --plugins ${pkgs.anyrun}/lib/libstdin.so | cliphist decode | wl-copy
   '';
 in {
   wayland.windowManager.hyprland.settings.exec-once = [
@@ -18,6 +14,5 @@ in {
   home.packages = with pkgs; [
     cliphist
     clipboard
-    clipboard-clear
   ];
 }

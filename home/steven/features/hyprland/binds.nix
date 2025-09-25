@@ -15,7 +15,7 @@
         "$mod, B, exec, uwsm app -- ${lib.getExe pkgs.firefox}" # Firefox
         "$mod ,XF86AudioPlay, exec, uwsm app -- spotify --enable-features=UseOzonePlatform --ozone-platform=wayland" # Spotify
         "$ctrl ALT_L, Delete, exec, uwsm app -- ${lib.getExe pkgs.hyprlock}" # Lock
-        "$mod, SPACE, exec, caelestia shell drawers toggle launcher" # Launcher
+        "$mod, SPACE, exec, uwsm app -- ${lib.getExe pkgs.anyrun}" # Launcher
 
         ",PRINT, exec, uwsm app -- screenshot region" # Screenshot region
         "ALT, PRINT, exec, uwsm app -- screenshot window" # Screenshot window
@@ -47,6 +47,8 @@
 
         "$mod $ctrl, right, movetoworkspacesilent, r+1" # Move window to next workspace
         "$mod $ctrl, left, movetoworkspacesilent, r-1" # Move window to previous workspace_swipe_use_r
+
+        "$mod, V, exec, uwsm app -- clipboard" # Custom clipboard script defined in ./cliphist.nix
       ]
       ++ (builtins.concatLists (
         builtins.genList (
