@@ -71,10 +71,8 @@
     ];
 
     bindlep = [
-      ",XF86AudioRaiseVolume, exec, uwsm app -- sound-up" # Sound Up
-      ",XF86AudioLowerVolume, exec, uwsm app -- sound-down" # Sound Down
-      ",XF86MonBrightnessUp, exec, uwsm app -- brightness-up" # Brightness Up
-      ",XF86MonBrightnessDown, exec, uwsm app -- brightness-down" # Brightness Down
+      ",XF86AudioRaiseVolume, exec, uwsm app -- ${lib.getExe pkgs.hyprpanel} vol +2" # Sound Up
+      ",XF86AudioLowerVolume, exec, uwsm app -- ${lib.getExe pkgs.hyprpanel} vol -2" # Sound Down
     ];
 
     bindm = [
