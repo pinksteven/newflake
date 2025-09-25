@@ -103,7 +103,7 @@
 
       workspace = lib.concatMap (
         m:
-          lib.imap1 (i: ws: "${toString ws}, monitor:${m.name}, default:${
+          lib.imap1 (i: ws: "${toString ws}, monitor:${m.name}, persistent:true, default:${
             if i == 1
             then "true"
             else "false"
