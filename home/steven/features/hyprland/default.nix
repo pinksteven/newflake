@@ -103,11 +103,15 @@
 
       workspace = lib.concatMap (
         m:
-          lib.imap1 (i: ws: "${toString ws}, monitor:${m.name}, persistent:true, default:${
-            if i == 1
-            then "true"
-            else "false"
-          }")
+          lib.imap1 (i: ws: "${toString ws}, monitor:${m.name}, persistent:${
+              if i < 6
+              then "true"
+              else "false"
+            }, default:${
+              if i == 1
+              then "true"
+              else "false"
+            }")
           m.workspace
       ) (lib.filter (m: m.enabled && m.workspace != null) monitors);
     };
