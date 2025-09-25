@@ -1,4 +1,8 @@
-{inputs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ./global
 
@@ -8,6 +12,8 @@
     ./features/games
     ./features/dnd
   ];
+
+  home.packages = with pkgs; [piper];
 
   wallpaper = "${inputs.wallpapers}/" + "more_dandadan.jpeg";
 }

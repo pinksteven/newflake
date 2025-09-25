@@ -38,9 +38,12 @@
 
   hardware.graphics.enable = true;
 
-  services.logind.settings.Login = {
-    HandlePowerKey = "suspend";
-    HandlePowerKeyLongPress = "poweroff";
+  services = {
+    ratbagd.enable = true;
+    logind.settings.Login = {
+      HandlePowerKey = "suspend";
+      HandlePowerKeyLongPress = "poweroff";
+    };
   };
 
   monitors = [
