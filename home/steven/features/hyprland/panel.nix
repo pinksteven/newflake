@@ -29,7 +29,7 @@
           };
           "*" = {
             left = lib.optional config.services.hypridle.enable "hypridle" ++ ["workspaces"];
-            middle = [];
+            middle = ["media"];
             right = ["clock" "notifications"];
           };
         };

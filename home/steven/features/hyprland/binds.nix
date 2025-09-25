@@ -64,9 +64,11 @@
 
     bindlp = [
       ",XF86AudioMute, exec, uwsm app -- sound-toggle" # Toggle Mute
-      ",XF86AudioPlay, exec, uwsm app -- ${lib.getExe pkgs.playerctl} -i kdeconnect play-pause" # Play/Pause Song
-      ",XF86AudioNext, exec, uwsm app -- ${lib.getExe pkgs.playerctl} -i kdeconnect next" # Next Song
-      ",XF86AudioPrev, exec, uwsm app -- ${lib.getExe pkgs.playerctl} -i kdeconnect previous" # Previous Song
+      ",XF86AudioPlay, exec, uwsm app -- ${lib.getExe pkgs.hyprpanel} pp" # Play/Pause Song
+      ",XF86AudioNext, exec, uwsm app -- ${lib.getExe pkgs.hyprpanel} pln" # Next Song
+      ",XF86AudioPrev, exec, uwsm app -- ${lib.getExe pkgs.hyprpanel} plp" # Previous Song
+      "$mod ,XF86AudioNext, exec, uwsm app -- ${lib.getExe pkgs.hyprpanel} mpn" # Next Player
+      "$mod ,XF86AudioPrev, exec, uwsm app -- ${lib.getExe pkgs.hyprpanel} mpp" # Previous Player
       ",switch:Lid Switch, exec, uwsm app -- ${lib.getExe pkgs.hyprlock}" # Lock when closing Lid
     ];
 
