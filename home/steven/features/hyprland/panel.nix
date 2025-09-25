@@ -16,7 +16,7 @@
           hasBluetooth = builtins.pathExists "/sys/class/bluetooth";
         in {
           ${primary.name} = {
-            left = ["workspaces"];
+            left = lib.optional config.services.hypridle.enable "hypridle" ++ ["workspaces"];
             middle = ["media"];
             right =
               lib.optional hasBluetooth "bluetooth"
@@ -25,7 +25,7 @@
               ++ ["systray" "clock" "notifications" "power"];
           };
           "*" = {
-            left = ["workspaces"];
+            left = ["hypridle" "workspaces"];
             middle = [];
             right = ["clock" "notifications"];
           };
