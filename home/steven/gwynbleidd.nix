@@ -18,6 +18,7 @@
     sessionVariables = {
       LIBVA_DRIVER_NAME = "nvidia";
       __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+      MOZ_DISABLE_RDD_SANDBOX = 1;
     };
   };
 

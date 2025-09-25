@@ -1,4 +1,9 @@
-{pkgs, ...}: {
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}: {
   programs.firefox = {
     enable = true;
     languagePacks = ["en_US" "pl"];
@@ -14,6 +19,10 @@
         "browser.tabs.closeWindowWithLastTab" = false;
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         "widget.use-xdg-desktop-portal.file-picker" = 1;
+        "media.ffmpeg.vaapi.enabled" = true;
+        "media.hardware-video-decoding.force-enabled" = true;
+        "media.rdd-ffmpeg.enabled" = lib.mkIf (config.home.sessionVariables.LIBVA_DRIVER_NAME == "nvidia") true;
+        "gfx.x11-egl.force-enabled" = lib.mkIf (config.home.sessionVariables.LIBVA_DRIVER_NAME == "nvidia") true;
 
         # Disable irritating first-run stuff
         "browser.disableResetPrompt" = true;
