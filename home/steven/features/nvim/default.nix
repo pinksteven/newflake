@@ -22,7 +22,7 @@ in {
     sessionVariables.EDITOR = "nvim";
     persistence."/persist/home/steven" = {
       files = [".wakatime.cfg"];
-      direcotries = [".local/share/nvim/site/spell"]; # Don't re-download dictionaries every time
+      directories = [".local/share/nvim/site/spell"]; # Don't re-download dictionaries every time
     };
   };
 }
