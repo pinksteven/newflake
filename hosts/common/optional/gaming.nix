@@ -2,12 +2,16 @@
 # but there already is a lot of configuration options to do this on nixos level
 # and this way is much easier so i will just use this instead
 {
+  inputs,
   lib,
   pkgs,
   config,
   ...
 }: {
   gamingReady = true;
+
+  imports = [inputs.nix-gaming.nixosModules.platformOptimizations];
+
   programs = {
     gamescope = {
       enable = true;
@@ -31,6 +35,7 @@
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
       extest.enable = true;
+      platformOptimizations.enable = true;
     };
     gamemode = {
       enable = true;
