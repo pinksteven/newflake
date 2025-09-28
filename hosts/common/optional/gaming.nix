@@ -20,6 +20,7 @@
           "--framerate-limit ${toString monitor.refreshRate}"
           "--prefer-output ${monitor.name}"
           "--expose-wayland"
+          "--fullscreen"
         ]
         ++ lib.optional monitor.hdr "--hdr-enabled"
         ++ lib.optional monitor.vrr "--adaptive-sync";
@@ -30,8 +31,6 @@
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
       extest.enable = true;
-
-      gamescopeSession.enable = true;
     };
     gamemode = {
       enable = true;
