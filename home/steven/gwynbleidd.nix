@@ -11,6 +11,7 @@
     ./features/base-apps
     ./features/games
     ./features/dnd
+    ./features/zed
   ];
 
   home = {
