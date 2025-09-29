@@ -51,7 +51,10 @@
       name = "DP-2";
       width = 2560;
       height = 1440;
-      position = "-2560x240";
+      position = {
+        x = -2560;
+        y = 240;
+      };
       workspace = [1 2 3 4 5 6 7 8 9 10];
       primary = true;
       refreshRate = 144;
@@ -63,7 +66,7 @@
       name = "HDMI-A-1";
       width = 1920;
       height = 1080;
-      transform = 3;
+      transform.rotation = 270;
       position = "0x0";
       workspace = [11 12 13 14 15 16 17 18 19 20];
       refreshRate = 60;

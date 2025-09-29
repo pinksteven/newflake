@@ -85,15 +85,27 @@
       render.new_render_scheduling = true;
 
       monitor = let
+        toHyprTransform = t:
+          toString (t.rotation
+            / 90
+            + (
+              if t.flipped
+              then 4
+              else 0
+            ));
         toHyprMonitor = m:
           if m.enabled
           then
             lib.concatStrings ([
                 "${m.name}"
                 ", ${toString m.width}x${toString m.height}@${toString m.refreshRate}"
-                ", ${m.position}"
+                ", ${
+                  if m.position == null
+                  then "auto"
+                  else "${m.position.x}x${m.position.y}"
+                }"
                 ", ${toString m.scale}"
-                ", transform, ${toString m.transform}"
+                ", transform, ${toHyprTransform m.transform}"
                 ", cm, auto"
               ]
               ++ lib.optional m.vrr ", vrr, 3")

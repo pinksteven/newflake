@@ -31,8 +31,19 @@ in {
             default = 60;
           };
           position = mkOption {
-            type = types.str;
-            default = "auto";
+            type = types.nullOr (types.submodule {
+              options = {
+                x = mkOption {
+                  type = types.int;
+                  default = 0;
+                };
+                y = mkOption {
+                  type = types.int;
+                  default = 0;
+                };
+              };
+            });
+            default = null;
           };
           scale = mkOption {
             type = types.float;
@@ -46,13 +57,15 @@ in {
             type = types.nullOr (types.listOf types.int);
             default = null;
           };
-          transform = mkOption {
-            type = types.int;
-            default = 0;
-            apply = v:
-              if v < 0 || v > 7
-              then throw "monitor.transform must be between 0 and 7 (got: ${toString v})"
-              else v;
+          transform = {
+            rotation = mkOption {
+              type = types.enum [0 90 180 270];
+              default = 0;
+            };
+            flipped = mkOption {
+              type = types.bool;
+              default = false;
+            };
           };
           hdr = mkOption {
             type = types.bool;
