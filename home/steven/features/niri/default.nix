@@ -19,6 +19,8 @@
     ./udiskie.nix
   ];
 
+  home.packages = [pkgs.xwayland-satellite-stable];
+
   xdg = {
     autostart.enable = true;
     mime.enable = true;
@@ -73,6 +75,7 @@
         })
         monitors);
       screenshot-path = "~/Pictures/Screenshots/Screenshot_%Y-%m-%d_%H:%M:%S.png";
+      xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite-stable;
     };
   };
 
