@@ -67,7 +67,6 @@
       width = 1920;
       height = 1080;
       transform.rotation = 270;
-      position = "0x0";
       workspace = [11 12 13 14 15 16 17 18 19 20];
       refreshRate = 60;
       scale = 1.0;

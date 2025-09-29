@@ -102,7 +102,7 @@
                 ", ${
                   if m.position == null
                   then "auto"
-                  else "${m.position.x}x${m.position.y}"
+                  else "${toString m.position.x}x${toString m.position.y}"
                 }"
                 ", ${toString m.scale}"
                 ", transform, ${toHyprTransform m.transform}"

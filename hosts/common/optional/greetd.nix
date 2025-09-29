@@ -1,4 +1,9 @@
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   services.greetd = {
     enable = true;
   };
@@ -18,6 +23,14 @@
       }
     ];
   };
+
+  services.displayManager.sessionPackages = let
+    withNiri =
+      builtins.any
+      (cfg: lib.attrByPath ["programs" "niri" "enable"] false cfg)
+      (builtins.attrValues config.home-manager.users);
+  in
+    lib.optional withNiri pkgs.niri-stable;
 
   security.pam.services.greetd.fprintAuth = false;
 }

@@ -47,7 +47,7 @@
           enable = true;
           accel-profile = "adaptive";
           click-method = "button-areas";
-          scroll-method = "two-fingers";
+          scroll-method = "two-finger";
           tap = true;
           tap-button-map = "left-right-middle";
           natural-scroll = true;
@@ -60,10 +60,13 @@
             enable = m.enabled;
             mode = {
               inherit (m) width height;
-              refresh = m.refreshRate;
+              refresh = m.refreshRate * 1.0;
             };
             focus-at-startup = m.primary;
-            variable-refresh-rate = m.vrr;
+            variable-refresh-rate =
+              if m.vrr
+              then "on-demand"
+              else false;
             inherit (m) scale position transform;
           };
         })
