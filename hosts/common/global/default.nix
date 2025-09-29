@@ -8,7 +8,7 @@
     [
       inputs.home-manager.nixosModules.home-manager
       inputs.nur.modules.nixos.default
-      ./auto-upgrade.nix
+      # ./auto-upgrade.nix
       ./impermanence.nix
       ./initrd-systemd.nix
       ./locale.nix

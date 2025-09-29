@@ -1,7 +1,6 @@
-{inputs, ...}: {
+{
   programs.nh = {
     enable = true;
-    flake = "~/Documents/newflake";
     clean = {
       enable = true;
       dates = "weekly";
