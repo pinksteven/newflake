@@ -48,10 +48,13 @@ stdenv.mkDerivation rec {
     runHook preInstall
     mkdir -p $out/bin
     cp -R usr/share opt $out/
+    mkdir -p $out/share/icons/hicolor/256x256/apps
+    mv $out/opt/Dungeondraft/Dungeondraft.png $out/share/icons/hicolor/256x256/apps/Dungeondraft.png
+    ln -s $out/opt/Dungeondraft/Dungeondraft.x86_64 $out/bin/Dungeondraft.x86_64
     substituteInPlace \
       $out/share/applications/Dungeondraft.desktop \
-      --replace-warn /opt/Dungeondraft/ ""
-    ln -s $out/opt/Dungeondraft/Dungeondraft.x86_64 $out/bin/Dungeondraft.x86_64
+        --replace-warn /opt/Dungeondraft "" \
+        --replace-warn Dungeondraft.png Dungeondraft
     runHook postInstall
   '';
   postInstall = ''
