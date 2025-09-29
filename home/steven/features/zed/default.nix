@@ -12,10 +12,7 @@
       languages = {
         Nix.formatter.external = {
           command = "alejandra";
-          arguments = [
-            "--quiet"
-            "--"
-          ];
+          arguments = ["--quiet" "--"];
         };
       };
     };
@@ -43,5 +40,9 @@
 
   home = {
     packages = with pkgs; [cloc];
+    persistence."/persist/home/steven" = {
+      # HM does merge on activation, so i gotta persist
+      directories = [".config/zed"];
+    };
   };
 }
