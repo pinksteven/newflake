@@ -75,7 +75,10 @@
         })
         monitors);
       screenshot-path = "~/Pictures/Screenshots/Screenshot_%Y-%m-%d_%H:%M:%S.png";
-      xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite-stable;
+      xwayland-satellite = {
+        enable = true;
+        path = lib.getExe pkgs.xwayland-satellite-stable;
+      };
     };
   };
 
