@@ -11,6 +11,7 @@
   home.persistence."/persist/home/steven" = {
     directories = [
       ".config/unity3d" # Unity game saves apparently
+      ".local/share/applications" # .desktop files from installed games
     ];
   };
 }

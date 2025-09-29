@@ -21,7 +21,7 @@
         [
           "--output-width ${toString monitor.width}"
           "--output-height ${toString monitor.height}"
-          "--framerate-limit ${toString monitor.refreshRate}"
+          # "--framerate-limit ${toString monitor.refreshRate}"
           "--prefer-output ${monitor.name}"
           "--expose-wayland"
           "--fullscreen"
