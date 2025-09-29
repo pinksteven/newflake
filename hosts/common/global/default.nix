@@ -38,5 +38,11 @@
       allowUnfree = true;
     };
   };
+
+  fonts = {
+    enableDefaultPackages = true;
+    enableGhostscriptFonts = true;
+  };
+
   hardware.enableRedistributableFirmware = true;
 }

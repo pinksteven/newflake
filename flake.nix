@@ -6,6 +6,7 @@
     hardware.url = "github:NixOS/nixos-hardware/master";
     systems.url = "github:nix-systems/default-linux";
     impermanence.url = "github:nix-community/impermanence";
+    niri-flake.url = "github:sodiboo/niri-flake";
     # Use the yet to be merged matugen color generation
     stylix.url = "github:make-42/stylix/matugen"; #"github:nix-community/stylix";
 

@@ -28,6 +28,8 @@
 
   systemd.user.startServices = "sd-switch";
 
+  fonts.fontconfig.enable = true;
+
   programs = {
     home-manager.enable = true;
     git.enable = true;
