@@ -15,6 +15,7 @@
     ./ghostty.nix
     ./layout.nix
     ./rules.nix
+    ./shell.nix
     ./udiskie.nix
   ];
 
