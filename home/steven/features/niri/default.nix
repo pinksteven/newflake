@@ -11,12 +11,10 @@
 
   xdg = {
     autostart.enable = true;
-    menus.enable = true;
     mime.enable = true;
-    icons.enable = true;
   };
 
-  serivices.gnome-keyring.enable = lib.mkForce false;
+  services.gnome-keyring.enable = lib.mkForce false;
 
   programs.niri = {
     enable = true;

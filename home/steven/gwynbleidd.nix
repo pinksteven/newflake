@@ -8,6 +8,7 @@
 
     ./features/stylix
     ./features/hyprland
+    ./features/niri
     ./features/base-apps
     ./features/games
     ./features/dnd
