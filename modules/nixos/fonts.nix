@@ -7,7 +7,7 @@
   mkFontOption = kind: {
     name = mkOption {
       type = types.str;
-      default = "Fira Code";
+      default = "FiraCode Nerd Font";
       description = "Family name for ${kind} font profile";
       example = "Fira Code";
     };
