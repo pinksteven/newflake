@@ -6,6 +6,7 @@
   ...
 }: {
   imports = [
+    ./yazi
     ./binds.nix
     ./cliphist.nix
     # ./dynamic-cursor.nix #Borked??

@@ -9,6 +9,7 @@
     inputs.niri-flake.homeModules.niri
     inputs.niri-flake.homeModules.stylix
 
+    ./yazi
     ./animations.nix
     ./binds.nix
     ./cliphist.nix
@@ -75,6 +76,7 @@
         })
         monitors);
       screenshot-path = "~/Pictures/Screenshots/Screenshot_%Y-%m-%d_%H:%M:%S.png";
+      prefer-no-csd = true;
       xwayland-satellite = {
         enable = true;
         path = lib.getExe pkgs.xwayland-satellite-stable;

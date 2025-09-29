@@ -1,4 +1,8 @@
-{inputs, pkgs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   imports = [
     inputs.dankMaterialShell.homeModules.dankMaterialShell.default
     inputs.dankMaterialShell.homeModules.dankMaterialShell.niri
@@ -8,7 +12,7 @@
     enableSystemd = true;
     enableNightMode = false;
     enableDynamicTheming = false;
-    quickshell.package = pkgs.quickshell;
+    quickshell.package = inputs.dankMaterialShell.packages.${pkgs.system}.quickshell;
     niri = {
       enableKeybinds = true;
     };

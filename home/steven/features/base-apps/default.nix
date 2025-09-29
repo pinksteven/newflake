@@ -8,7 +8,6 @@
     ./spicetify.nix
     ./syncthing.nix
     ./trayscale.nix
-    ./yazi
   ];
 
   home.packages = with pkgs; [
