@@ -33,15 +33,17 @@ in {
 
       # Float pavucontrol (volume control)
       {
-        matches = [{app-id = "^pavucontrol$";}];
+        matches = [{app-id = "^org.pulseaudio.pavucontrol$";}];
         open-floating = true;
       }
 
       # Float Firefox picture-in-picture
       {
         matches = [
-          {app-id = "^firefox$";}
-          {title = "^.*[Pp]icture.in.[Pp]icture.*$";}
+          {
+            app-id = "^firefox$";
+            title = "^.*[Pp]icture.in.[Pp]icture.*$";
+          }
         ];
         open-floating = true;
       }
@@ -69,29 +71,37 @@ in {
       # Float Firefox dialogs and popups
       {
         matches = [
-          {app-id = "^firefox$";}
-          {title = "^.*Downloads.*$";}
+          {
+            app-id = "^firefox$";
+            title = "^.*Downloads.*$";
+          }
         ];
         open-floating = true;
       }
       {
         matches = [
-          {app-id = "^firefox$";}
-          {title = "^.*Bookmarks.*$";}
+          {
+            app-id = "^firefox$";
+            title = "^.*Bookmarks.*$";
+          }
         ];
         open-floating = true;
       }
       {
         matches = [
-          {app-id = "^firefox$";}
-          {title = "^.*History.*$";}
+          {
+            app-id = "^firefox$";
+            title = "^.*History.*$";
+          }
         ];
         open-floating = true;
       }
       {
         matches = [
-          {app-id = "^firefox$";}
-          {title = "^.*Extension.*$";}
+          {
+            app-id = "^firefox$";
+            title = "^.*Extension.*$";
+          }
         ];
         open-floating = true;
       }

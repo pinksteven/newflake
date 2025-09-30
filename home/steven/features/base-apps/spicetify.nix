@@ -56,7 +56,7 @@ in {
       {
         matches = [
           {
-            app-id = "^Spotify$";
+            app-id = "^spotify$";
             at-startup = true;
           }
         ];
