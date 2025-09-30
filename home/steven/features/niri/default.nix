@@ -20,7 +20,12 @@
     ./udiskie.nix
   ];
 
-  home.packages = [pkgs.xwayland-satellite-stable];
+  home = {
+    packages = [pkgs.xwayland-satellite-stable];
+    persistence."/persist/home/steven" = {
+      directories = [".local/share/keyrings"];
+    };
+  };
 
   xdg = {
     autostart.enable = true;
