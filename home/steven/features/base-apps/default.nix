@@ -19,5 +19,6 @@
     overskride
     pavucontrol
     fluffychat #TODO: figure out what files to persist
+    teams-for-linux # Thanks uni
   ];
 }
