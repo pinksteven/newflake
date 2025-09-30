@@ -15,12 +15,12 @@
 }:
 stdenv.mkDerivation rec {
   pname = "Dungeondraft";
-  version = "1.1.0.6";
+  version = "1.2.0.1";
 
   src = requireFile {
     name = "Dungeondraft-${version}-Linux64.deb";
     url = "https://dungeondraft.net/";
-    hash = "sha256-ffT2zOQWKb6W6dQGuKbfejNCl6dondo4CB6JKTReVDs=";
+    hash = "sha256-UvvUCQ1RkhwBPMet/zD0JjI7DPbF4ixzOX85Fi3v/BE=";
   };
   sourceRoot = ".";
   unpackCmd = "${dpkg}/bin/dpkg-deb -x $curSrc .";
@@ -53,8 +53,9 @@ stdenv.mkDerivation rec {
     ln -s $out/opt/Dungeondraft/Dungeondraft.x86_64 $out/bin/Dungeondraft.x86_64
     substituteInPlace \
       $out/share/applications/Dungeondraft.desktop \
-        --replace-warn /opt/Dungeondraft "" \
-        --replace-warn Dungeondraft.png Dungeondraft
+        --replace-warn /opt/Dungeondraft/ "" \
+        --replace-warn Dungeondraft.png Dungeondraft \
+        --replace-warn /opt/Dungeondraft $out/opt/Dungeondraft
     runHook postInstall
   '';
   postInstall = ''
