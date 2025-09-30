@@ -23,4 +23,5 @@
       "nixos-test"
     ];
   };
+  programs.nix-ld.enable = true;
 }
