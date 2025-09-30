@@ -1,8 +1,11 @@
 {
   inputs,
   config,
+  lib,
   ...
-}: {
+}: let
+  hasNiri = lib.attrByPath ["programs" "niri" "enable"] false config;
+in {
   home.persistence = {
     "/persist/home/steven" = {
       directories = [
@@ -213,4 +216,32 @@
         --purple-5: ${base0E};
       }
     '';
+
+  # Niri configuration (only when niri is available)
+  programs.niri.settings = lib.mkIf hasNiri {
+    spawn-at-startup = [
+      {
+        command = ["vesktop"];
+      }
+    ];
+
+    window-rules = [
+      # Vesktop - open on media workspace
+      {
+        matches = [
+          {
+            app-id = "^vesktop$";
+            at-startup = true;
+          }
+        ];
+        open-on-workspace = "media";
+        default-column-width = {
+          proportion = 1.0;
+        };
+        default-window-height = {
+          proportion = 0.75;
+        };
+      }
+    ];
+  };
 }

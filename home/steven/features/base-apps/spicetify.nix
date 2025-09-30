@@ -1,8 +1,12 @@
 {
+  config,
+  lib,
   pkgs,
   inputs,
   ...
-}: {
+}: let
+  hasNiri = lib.attrByPath ["programs" "niri" "enable"] false config;
+in {
   home.persistence."/persist/home/steven" = {
     directories = [
       ".config/spotify" # User data, saved credentials and so on
@@ -36,6 +40,34 @@
     ];
     enabledCustomApps = with spice.apps; [
       newReleases
+    ];
+  };
+
+  # Niri configuration (only when niri is available)
+  programs.niri.settings = lib.mkIf hasNiri {
+    spawn-at-startup = [
+      {
+        command = ["spotify"];
+      }
+    ];
+
+    window-rules = [
+      # Spotify - open on media workspace
+      {
+        matches = [
+          {
+            app-id = "^Spotify$";
+            at-startup = true;
+          }
+        ];
+        open-on-workspace = "media";
+        default-column-width = {
+          proportion = 1.0;
+        };
+        default-window-height = {
+          proportion = 0.25;
+        };
+      }
     ];
   };
 }
