@@ -27,8 +27,6 @@
     mime.enable = true;
   };
 
-  services.gnome-keyring.enable = lib.mkForce false;
-
   programs.niri = {
     enable = true;
     package = pkgs.niri-stable;
