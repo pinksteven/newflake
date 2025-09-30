@@ -35,14 +35,19 @@
       nixd
       nil
       alejandra
+      wakatime
     ];
   };
 
   home = {
     packages = with pkgs; [cloc];
+    sessionVariables.EDITOR = "zeditor";
     persistence."/persist/home/steven" = {
-      # HM does merge on activation, so i gotta persist
-      directories = [".config/zed"];
+      directories = [
+        ".config/zed"
+        ".local/share/zed"
+      ];
+      files = [".wakatime.cfg"];
     };
   };
 }

@@ -3,6 +3,7 @@
   pkgs,
   config,
   self,
+  lib,
   ...
 }: let
   nixvim' = inputs.nixvim.packages."${pkgs.system}".default;
@@ -19,7 +20,7 @@
 in {
   home = {
     packages = [nvim];
-    sessionVariables.EDITOR = "nvim";
+    sessionVariables.EDITOR = lib.mkDefault "nvim";
     persistence."/persist/home/steven" = {
       files = [".wakatime.cfg"];
       directories = [".local/share/nvim/site/spell"]; # Don't re-download dictionaries every time
