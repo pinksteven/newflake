@@ -4,7 +4,7 @@
     cmd=yazi-wrapper.sh
     default_dir=$HOME/Downloads
     ; Uncomment and edit the line below to change the terminal emulator command
-    env=TERMCMD=ghostty --class yazi-xdg -e
+    env=TERMCMD=ghostty --class=yazi-xdg -e
   '';
   home.file.".config/xdg-desktop-portal-termfilechooser/yazi-wrapper.sh".source = "${pkgs.xdg-desktop-portal-termfilechooser}/share/xdg-desktop-portal-termfilechooser/yazi-wrapper.sh";
 

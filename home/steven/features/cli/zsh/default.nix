@@ -44,6 +44,7 @@
         nc = "nh clean all --keep 5";
 
         nl = "nix-locate";
+        zed = "zeditor";
       };
     };
 
