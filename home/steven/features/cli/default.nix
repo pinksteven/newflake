@@ -8,7 +8,7 @@
     ./eza.nix
     ./fzf.nix
     ./git.nix
-    ./nix-index.nix
+    ./nix-utils.nix
     ./ssh.nix
     ./zoxide.nix
   ];
