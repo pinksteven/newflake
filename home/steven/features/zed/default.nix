@@ -25,7 +25,6 @@
       "lua"
       "neocmake"
       "basher"
-      "discord-presence"
       "wakatime"
       "qml"
       "snippets"
@@ -35,7 +34,7 @@
       nixd
       nil
       alejandra
-      wakatime
+      pkgs.inputs.wakatime-ls.default
     ];
   };
 

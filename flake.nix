@@ -38,6 +38,10 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    wakatime-ls = {
+      url = "github:mrnossiom/wakatime-ls";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     dankMaterialShell = {
       url = "github:AvengeMedia/DankMaterialShell";
       inputs.nixpkgs.follows = "nixpkgs";

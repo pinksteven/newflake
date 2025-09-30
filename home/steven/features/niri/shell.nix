@@ -17,4 +17,10 @@
       enableKeybinds = true;
     };
   };
+  home.persistence."/persist/home/steven" = {
+    directories = [
+      ".config/DankMaterialShell"
+      ".local/state/DankMaterialShell"
+    ];
+  };
 }

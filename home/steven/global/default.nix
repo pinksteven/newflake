@@ -10,7 +10,7 @@
     [
       inputs.impermanence.homeManagerModules.impermanence
       ../features/cli
-      ../features/nvim
+      # ../features/nvim
     ]
     ++ (builtins.attrValues outputs.homeManagerModules);
 
