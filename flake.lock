@@ -632,6 +632,26 @@
         "type": "github"
       }
     },
+    "nix-index-database": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1759032422,
+        "narHash": "sha256-WZf+FhebP2/1pK2np5xj/NuDjD6fXK2BHnq/tPUN18o=",
+        "owner": "nix-community",
+        "repo": "nix-index-database",
+        "rev": "ec7a78cb0e098832d8acac091a4df393259c4839",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nix-index-database",
+        "type": "github"
+      }
+    },
     "nixcord": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -957,6 +977,7 @@
         "lanzaboote": "lanzaboote",
         "niri-flake": "niri-flake",
         "nix-gaming": "nix-gaming",
+        "nix-index-database": "nix-index-database",
         "nixcord": "nixcord",
         "nixpkgs": "nixpkgs_2",
         "nixvim": "nixvim",
