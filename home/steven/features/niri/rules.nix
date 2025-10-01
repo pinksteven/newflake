@@ -27,7 +27,7 @@ in {
     window-rules = [
       # Float yazi-xdg file picker
       {
-        matches = [{app-id = "^yazi-xdg$";}];
+        matches = [{app-id = "^yazi.xdg$";}];
         open-floating = true;
       }
 
