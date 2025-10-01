@@ -23,4 +23,5 @@
     import ../pkgs {pkgs = final;};
 
   niri = inputs.niri-flake.overlays.niri;
+  nvim-pkg = inputs.kickstart-nix.overlays.default;
 }

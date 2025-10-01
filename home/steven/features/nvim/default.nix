@@ -1,25 +1,10 @@
 {
-  inputs,
   pkgs,
-  config,
-  self,
   lib,
   ...
-}: let
-  nixvim' = inputs.nixvim.packages."${pkgs.system}".default;
-  nixvim = nixvim'.extend {
-    lsp.servers.nixd.settings.settings.options = {
-      nixos.expr = ''(builtins.getFlake "${self}")'';
-      home-manager.expr = ''(builtins.getFlake "${self}")'';
-    };
-  };
-  nvim =
-    if config.stylix.enable
-    then (nixvim.extend config.lib.stylix.nixvim.config)
-    else nixvim;
-in {
+}: {
   home = {
-    packages = [nvim];
+    packages = [pkgs.nvim-pkg];
     sessionVariables.EDITOR = lib.mkDefault "nvim";
     persistence."/persist/home/steven" = {
       files = [".wakatime.cfg"];

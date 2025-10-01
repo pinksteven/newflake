@@ -42,6 +42,10 @@
       url = "github:mrnossiom/wakatime-ls";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    kickstart-nix = {
+      url = "github:nix-community/kickstart-nix.nvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     dankMaterialShell = {
       url = "github:AvengeMedia/DankMaterialShell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -66,10 +70,6 @@
     wallpapers = {
       url = "github:pinksteven/wallpapers";
       flake = false;
-    };
-    nixvim = {
-      url = "github:pinksteven/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 

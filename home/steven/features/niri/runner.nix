@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: {
-  home.packages = [inputs.kidex.packages.${pkgs.system}.kidex];
+  home.packages = [pkgs.inputs.kidex.kidex];
   xdg.configFile."kidex.ron".text = ''
     Config(
       ignored: [".*",],
@@ -132,7 +132,7 @@
     };
     Service = {
       Type = "oneshot";
-      ExecStart = "${pkgs.kidex}/bin/kidex";
+      ExecStart = "${pkgs.inputs.kidex.kidex}/bin/kidex";
     };
     Unit = {
       PartOf = ["graphical.target"];
