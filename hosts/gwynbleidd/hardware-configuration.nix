@@ -133,7 +133,7 @@
               type = "btrfs";
               extraArgs = ["-L BIGDISK"];
               mountpoint = "/mnt/bigdisk";
-              mountOptions = ["compress=zstd" "noatime" "rw" "auto" "users" "exec"];
+              mountOptions = ["compress=zstd" "noatime" "rw" "auto" "users" "exec" "nofail"];
               postMountHook = ''
                 chown -R :users /mnt/bigdisk
                 chmod 775 /mnt/bigdisk
