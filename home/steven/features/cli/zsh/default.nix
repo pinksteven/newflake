@@ -32,7 +32,7 @@
 
     zsh-abbr = {
       enable = true;
-      abbreviations = {
+      globalAbbreviations = {
         cd = "z";
         g = "lazygit";
 
