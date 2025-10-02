@@ -1,5 +1,6 @@
 {
   config,
+  pkgs,
   inputs,
   outputs,
   ...
@@ -43,6 +44,8 @@
     enableDefaultPackages = true;
     enableGhostscriptFonts = true;
   };
+
+  environment.systemPackages = [pkgs.git];
 
   hardware.enableRedistributableFirmware = true;
 }
