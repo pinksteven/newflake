@@ -235,6 +235,7 @@ in {
           }
         ];
         open-on-workspace = "media";
+        open-focused = false;
         default-column-width = {
           proportion = 1.0;
         };
