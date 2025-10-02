@@ -1,6 +1,8 @@
 {
   pkgs,
   inputs,
+  lib,
+  config,
   ...
 }: {
   imports = [
@@ -79,6 +81,40 @@
     device = "/mnt/bigdisk";
     options = ["bind"];
   };
+
+  # Fix for nvidia not freeing up vram on niri
+  environment.etc.
+    "nvidia/nvidia-application-profiles-rc.d/50-limit-free-buffer-pool-in-wayland-compositors.json".text =
+    lib.mkIf (
+      builtins.any
+      (cfg: lib.attrByPath ["programs" "niri" "enable"] false cfg)
+      (builtins.attrValues config.home-manager.users)
+    ) # json
+    
+    ''
+      {
+          "rules": [
+              {
+                  "pattern": {
+                      "feature": "procname",
+                      "matches": "niri"
+                  },
+                  "profile": "Limit Free Buffer Pool On Wayland Compositors"
+              }
+          ],
+          "profiles": [
+              {
+                  "name": "Limit Free Buffer Pool On Wayland Compositors",
+                  "settings": [
+                      {
+                          "key": "GLVidHeapReuseRatio",
+                          "value": 0
+                      }
+                  ]
+              }
+          ]
+      }
+    '';
 
   base16-theme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
 

@@ -125,22 +125,10 @@
       device = "/dev/nvme1n1";
       type = "disk";
       content = {
-        type = "gpt";
-        partitions = {
-          main = {
-            size = "100%";
-            content = {
-              type = "btrfs";
-              extraArgs = ["-L BIGDISK"];
-              mountpoint = "/mnt/bigdisk";
-              mountOptions = ["compress=zstd" "noatime" "rw" "auto" "users" "exec" "nofail"];
-              postMountHook = ''
-                chown -R :users /mnt/bigdisk
-                chmod 775 /mnt/bigdisk
-              '';
-            };
-          };
-        };
+        type = "btrfs";
+        extraArgs = ["-L BIGDISK"];
+        mountpoint = "/mnt/bigdisk";
+        mountOptions = ["compress=zstd" "noatime" "rw" "nofail"];
       };
     };
   };
