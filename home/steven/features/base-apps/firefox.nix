@@ -111,8 +111,8 @@
       };
       search = {
         force = true;
-        default = "startpage";
-        privateDefault = "startpage";
+        default = "brave";
+        privateDefault = "brave";
         engines = {
           nix-packages = {
             name = "Nix Packages";
@@ -147,14 +147,14 @@
             definedAliases = ["@nur"];
           };
 
-          startpage = {
-            name = "Startpage";
-            urls = [{template = "https://www.startpage.com/do/dsearch?q={searchTerms}";}];
-            icon = "https://www.startpage.com/sp/cdn/favicons/favicon--default.ico";
+          brave = {
+            name = "Brave Search";
+            urls = [{template = "https://search.brave.com/search?q={searchTerms}";}];
+            icon = "https://brave.com/favicon.ico";
             updateInterval = 24 * 60 * 60 * 1000; # every day
             definedAliases = [
-              "@sp"
-              "@startpage"
+              "@b"
+              "@brave"
             ];
           };
           bing.metaData.hidden = true;
