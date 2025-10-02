@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   inputs,
   ...
 }: {
@@ -50,6 +51,7 @@
     # Just to be sure it grabs newest drivers
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
+  environment.systemPackages = [pkgs.nvtopPackages.nvidia];
 
   disko.devices.disk = let
     inherit (config.networking) hostName;
