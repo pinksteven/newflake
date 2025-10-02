@@ -128,7 +128,7 @@
         type = "btrfs";
         extraArgs = ["-L BIGDISK"];
         mountpoint = "/mnt/bigdisk";
-        mountOptions = ["compress=zstd" "noatime" "rw" "nofail"];
+        mountOptions = ["compress=zstd" "noatime" "rw" "auto" "users" "suid" "exec" "nofail"];
       };
     };
   };
