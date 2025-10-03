@@ -6,6 +6,7 @@
       ./gdlauncher.nix
       ./heroic.nix
       ./steam.nix
+      ./nexusmods.nix
     ];
 
   home.persistence."/persist/home/steven" = {
