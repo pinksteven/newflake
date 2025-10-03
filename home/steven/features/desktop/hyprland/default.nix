@@ -6,19 +6,20 @@
   ...
 }: {
   imports = [
-    ./yazi
+    ../common/yazi
+    ../common/udiskie.nix
+    ../common/dms.nix
+    ../common/anyrun.nix
+    ../common/cliphist.nix
+
     ./binds.nix
-    ./cliphist.nix
     # ./dynamic-cursor.nix #Borked??
     ./hypridle.nix
     ./hyprlock.nix
     ./kitty.nix
     ./looks.nix
-    ./panel.nix
     ./rules.nix
-    ./runner.nix
     ./startup.nix
-    ./udiskie.nix
   ];
 
   xdg.portal = {
