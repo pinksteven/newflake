@@ -57,7 +57,7 @@
       enable = true;
       useFriendlyNames = true;
       plugins = [
-        "olets/zsh-autosuggestions-abbreviations-strategy"
+        # "olets/zsh-autosuggestions-abbreviations-strategy"
         "zsh-users/zsh-completions"
         "ohmyzsh/ohmyzsh path:plugins/git"
         "chrissicool/zsh-256color"
