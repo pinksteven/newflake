@@ -9,16 +9,17 @@
     inputs.niri-flake.homeModules.niri
     inputs.niri-flake.homeModules.stylix
 
-    ./yazi
+    ../common/yazi
+    ../common/cliphist.nix
+    ../common/anyrun.nix
+    ../common/dms.nix
+    ../common/udiskie.nix
+
     ./animations.nix
     ./binds.nix
-    ./cliphist.nix
     ./ghostty.nix
     ./layout.nix
     ./rules.nix
-    ./runner.nix
-    ./shell.nix
-    ./udiskie.nix
   ];
 
   home = {
