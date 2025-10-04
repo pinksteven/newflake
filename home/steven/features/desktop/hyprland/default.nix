@@ -20,6 +20,7 @@
     ./looks.nix
     ./rules.nix
     ./startup.nix
+    ./termfilechooser.nix
   ];
 
   xdg.portal = {

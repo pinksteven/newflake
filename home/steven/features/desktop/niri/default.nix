@@ -20,6 +20,7 @@
     ./ghostty.nix
     ./layout.nix
     ./rules.nix
+    ./termfilechooser.nix
   ];
 
   home = {

@@ -4,7 +4,7 @@
     ./fetchers.nix
     ./open.nix
     ./previewers.nix
-    ./termfilechooser.nix
+    # ./termfilechooser.nix
   ];
 
   programs.yazi = {
