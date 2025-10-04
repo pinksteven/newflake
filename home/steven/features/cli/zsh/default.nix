@@ -21,7 +21,6 @@
       bindkey -v
       bindkey "^[[3~" delete-char
       microfetch
-      ZSH_AUTOSUGGEST_STRATEGY=( abbreviations $ZSH_AUTOSUGGEST_STRATEGY )
     '';
 
     history = {
