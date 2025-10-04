@@ -42,10 +42,6 @@
         run = "plugin wl-clipboard";
         desc = "Copy to clipboard";
       }
-      {
-        on = "<Enter>";
-        run = "plugin smart-enter";
-      }
     ];
   };
 }

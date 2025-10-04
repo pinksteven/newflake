@@ -105,6 +105,20 @@ in {
         ];
         open-floating = true;
       }
+      # Steam notification "fix"
+      {
+        matches = [
+          {
+            app-id = "steam";
+            title = "^notificationtoasts_\d+_desktop$";
+          }
+        ];
+        default-floating-position = {
+          relative-to = "bottom-right";
+          x = 10;
+          y = 10;
+        };
+      }
     ];
   };
 }

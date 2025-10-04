@@ -44,6 +44,7 @@
     persistence."/persist/home/steven" = {
       directories = [
         ".config/zed"
+        ".config/github-copilot"
         ".local/share/zed"
       ];
       files = [".wakatime.cfg"];
