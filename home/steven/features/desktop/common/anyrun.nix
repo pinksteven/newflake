@@ -1,9 +1,10 @@
 {
   inputs,
+  lib,
   pkgs,
   ...
 }: {
-  home.packages = [inputs.kidex.packages.${pkgs.system}.kidex];
+  home.packages = [pkgs.inputs.kidex.kidex];
   xdg.configFile."kidex.ron".text = ''
     Config(
       ignored: [".*",],
@@ -44,6 +45,12 @@
           max_entries: 5,
         )
       '';
+      "symbols.ron".text = ''
+        Config(
+          prefix:">s",
+          max_entries:5,
+        )
+      '';
       "kidex.ron".text = ''
         Config(
           max_entries:5,
@@ -51,7 +58,7 @@
       '';
       "stdin.ron".text = ''
         Config(
-          max_entries: 10,
+          max_entries: 15,
         )
       '';
     };
@@ -126,8 +133,17 @@
       '';
   };
 
-  wayland.windowManager.hyprland.settings = {
-    layerrule = ["noanim, anyrun"];
-    exec-once = ["uwsm app -- kidex"];
+  systemd.user.services.kidex = {
+    Unit = {
+      Description = "A simple file indexing service";
+      PartOf = "graphical-session.target";
+      After = "graphical-session.target";
+      Requisite = "graphical-session.target";
+    };
+    Service = {
+      Type = "exec";
+      ExecStart = "${lib.getExe pkgs.inputs.kidex.kidex}";
+      Restart = "on-failure";
+    };
   };
 }
