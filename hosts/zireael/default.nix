@@ -40,11 +40,14 @@
   environment.systemPackages = [pkgs.brightnessctl];
 
   # Lid settings
-  services.logind.settings.Login = {
-    HandleLidSwitch = "suspend";
-    HandleLidSwitchExternalPower = "lock";
-    HandlePowerKey = "suspend";
-    HandlePowerKeyLongPress = "poweroff";
+  services = {
+    colord.enable = true;
+    logind.settings.Login = {
+      HandleLidSwitch = "suspend";
+      HandleLidSwitchExternalPower = "lock";
+      HandlePowerKey = "suspend";
+      HandlePowerKeyLongPress = "poweroff";
+    };
   };
 
   hardware.graphics.enable = true;

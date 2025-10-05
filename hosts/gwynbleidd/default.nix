@@ -42,6 +42,7 @@
 
   services = {
     ratbagd.enable = true;
+    colord.enable = true;
     logind.settings.Login = {
       HandlePowerKey = "suspend";
       HandlePowerKeyLongPress = "poweroff";
