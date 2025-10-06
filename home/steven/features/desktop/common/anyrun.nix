@@ -42,6 +42,10 @@
         Config(
           desktop_actions: true,
           max_entries: 5,
+          terminal: Some(Terminal(
+            command: "ghostty",
+            args: "-e {}",
+          )),
         )
       '';
       "symbols.ron".text = ''
