@@ -35,6 +35,8 @@
     mime.enable = true;
   };
 
+  wayland.systemd.target = "niri.service";
+
   programs.niri = {
     enable = true;
     package = pkgs.niri-stable;

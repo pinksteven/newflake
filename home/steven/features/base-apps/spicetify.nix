@@ -43,14 +43,15 @@ in {
     ];
   };
 
+  startupPrograms = [
+    {
+      name = "spotify";
+      command = ["${lib.getExe config.programs.spicetify.spicedSpotify}"];
+    }
+  ];
+
   # Niri configuration (only when niri is available)
   programs.niri.settings = lib.mkIf hasNiri {
-    spawn-at-startup = [
-      {
-        command = ["spotify"];
-      }
-    ];
-
     window-rules = [
       # Spotify - open on media workspace
       {
