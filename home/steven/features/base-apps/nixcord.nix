@@ -217,14 +217,15 @@ in {
       }
     '';
 
+  startupPrograms = [
+    {
+      name = "vesktop";
+      command = ["${lib.getExe config.programs.nixcord.vesktop.package}"];
+    }
+  ];
+
   # Niri configuration (only when niri is available)
   programs.niri.settings = lib.mkIf hasNiri {
-    spawn-at-startup = [
-      {
-        command = ["vesktop"];
-      }
-    ];
-
     window-rules = [
       # Vesktop - open on media workspace
       {
