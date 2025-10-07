@@ -19,7 +19,7 @@
         withGui = false;
       };
     in [
-      epsonscan2
+      # epsonscan2
       pkgs.sane-airscan
     ];
   };
