@@ -25,12 +25,6 @@
         "sd_mod"
       ];
       kernelModules = [];
-      luks.devices = {
-        cryptroot = {
-          device = "/dev/disk/by-label/${config.networking.hostName}";
-          allowDiscards = true; # Used if primary device is a SSD
-        };
-      };
     };
     extraModulePackages = [];
   };
