@@ -13,6 +13,8 @@
   hardware.cpu.amd.updateMicrocode = true;
   powerManagement.cpuFreqGovernor = "ondemand";
 
+  services.power-profiles-daemon.enable = true;
+
   boot = {
     kernelModules = ["kvm-amd"];
     initrd = {

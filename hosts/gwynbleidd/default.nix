@@ -23,6 +23,7 @@
     ../common/optional/printer.nix
     ../common/optional/quietboot.nix
     ../common/optional/stylix.nix
+    ../common/optional/wireless.nix
   ];
 
   networking.hostName = "gwynbleidd";
