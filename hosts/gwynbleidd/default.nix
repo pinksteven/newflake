@@ -77,11 +77,10 @@
     }
   ];
 
-  # Steam does not like folders outside of home, apparently due to FHS.
-  # This is hacky, and goes aganist modularity but oh well
-  fileSystems."home/steven/BigDisk" = {
-    device = "/mnt/bigdisk";
-    options = ["bind"];
+  fileSystems."/mnt/bigdisk" = {
+    device = "/dev/disk/by-label/bigdisk";
+    fsType = "btrfs";
+    options = ["noatime" "compress=zstd" "nofail"];
   };
 
   # Fix for nvidia not freeing up vram on niri

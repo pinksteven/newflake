@@ -118,17 +118,6 @@
         };
       };
     };
-    # A 2TB drive i use mainly to store games
-    games = {
-      device = "/dev/nvme1n1";
-      type = "disk";
-      content = {
-        type = "btrfs";
-        extraArgs = ["-L BIGDISK"];
-        mountpoint = "/mnt/bigdisk";
-        mountOptions = ["compress=zstd" "noatime" "rw" "auto" "users" "suid" "exec" "nofail"];
-      };
-    };
   };
   fileSystems."/persist".neededForBoot = true;
 }
