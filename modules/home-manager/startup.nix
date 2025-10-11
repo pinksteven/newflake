@@ -48,8 +48,19 @@ in {
             };
             Service = {
               Type = "exec";
+              Environment = let
+                # NixOS system paths that aren't in home-manager's sessionPath
+                systemPaths = [
+                  "/run/current-system/sw/bin" # NixOS system packages (where steam would be)
+                  "/run/wrappers/bin" # Wrapped binaries (sudo, etc.)
+                  "/etc/profiles/per-user/${config.home.username}/bin" # User system profile
+                ];
+              in
+                ["PATH=${lib.concatStringsSep ":" (systemPaths ++ config.home.sessionPath)}"]
+                ++ (lib.mapAttrsToList (name: value: "${name}=${toString value}")
+                  (lib.filterAttrs (name: value: name != "PATH") config.home.sessionVariables));
               ExecStartPre = "${pkgs.coreutils}/bin/sleep 3"; # Give some time for the session to properly start
-              ExecStart = lib.concatStringsSep " " prog.command;
+              ExecStart = "/bin/sh -c '" + (lib.concatStringsSep " " prog.command) + "'";
               Restart = "on-failure";
               X-SwitchMethod = "keep-old";
             };

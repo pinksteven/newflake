@@ -14,7 +14,7 @@
   startupPrograms = [
     {
       name = "steam";
-      command = ["${lib.getExe pkgs.steam}" "-silent"];
+      command = ["steam" "-silent"];
     }
   ];
 }
