@@ -6,7 +6,6 @@
     hardware.url = "github:NixOS/nixos-hardware/master";
     systems.url = "github:nix-systems/default-linux";
     impermanence.url = "github:nix-community/impermanence";
-    niri-flake.url = "github:sodiboo/niri-flake";
     # Use the yet to be merged matugen color generation
     stylix.url = "github:make-42/stylix/matugen"; #"github:nix-community/stylix";
 
@@ -36,6 +35,10 @@
     };
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    niri-flake = {
+      url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     wakatime-ls = {
@@ -116,6 +119,14 @@
       # Personal laptop
       zireael = lib.nixosSystem {
         modules = [./hosts/zireael];
+        specialArgs = {
+          inherit inputs outputs;
+        };
+      };
+
+      # To Be Deployed Home Server
+      kaermorhen = lib.nixosSystem {
+        modules = [./hosts/kaermorhen];
         specialArgs = {
           inherit inputs outputs;
         };
