@@ -23,5 +23,5 @@
     };
   };
 
-  wallpaper = "${inputs.wallpapers}/" + "more_dandadan.jpeg";
+  wallpaper = "${inputs.wallpapers}/" + "pinktree.jpg";
 }
