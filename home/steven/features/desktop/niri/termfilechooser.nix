@@ -1,8 +1,4 @@
-{
-  lib,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   home.file.".config/xdg-desktop-portal-termfilechooser/config".text = ''
     [filechooser]
     cmd=yazi-wrapper.sh
