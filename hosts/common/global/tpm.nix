@@ -1,9 +1,14 @@
-{config, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   security.tpm2 = {
     enable = true;
     pkcs11.enable = true;
     tctiEnvironment.enable = true;
   };
+  environment.systemPackages = [pkgs.tpm2-tss];
   boot.kernelModules = ["uhid"];
   # Needed for tpm-fido
   services.udev.extraRules = ''
