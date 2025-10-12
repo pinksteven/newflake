@@ -20,7 +20,7 @@
     ../common/optional/printer.nix
     ../common/optional/stylix.nix
     ../common/optional/wireless.nix
-    ../common/optional/secure-boot.nix
+    # ../common/optional/secure-boot.nix
   ];
 
   networking.hostName = "zireael";

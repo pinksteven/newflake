@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   inputs,
   outputs,
   ...
@@ -32,6 +33,8 @@
     inherit inputs outputs;
     inherit (config) monitors gamingReady;
   };
+
+  boot.loader.systemd-boot.enable = lib.mkDefault true;
 
   nixpkgs = {
     overlays = builtins.attrValues outputs.overlays;
