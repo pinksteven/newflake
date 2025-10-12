@@ -36,9 +36,6 @@
       hidePodcasts
       playNext
     ];
-    enabledCustomApps = with spice.apps; [
-      newReleases
-    ];
   };
 
   startupPrograms = [
