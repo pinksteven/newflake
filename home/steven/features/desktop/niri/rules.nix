@@ -31,6 +31,16 @@ in {
 
     # Global window rules
     window-rules = [
+      {
+        geometry-corner-radius = {
+          top-left = 12.;
+          top-right = 12.;
+          bottom-left = 12.;
+          bottom-right = 12.;
+        };
+        clip-to-geometry = true;
+      }
+
       # Float yazi-xdg file picker
       {
         matches = [{app-id = "^yazi.xdg$";}];
