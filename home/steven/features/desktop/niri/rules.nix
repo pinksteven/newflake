@@ -41,6 +41,52 @@ in {
         clip-to-geometry = true;
       }
 
+      # Vesktop - open on media workspace
+      {
+        matches = [
+          {
+            app-id = "^vesktop$";
+          }
+        ];
+        open-on-workspace = "media";
+        open-focused = false;
+        default-column-width = {
+          proportion =
+            if (portraitMonitor != null)
+            then 1.
+            else 2. / 3.;
+        };
+        default-window-height = {
+          proportion =
+            if (portraitMonitor != null)
+            then 2. / 3.
+            else 1.;
+        };
+      }
+
+      # Spotify - open on media workspace
+      {
+        matches = [
+          {
+            app-id = "^spotify$";
+          }
+        ];
+        open-on-workspace = "media";
+        open-focused = false;
+        default-column-width = {
+          proportion =
+            if (portraitMonitor != null)
+            then 1.0
+            else 1. / 3.;
+        };
+        default-window-height = {
+          proportion =
+            if (portraitMonitor != null)
+            then 1. / 3.
+            else 1.;
+        };
+      }
+
       # Float yazi-xdg file picker
       {
         matches = [{app-id = "^yazi.xdg$";}];

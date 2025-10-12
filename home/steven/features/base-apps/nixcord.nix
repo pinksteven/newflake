@@ -223,27 +223,4 @@ in {
       command = ["${lib.getExe config.programs.nixcord.vesktop.package}"];
     }
   ];
-
-  # Niri configuration (only when niri is available)
-  programs.niri.settings = lib.mkIf hasNiri {
-    window-rules = [
-      # Vesktop - open on media workspace
-      {
-        matches = [
-          {
-            app-id = "^vesktop$";
-            at-startup = true;
-          }
-        ];
-        open-on-workspace = "media";
-        open-focused = false;
-        default-column-width = {
-          proportion = 1.0;
-        };
-        default-window-height = {
-          proportion = 0.75;
-        };
-      }
-    ];
-  };
 }
