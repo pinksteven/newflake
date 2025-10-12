@@ -4,9 +4,7 @@
   pkgs,
   inputs,
   ...
-}: let
-  hasNiri = lib.attrByPath ["programs" "niri" "enable"] false config;
-in {
+}: {
   home.persistence."/persist/home/steven" = {
     directories = [
       ".config/spotify" # User data, saved credentials and so on
