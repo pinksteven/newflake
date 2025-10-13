@@ -53,7 +53,6 @@
       vcs-files = pkgs.yaziPlugins.vcs-files;
       starship = pkgs.yaziPlugins.starship;
       piper = pkgs.yaziPlugins.piper;
-      smart-enter = pkgs.yaziPlugins.smart-enter;
       wl-clipboard = pkgs.yaziPlugins.wl-clipboard;
     };
 
