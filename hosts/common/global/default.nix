@@ -48,6 +48,10 @@
     enableGhostscriptFonts = true;
   };
 
+  security.pam.services.login = {
+    fprintAuth = false;
+  };
+
   environment.systemPackages = [pkgs.git];
 
   hardware.enableRedistributableFirmware = true;
