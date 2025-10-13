@@ -13,20 +13,21 @@
   primaryMonitor = lib.head (lib.filter (m: m.primary) monitors);
 in {
   programs.niri.settings = {
+    spawn-at-startup = [{sh = "niri msg action focus-workspace \"primary\"";}];
     # Workspace definitions and monitor assignments
     workspaces = {
+      # Make the primary monitor open an empty workspace
+      # On my laptop it opened media workspace automatically and I don't want that
+      "primary" = {
+        open-on-output = primaryMonitor.name;
+      };
+
       # Media workspace - always exists, assigned to portrait monitor if available
       "media" =
         {}
         // lib.optionalAttrs (portraitMonitor != null) {
           open-on-output = portraitMonitor.name;
         };
-
-      # If no portrait monitor found, make the primary monitor open an empty workspace
-      # On my laptop it opened media workspace automatically and I don't want that
-      "primary" = {
-        open-on-output = primaryMonitor.name;
-      };
     };
 
     # Global window rules
