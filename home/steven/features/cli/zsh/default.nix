@@ -19,6 +19,11 @@
 
     initContent = lib.mkAfter ''
       bindkey -v
+
+
+      bindkey -M viins " " abbr-expand-and-insert
+      bindkey -M viins "^ " magic-space
+
       bindkey "^[[3~" delete-char
       microfetch
     '';
