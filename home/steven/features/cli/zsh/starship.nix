@@ -3,12 +3,13 @@
   lib,
   ...
 }: let
+  hasStylix = lib.attrByPath ["stylix" "enable"] false config;
   accent =
-    if config.stylix.enable
+    if hasStylix
     then config.lib.stylix.colors.withHashtag.base0D
     else "green";
   background-alt =
-    if config.stylix.enable
+    if hasStylix
     then config.lib.stylix.colors.withHashtag.base01
     else "black";
 in {

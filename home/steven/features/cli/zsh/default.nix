@@ -44,6 +44,8 @@
 
         nl = "nix-locate";
         zed = "zeditor";
+
+        tfg = "tailscale file get ~/Downloads";
       };
     };
 
