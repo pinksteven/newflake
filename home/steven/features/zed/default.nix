@@ -8,6 +8,7 @@
         metrics = false;
       };
       vim_mode = true;
+      load_direnv = "shell_hook";
 
       languages = {
         Nix.formatter.external = {

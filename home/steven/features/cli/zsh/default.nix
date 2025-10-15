@@ -38,6 +38,8 @@
       enable = true;
       globalAbbreviations = {
         cd = "z";
+        ls = "eza";
+        tree = "eza --tree";
         g = "lazygit";
 
         nos = "nh os switch -a";
@@ -52,11 +54,6 @@
 
         tfg = "tailscale file get ~/Downloads";
       };
-    };
-
-    shellAliases = {
-      ls = "eza --icons=always --no-quotes";
-      tree = "eza --icons=always --tree --no-quotes";
     };
 
     antidote = {
