@@ -17,7 +17,8 @@
 
     ./animations.nix
     ./binds.nix
-    ./ghostty.nix
+    # ./ghostty.nix
+    ./kitty.nix
     ./layout.nix
     ./rules.nix
     ./termfilechooser.nix
