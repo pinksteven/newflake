@@ -20,12 +20,12 @@
     initContent = lib.mkAfter ''
       bindkey -v
 
-
       bindkey -M viins " " abbr-expand-and-insert
       bindkey -M viins "^ " magic-space
 
       bindkey "^[[3~" delete-char
       microfetch
+      ZSH_AUTOSUGGEST_STRATEGY=( abbreviations $ZSH_AUTOSUGGEST_STRATEGY )
     '';
 
     history = {
@@ -58,12 +58,9 @@
 
     antidote = {
       enable = true;
-      useFriendlyNames = true;
       plugins = [
-        # "olets/zsh-autosuggestions-abbreviations-strategy"
-        "zsh-users/zsh-completions"
+        "olets/zsh-autosuggestions-abbreviations-strategy"
         "ohmyzsh/ohmyzsh path:plugins/git"
-        "chrissicool/zsh-256color"
       ];
     };
   };

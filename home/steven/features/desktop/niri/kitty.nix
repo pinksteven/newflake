@@ -3,6 +3,10 @@
     kitty = {
       enable = true;
       enableGitIntegration = true;
+
+      settings = {
+        confirm_os_window_close = "0";
+      };
     };
 
     zsh.initContent = ''
