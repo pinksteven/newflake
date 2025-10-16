@@ -17,7 +17,6 @@
 
     ./animations.nix
     ./binds.nix
-    # ./ghostty.nix
     ./kitty.nix
     ./layout.nix
     ./rules.nix

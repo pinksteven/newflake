@@ -5,7 +5,7 @@
     "Ctrl+Alt+Delete".action = quit;
     "Mod+Shift+slash".action = show-hotkey-overlay;
     "Mod+Tab".action = toggle-overview;
-    "Mod+F".action = spawn "ghostty" "-e" "yazi";
+    "Mod+F".action = spawn "kitty" "--hold=yes" "yazi";
     "Mod+B".action = spawn "firefox";
     "Mod+Q".action = close-window;
 
