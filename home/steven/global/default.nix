@@ -54,6 +54,7 @@
         "Sync"
         ".ssh"
         ".local/bin"
+        ".local/state/wireplumber"
         ".local/share/nix" # trusted settings and repl history
       ];
       allowOther = true;

@@ -48,6 +48,24 @@
       HandlePowerKey = "suspend";
       HandlePowerKeyLongPress = "poweroff";
     };
+    pipewire.wireplumber.extraConfig = {
+      "ga104-hdmi"."monitor.alsa.rules" = [
+        {
+          matches = [
+            {
+              "device.name" = "alsa_card.pci-0000_07_00.1";
+            }
+          ];
+          actions = {
+            update-props = {
+              "device.profile" = "output:hdmi-stereo-extra1";
+              "device.nick" = "Headphones";
+              "device.description" = "Headphones";
+            };
+          };
+        }
+      ];
+    };
   };
 
   monitors = [
