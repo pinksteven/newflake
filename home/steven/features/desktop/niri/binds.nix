@@ -8,6 +8,7 @@
     "Mod+F".action = spawn "kitty" "--hold=yes" "yazi";
     "Mod+B".action = spawn "firefox";
     "Mod+Q".action = close-window;
+    "F11".action = fullscreen-window;
 
     # Window navigation with arrow keys
     "Mod+Left".action = focus-column-left;
