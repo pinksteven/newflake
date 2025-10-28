@@ -8,6 +8,7 @@
     ./spicetify.nix
     ./syncthing.nix
     ./trayscale.nix
+    ./zen-broser.nix
   ];
 
   home.packages = with pkgs; [
