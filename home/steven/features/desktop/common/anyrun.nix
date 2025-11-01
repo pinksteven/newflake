@@ -22,7 +22,6 @@
     config = {
       plugins = [
         "${pkgs.anyrun}/lib/libapplications.so"
-        "${pkgs.anyrun}/lib/libsymbols.so"
         "${pkgs.anyrun}/lib/librink.so"
         "${pkgs.anyrun}/lib/libkidex.so"
       ];
@@ -41,22 +40,16 @@
       "applications.ron".text = ''
         Config(
           desktop_actions: true,
-          max_entries: 5,
+          max_entries: 7,
           terminal: Some(Terminal(
             command: "kitty",
             args: "{}",
           )),
         )
       '';
-      "symbols.ron".text = ''
-        Config(
-          prefix:">s",
-          max_entries:5,
-        )
-      '';
       "kidex.ron".text = ''
         Config(
-          max_entries:5,
+          max_entries:3,
         )
       '';
       "stdin.ron".text = ''
@@ -147,6 +140,9 @@
       Type = "exec";
       ExecStart = "${lib.getExe pkgs.inputs.kidex.kidex}";
       Restart = "on-failure";
+    };
+    Install = {
+      WantedBy = ["graphical-session.target"];
     };
   };
 }
