@@ -25,7 +25,6 @@
 
       bindkey "^[[3~" delete-char
       microfetch
-      ZSH_AUTOSUGGEST_STRATEGY=( abbreviations $ZSH_AUTOSUGGEST_STRATEGY )
     '';
 
     history = {
@@ -55,17 +54,5 @@
         tfg = "tailscale file get ~/Downloads";
       };
     };
-
-    antidote = {
-      enable = true;
-      plugins = [
-        "olets/zsh-autosuggestions-abbreviations-strategy"
-        "ohmyzsh/ohmyzsh path:plugins/git"
-      ];
-    };
-  };
-  home.persistence."/persist/home/steven" = {
-    directories = [".cache/antidote"];
-    # files = [".zsh_history"];
   };
 }
