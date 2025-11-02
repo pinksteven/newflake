@@ -1,0 +1,23 @@
+{
+  pkgs,
+  config,
+  ...
+}: {
+  home.packages = [pkgs.swaybg];
+
+  config.systemd.user.services.swaybg = {
+    Unit = {
+      Description = "Set background image using swaybg";
+      PartsOf = ["graphical-session.target"];
+      After = ["graphical-session.target"];
+      Requisite = [config.wayland.systemd.target];
+    };
+    Service = {
+      ExecStart = "${pkgs.swaybg}/bin/swaybg -m fill -i ${config.stylix.image}";
+      Restart = "on-failure";
+    };
+    Install = {
+      WantedBy = [config.wayland.systemd.target];
+    };
+  };
+}

@@ -4,5 +4,8 @@
     inherit (config) opacity cursor;
     fonts = config.fontProfiles;
     image = config.wallpaper;
+    colorGeneration = {
+      scheme = "fruit-salad";
+    };
   };
 }
