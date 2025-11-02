@@ -5,7 +5,7 @@
     fonts = config.fontProfiles;
     image = config.wallpaper;
     colorGeneration = {
-      scheme = "fruit-salad";
+      scheme = "content";
     };
   };
 }
