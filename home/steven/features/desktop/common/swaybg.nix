@@ -5,10 +5,10 @@
 }: {
   home.packages = [pkgs.swaybg];
 
-  config.systemd.user.services.swaybg = {
+  systemd.user.services.swaybg = {
     Unit = {
       Description = "Set background image using swaybg";
-      PartsOf = ["graphical-session.target"];
+      PartOf = ["graphical-session.target"];
       After = ["graphical-session.target"];
       Requisite = [config.wayland.systemd.target];
     };

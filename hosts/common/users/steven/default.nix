@@ -28,6 +28,7 @@ in {
         "networkmanager"
         "gamemode"
         "bluetooth"
+        "input"
       ];
     openssh.authorizedKeys.keys = lib.splitString "\n" (builtins.readFile ../../../../home/steven/id_masterkey.pub);
     hashedPasswordFile = config.sops.secrets."password/steven".path;

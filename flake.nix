@@ -49,6 +49,10 @@
       url = "github:nix-community/kickstart-nix.nvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    stasis = {
+      url = "github:saltnpepper97/stasis";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     dankMaterialShell = {
       url = "github:AvengeMedia/DankMaterialShell";
       inputs.nixpkgs.follows = "nixpkgs";

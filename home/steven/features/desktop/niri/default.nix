@@ -13,6 +13,8 @@
     ../common/cliphist.nix
     ../common/anyrun.nix
     ../common/dms.nix
+    ../common/stasis.nix
+    ../common/swaybg.nix
     ../common/udiskie.nix
 
     ./animations.nix
