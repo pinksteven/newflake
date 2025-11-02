@@ -17,6 +17,7 @@
     # ../common/stasis.nix
     ../common/swaybg.nix
     ../common/udiskie.nix
+    # ../common/waybar.nix
 
     ./animations.nix
     ./binds.nix
