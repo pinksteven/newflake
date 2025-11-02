@@ -2,7 +2,7 @@
   home.packages = [pkgs.inputs.stasis.stasis];
 
   # Recommended by wiki systemd setup
-  systemctl.user.services.stasis = {
+  systemd.user.services.stasis = {
     Unit = {
       Description = "Stasis Wayland Idle Manager";
       PartOf = ["graphical-session.target"];

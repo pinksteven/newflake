@@ -45,4 +45,7 @@ in {
   environment.persistence."/persist" = {
     users.steven = {};
   };
+
+  # I use hyprlock and it needs pam config
+  security.pam.services.hyprlock = {};
 }
