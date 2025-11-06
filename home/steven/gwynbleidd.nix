@@ -24,4 +24,29 @@
   };
 
   wallpaper = "${inputs.wallpapers}/" + "green-girl.jpg";
+
+  fontProfiles = {
+    monospace = {
+      name = "FiraCode Nerd Font";
+      package = pkgs.nerd-fonts.fira-code;
+    };
+    sansSerif = {
+      name = "CodeNewRoman Nerd Font";
+      package = pkgs.nerd-fonts.code-new-roman;
+    };
+    serif = {
+      name = "CodeNewRoman Nerd Font";
+      package = pkgs.nerd-fonts.code-new-roman;
+    };
+    emoji = {
+      name = "Noto Color Emoji";
+      package = pkgs.noto-fonts-color-emoji;
+    };
+    sizes = {
+      applications = 12;
+      desktop = 12;
+      popups = 12;
+      terminal = 12;
+    };
+  };
 }
