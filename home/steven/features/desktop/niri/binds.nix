@@ -9,6 +9,8 @@
     "Mod+B".action = spawn "firefox";
     "Mod+Q".action = close-window;
     "F11".action = fullscreen-window;
+    "Print".action = spawn-sh "niri msg action screenshot";
+    "Shift+Print".action = spawn-sh "niri msg action screenshot-window";
 
     # Window navigation with arrow keys
     "Mod+Left".action = focus-column-left;
