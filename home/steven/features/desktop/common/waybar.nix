@@ -4,12 +4,7 @@
   ...
 }: {
   programs.waybar = let
-    hasBluetooth =
-      builtins.pathExists /sys/class/bluetooth
-      || builtins.pathExists /proc/bluetooth
-      || (builtins.pathExists /sys/bus/usb/devices
-        && lib.any (name: lib.hasInfix "bluetooth" (lib.toLower name))
-        (lib.attrNames (builtins.readDir /sys/bus/usb/devices)));
+    hasBluetooth = builtins.pathExists /sys/class/bluetooth;
   in {
     enable = true;
     systemd.enable = true;
@@ -18,7 +13,7 @@
       {
         layer = "top";
         position = "top";
-        modules-left = ["custom/notifications" "clock" "custom/stasis" "custom/separator" "niri/workspaces"];
+        modules-left = ["custom/notification" "clock" "custom/stasis" "custom/separator" "niri/workspaces"];
         modules-center = ["niri/window"];
         modules-right =
           ["group/expand" "tray" "custom/separator" "wireplumber"]
@@ -64,10 +59,10 @@
           exec = "stasis info --json";
           format = "{icon}";
           format-icons = {
-            idle_active = "󰾫";
-            idle_inhibited = "󰛊";
-            manually_inhibited = "󰛊";
-            not_running = "󰒲";
+            idle_active = "󰾫 ";
+            idle_inhibited = "󰛊 ";
+            manually_inhibited = "󰛊 ";
+            not_running = "󰒲 ";
           };
           tooltip = true;
           on-click = "stasis toggle-inhibit";

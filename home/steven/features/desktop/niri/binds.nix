@@ -1,7 +1,5 @@
 {config, ...}: {
-  programs.niri.settings.binds = with config.lib.niri.actions; let
-    dms-ipc = spawn "dms" "ipc";
-  in {
+  programs.niri.settings.binds = with config.lib.niri.actions; {
     "Ctrl+Alt+Delete".action = quit;
     "Mod+Shift+slash".action = show-hotkey-overlay;
     "Mod+Tab".action = toggle-overview;
@@ -54,48 +52,48 @@
 
     # DankMaterialShell keybinds
     "Mod+N" = {
-      action = dms-ipc "notifications" "toggle";
+      action = spawn "swaync-client" "-t" "-sw";
       hotkey-overlay.title = "Toggle Notification Center";
     };
     "Super+Alt+L" = {
-      action = dms-ipc "lock" "lock";
+      action = spawn "hyprlock";
       hotkey-overlay.title = "Toggle Lock Screen";
     };
-    "Mod+X" = {
-      action = dms-ipc "powermenu" "toggle";
-      hotkey-overlay.title = "Toggle Power Menu";
-    };
+    # "Mod+X" = {
+    #   action = dms-ipc "powermenu" "toggle";
+    #   hotkey-overlay.title = "Toggle Power Menu";
+    # };
     "XF86AudioRaiseVolume" = {
       allow-when-locked = true;
-      action = dms-ipc "audio" "increment" "3";
+      action = spawn-sh "wpctl set-volume @DEFAULT_SINK@ +2%";
     };
     "XF86AudioLowerVolume" = {
       allow-when-locked = true;
-      action = dms-ipc "audio" "decrement" "3";
+      action = spawn-sh "wpctl set-volume @DEFAULT_SINK@ -2%";
     };
     "XF86AudioMute" = {
       allow-when-locked = true;
-      action = dms-ipc "audio" "mute";
+      action = spawn-sh "wpctl set-mute @DEFAULT_SINK@ toggle";
     };
     "XF86AudioMicMute" = {
       allow-when-locked = true;
-      action = dms-ipc "audio" "micmute";
+      action = spawn-sh "wpctl set-mute @DEFAULT_SOURCE@ toggle";
     };
     "XF86AudioPrev" = {
       allow-when-locked = true;
-      action = dms-ipc "mpris" "previous";
+      action = spawn-sh "playerctl previous";
     };
     "XF86AudioNext" = {
       allow-when-locked = true;
-      action = dms-ipc "mpris" "next";
+      action = spawn-sh "playerctl next";
     };
     "XF86AudioPlay" = {
       allow-when-locked = true;
-      action = dms-ipc "mpris" "playPause";
+      action = spawn-sh "playerctl play-pause";
     };
     "XF86AudioStop" = {
       allow-when-locked = true;
-      action = dms-ipc "mpris" "stop";
+      action = spawn-sh "playerctl stop";
     };
 
     # Anyrun

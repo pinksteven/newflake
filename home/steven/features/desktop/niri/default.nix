@@ -12,12 +12,14 @@
     ../common/yazi
     ../common/cliphist.nix
     ../common/anyrun.nix
-    ../common/dms.nix
-    # ../common/hyprlock.nix
-    # ../common/stasis.nix
+    # ../common/dms.nix
+    ../common/hyprlock.nix
+    ../common/stasis.nix
     ../common/swaybg.nix
+    ../common/swaync.nix
+    ../common/swayosd.nix
     ../common/udiskie.nix
-    # ../common/waybar.nix
+    ../common/waybar.nix
 
     ./animations.nix
     ./binds.nix

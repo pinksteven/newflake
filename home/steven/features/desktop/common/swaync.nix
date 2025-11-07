@@ -57,18 +57,19 @@
         };
         backlight = {
           label = "󰃟 ";
+          device = "amdgpu_bl1";
         };
 
         buttons-grid = {
           actions = [
             {
               label = "󰝟";
-              command = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
+              command = "wpctl set-mute @DEFAULT_SINK@ toggle";
               type = "toggle";
             }
             {
               label = "󰍭";
-              command = "pactl set-source-mute @DEFAULT_SOURCE@ toggle";
+              command = "wpctl set-mute @DEFAULT_SOURCE@ toggle";
               type = "toggle";
             }
             {
