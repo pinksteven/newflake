@@ -12,7 +12,7 @@
   libglvnd,
   vulkan-loader,
   autoPatchelfHook,
-  wrapGAppsHook,
+  wrapGAppsHook3,
 }:
 stdenv.mkDerivation rec {
   pname = "Lore Forge";
@@ -26,7 +26,7 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [
     autoPatchelfHook
-    wrapGAppsHook
+    wrapGAppsHook3
   ];
 
   buildInputs = [

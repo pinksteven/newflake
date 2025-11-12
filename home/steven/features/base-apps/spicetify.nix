@@ -15,7 +15,7 @@
   imports = [inputs.spicetify.homeManagerModules.default];
 
   programs.spicetify = let
-    spice = inputs.spicetify.legacyPackages.${pkgs.system};
+    spice = pkgs.inputs.spicetify;
   in {
     enable = true;
     experimentalFeatures = true;

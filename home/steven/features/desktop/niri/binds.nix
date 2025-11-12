@@ -65,35 +65,47 @@
     # };
     "XF86AudioRaiseVolume" = {
       allow-when-locked = true;
-      action = spawn-sh "wpctl set-volume @DEFAULT_SINK@ +2%";
+      action = spawn-sh "swayosd-client --output-volume=+2";
     };
     "XF86AudioLowerVolume" = {
       allow-when-locked = true;
-      action = spawn-sh "wpctl set-volume @DEFAULT_SINK@ -2%";
+      action = spawn-sh "swayosd-client --output-volume=-2";
     };
     "XF86AudioMute" = {
       allow-when-locked = true;
-      action = spawn-sh "wpctl set-mute @DEFAULT_SINK@ toggle";
+      action = spawn-sh "swayosd-client --output-volume=mute-toggle";
     };
     "XF86AudioMicMute" = {
       allow-when-locked = true;
-      action = spawn-sh "wpctl set-mute @DEFAULT_SOURCE@ toggle";
+      action = spawn-sh "swayosd-client --input-volume=mute-toggle";
     };
     "XF86AudioPrev" = {
       allow-when-locked = true;
-      action = spawn-sh "playerctl previous";
+      action = spawn-sh "swayosd-client --playerctl=previous";
     };
     "XF86AudioNext" = {
       allow-when-locked = true;
-      action = spawn-sh "playerctl next";
+      action = spawn-sh "swayosd-client --playerctl=next";
     };
     "XF86AudioPlay" = {
       allow-when-locked = true;
-      action = spawn-sh "playerctl play-pause";
+      action = spawn-sh "swayosd-client --playerctl=play-pause";
     };
     "XF86AudioStop" = {
       allow-when-locked = true;
-      action = spawn-sh "playerctl stop";
+      action = spawn-sh "swayosd-client --playerctl=stop";
+    };
+    "XF86MonBrightnessUp" = {
+      allow-when-locked = true;
+      action = spawn-sh "swayosd-client --brightness=raise";
+    };
+    "XF86MonBrightnessDown" = {
+      allow-when-locked = true;
+      action = spawn-sh "swayosd-client --brightness=lower";
+    };
+    "Caps_Lock" = {
+      allow-when-locked = true;
+      action = spawn-sh "swayosd-client --capslock";
     };
 
     # Anyrun

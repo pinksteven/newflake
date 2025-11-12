@@ -107,8 +107,8 @@
       @define-color mpris-album-art-overlay alpha(${colors.base00}, 0.55);
       @define-color mpris-button-hover alpha(${colors.base00}, 0.50);
       @define-color text ${colors.base05};
-      @define-color bg alpha(${colors.base00},.5);
-      @define-color bg-hover alpha(${colors.base00},.8);
+      @define-color bg alpha(${colors.base00},.7);
+      @define-color bg-hover alpha(${colors.base00},.9);
       @define-color mycolor ${colors.base0D};
       @define-color border-color alpha(@mycolor, 0.15);
 

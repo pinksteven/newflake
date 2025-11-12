@@ -33,7 +33,6 @@
   programs = {
     light = {
       enable = true;
-      brightnessKeys = {enable = true;};
     };
     dconf.enable = true;
   };

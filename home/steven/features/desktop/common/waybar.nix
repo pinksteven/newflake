@@ -132,7 +132,7 @@
           tooltip = true;
           format-icons = {
             default = " ";
-            performance = " ";
+            performance = "";
             balanced = " ";
             power-saver = " ";
           };
@@ -157,11 +157,11 @@
         };
 
         cpu = {
-          format = "󰻠 ";
+          format = "󰻠";
           tooltip = true;
         };
         memory = {
-          format = "";
+          format = " ";
         };
         temperature = {
           critical-threshold = 80;
@@ -206,27 +206,26 @@
         }
         tooltip {
             background:${colors.base00};
-            color: @color7;
+            color: ${colors.base07};
         }
-        #clock:hover,#custom-notification:hover,#bluetooth:hover,#network:hover,#battery:hover, #cpu:hover,#memory:hover,#temperature:hover,#wireplumber:hover{
+        #clock:hover,#custom-notification:hover,#custom-stasis:hover,#bluetooth:hover,#network:hover,#battery:hover, #cpu:hover,#memory:hover,#temperature:hover,#wireplumber:hover{
             transition: all .3s ease;
-            color:@color9;
+            color: ${colors.base09};
         }
         #custom-notification {
             padding: 0px 5px;
             transition: all .3s ease;
-            color:@color7;
+            color: ${colors.base07};
+        }
+        #custom-stasis {
+            padding: 0px 5px;
+            transition: all .3s ease;
+            color: ${colors.base07};
         }
         #clock{
             padding: 0px 5px;
-            color:@color7;
+            color: ${colors.base07};
             transition: all .3s ease;
-        }
-        #custom-pacman{
-            padding: 0px 5px;
-            transition: all .3s ease;
-            color:@color7;
-
         }
         #workspaces {
             padding: 0px 5px;
@@ -234,7 +233,7 @@
         #workspaces button {
             all:unset;
             padding: 0px 5px;
-            color: alpha(${colors.base0D},.4);
+            color: alpha(${colors.base09},.4);
             transition: all .2s ease;
         }
         #workspaces button:hover {
@@ -244,7 +243,7 @@
             transition: all 1s ease;
         }
         #workspaces button.active {
-            color: ${colors.base0D};
+            color: ${colors.base09};
             border: none;
             text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
         }
@@ -260,14 +259,14 @@
             transition: all 1s ease;
         }
         #workspaces button.empty.active {
-            color: ${colors.base0D};
+            color: ${colors.base09};
             border: none;
             text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
         }
         #bluetooth{
             padding: 0px 5px;
             transition: all .3s ease;
-            color:@color7;
+            color:${colors.base07};
 
         }
         #network{

@@ -173,7 +173,7 @@ in {
         matches = [
           {
             app-id = "steam";
-            title = "^notificationtoasts_\d+_desktop$";
+            title = "^.*notificationtoasts.*$";
           }
         ];
         default-floating-position = {
@@ -181,6 +181,20 @@ in {
           x = 10;
           y = 10;
         };
+      }
+      # Float Steam dialogs
+      {
+        matches = [
+          {
+            app-id = "steam";
+          }
+        ];
+        excludes = [
+          {
+            title = "^Steam$";
+          }
+        ];
+        open-floating = true;
       }
     ];
   };
