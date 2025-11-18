@@ -71,6 +71,14 @@
           return-type = "json";
         };
 
+        "niri/workspaces" = {
+          format = "{icon}";
+          format-icons = {
+            active = " ";
+            default = " ";
+          };
+        };
+
         "niri/window" = {
           format = "{app_id}   {title}";
         };
@@ -227,16 +235,16 @@
             color: ${colors.base07};
             transition: all .3s ease;
         }
-        #workspaces {
+        #niri-workspaces {
             padding: 0px 5px;
         }
-        #workspaces button {
+        #niri-workspaces button {
             all:unset;
             padding: 0px 5px;
             color: alpha(${colors.base09},.4);
             transition: all .2s ease;
         }
-        #workspaces button:hover {
+        #niri-workspaces button:hover {
             color:rgba(0,0,0,0);
             border: none;
             text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
@@ -267,20 +275,16 @@
             padding: 0px 5px;
             transition: all .3s ease;
             color:${colors.base07};
-
         }
         #network{
             padding: 0px 5px;
             transition: all .3s ease;
             color:${colors.base07};
-
         }
         #battery{
             padding: 0px 5px;
             transition: all .3s ease;
             color:${colors.base07};
-
-
         }
         #battery.charging {
             color: #26A65B;
@@ -312,19 +316,14 @@
             color:rgba(255,255,255,.2);
             text-shadow: 0px 0px 2px rgba(255, 255, 255, .5);
         }
-        #custom-colorpicker{
-            padding: 0px 5px;
-        }
         #cpu,#memory,#temperature{
             padding: 0px 5px;
             transition: all .3s ease;
             color:${colors.base07};
-
         }
         #custom-endpoint{
             color:transparent;
             text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 1);
-
         }
         #tray{
             padding: 0px 5px;

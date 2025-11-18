@@ -178,9 +178,11 @@ in {
         ];
         default-floating-position = {
           relative-to = "bottom-right";
-          x = 10;
-          y = 10;
+          x = 0;
+          y = 0;
         };
+        open-focused = false;
+        focus-ring.enable = false;
       }
       # Float Steam dialogs
       {

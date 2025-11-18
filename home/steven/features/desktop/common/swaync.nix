@@ -15,10 +15,10 @@
       control-center-margin-left = 8;
       notification-2fa-action = true;
       notification-inline-replies = true;
-      notification-window-width = 350;
-      notification-icon-size = 60;
-      notification-body-image-height = 180;
-      notification-body-image-width = 180;
+      notification-window-width = 360;
+      notification-icon-size = 40;
+      notification-body-image-height = 160;
+      notification-body-image-width = 160;
       timeout = 12;
       timeout-low = 6;
       timeout-critical = 1;
@@ -31,6 +31,7 @@
       script-fail-notify = true;
       widgets = [
         "mpris"
+        "dnd"
         "title"
         "notifications"
         "volume"
@@ -81,11 +82,6 @@
               command = "overskride";
             }
             {
-              label = "󰤄";
-              command = "swaync-client -d";
-              type = "toggle";
-            }
-            {
               label = "";
               command = "hyprlock";
             }
@@ -107,8 +103,8 @@
       @define-color mpris-album-art-overlay alpha(${colors.base00}, 0.55);
       @define-color mpris-button-hover alpha(${colors.base00}, 0.50);
       @define-color text ${colors.base05};
-      @define-color bg alpha(${colors.base00},.7);
-      @define-color bg-hover alpha(${colors.base00},.9);
+      @define-color bg alpha(${colors.base00},.8);
+      @define-color bg-hover ${colors.base00};
       @define-color mycolor ${colors.base0D};
       @define-color border-color alpha(@mycolor, 0.15);
 
