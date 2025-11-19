@@ -1,8 +1,14 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: let
+  hasBattery = builtins.pathExists "/sys/class/power_supply/BAT0";
+in {
   home.packages = [pkgs.inputs.stasis.stasis];
 
   # Recommended by wiki systemd setup
-  systemd.user.services.stasis = {
+  systemd.user.services.stasis = lib.mkIf hasBattery {
     Unit = {
       Description = "Stasis Wayland Idle Manager";
       PartOf = ["graphical-session.target"];

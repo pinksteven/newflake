@@ -13,7 +13,10 @@
       {
         layer = "top";
         position = "top";
-        modules-left = ["custom/notification" "clock" "custom/stasis" "custom/separator" "niri/workspaces"];
+        modules-left =
+          ["custom/notification" "clock"]
+          ++ lib.optionals config.programs.stasis.enable ["custom/stasis"]
+          ++ ["custom/separator" "niri/workspaces"];
         modules-center = ["niri/window"];
         modules-right =
           ["group/expand" "tray" "custom/separator" "wireplumber"]
