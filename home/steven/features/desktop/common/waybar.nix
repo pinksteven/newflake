@@ -5,6 +5,7 @@
 }: {
   programs.waybar = let
     hasBluetooth = builtins.pathExists /sys/class/bluetooth;
+    hasBattery = builtins.pathExists "/sys/class/power_supply/BAT0";
   in {
     enable = true;
     systemd.enable = true;
@@ -15,7 +16,7 @@
         position = "top";
         modules-left =
           ["custom/notification" "clock"]
-          ++ lib.optionals config.programs.stasis.enable ["custom/stasis"]
+          ++ lib.optionals hasBattery "custom/stasis"
           ++ ["custom/separator" "niri/workspaces"];
         modules-center = ["niri/window"];
         modules-right =
