@@ -4,6 +4,10 @@
   capabilities,
   ...
 }: {
+  stylix.targets.waybar = {
+    enable = false;
+    addCss = false;
+  };
   programs.waybar = let
     hasBluetooth = capabilities.hasBluetooth or false;
     hasBattery = capabilities.hasBattery or false;
@@ -17,12 +21,12 @@
         position = "top";
         modules-left =
           ["custom/notification" "clock"]
-          ++ lib.optionals hasBattery "custom/stasis"
+          ++ lib.optionals hasBattery ["custom/stasis"]
           ++ ["custom/separator" "niri/workspaces"];
         modules-center = ["niri/window"];
         modules-right =
           ["group/expand" "tray" "custom/separator" "wireplumber"]
-          ++ lib.optionals hasBluetooth "bluetooth"
+          ++ lib.optionals hasBluetooth ["bluetooth"]
           ++ ["network" "battery" "power-profiles-daemon"];
 
         "custom/notification" = {
@@ -240,16 +244,16 @@
             color: ${colors.base07};
             transition: all .3s ease;
         }
-        #niri-workspaces {
+        #workspaces {
             padding: 0px 5px;
         }
-        #niri-workspaces button {
+        #workspaces button{
             all:unset;
             padding: 0px 5px;
-            color: alpha(${colors.base09},.4);
+            color: alpha(${colors.base09}, 0.4);
             transition: all .2s ease;
         }
-        #niri-workspaces button:hover {
+        #workspaces button:hover {
             color:rgba(0,0,0,0);
             border: none;
             text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
@@ -271,11 +275,7 @@
             text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
             transition: all 1s ease;
         }
-        #workspaces button.empty.active {
-            color: ${colors.base09};
-            border: none;
-            text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
-        }
+
         #bluetooth{
             padding: 0px 5px;
             transition: all .3s ease;
