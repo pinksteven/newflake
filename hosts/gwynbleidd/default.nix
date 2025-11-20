@@ -135,6 +135,12 @@
       }
     '';
 
+  # Hardware capabilities for home-manager modules
+  hardware.capabilities = {
+    hasBattery = false;
+    hasBluetooth = false;
+  };
+
   base16-theme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
 
   system.stateVersion = "25.05";

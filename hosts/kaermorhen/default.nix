@@ -16,5 +16,11 @@
     dhcpcd.IPv6rs = true;
   };
 
+  # Hardware capabilities for home-manager modules
+  hardware.capabilities = {
+    hasBattery = false;
+    hasBluetooth = false;
+  };
+
   system.stateVersion = "25.05";
 }

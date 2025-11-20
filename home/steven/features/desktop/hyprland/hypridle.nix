@@ -1,5 +1,9 @@
-{pkgs, ...}: let
-  hasBattery = builtins.pathExists "/sys/class/power_supply/BAT0";
+{
+  pkgs,
+  capabilities,
+  ...
+}: let
+  hasBattery = capabilities.hasBattery or false;
 in {
   services.hypridle = {
     enable = hasBattery;

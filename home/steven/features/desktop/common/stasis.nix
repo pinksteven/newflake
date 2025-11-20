@@ -1,9 +1,10 @@
 {
   pkgs,
   lib,
+  capabilities,
   ...
 }: let
-  hasBattery = builtins.pathExists "/sys/class/power_supply/BAT0";
+  hasBattery = capabilities.hasBattery or false;
 in {
   home.packages = [pkgs.inputs.stasis.stasis];
 

@@ -1,11 +1,12 @@
 {
   config,
   lib,
+  capabilities,
   ...
 }: {
   programs.waybar = let
-    hasBluetooth = builtins.pathExists /sys/class/bluetooth;
-    hasBattery = builtins.pathExists "/sys/class/power_supply/BAT0";
+    hasBluetooth = capabilities.hasBluetooth or false;
+    hasBattery = capabilities.hasBattery or false;
   in {
     enable = true;
     systemd.enable = true;
