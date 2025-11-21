@@ -90,6 +90,11 @@
 
         "niri/window" = {
           format = "{app_id}   {title}";
+          max-length = 50;
+          rewrite = {
+            "^.+\\..+\\.(.*)   (.*)$" = "$1   $2";
+            "firefox (.*) — Mozilla Firefox" = "Firefox $1";
+          };
         };
 
         tray = {
@@ -259,7 +264,7 @@
             text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
             transition: all 1s ease;
         }
-        #workspaces button.active {
+        #workspaces button.active, #workspaces button.empty.active {
             color: ${colors.base09};
             border: none;
             text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);

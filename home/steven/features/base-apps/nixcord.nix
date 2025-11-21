@@ -36,11 +36,11 @@
         betterSettings.enable = true;
         betterUploadButton.enable = true;
         biggerStreamPreview.enable = true;
-        blurNSFW.enable = true;
+        blurNsfw.enable = true;
         callTimer.enable = true;
-        clearURLs.enable = true;
+        clearUrLs.enable = true;
         copyFileContents.enable = true;
-        copyUserURLs.enable = true;
+        copyUserUrLs.enable = true;
         crashHandler.enable = true;
         disableCallIdle.enable = true;
         fakeNitro.enable = true;
@@ -59,16 +59,13 @@
         shikiCodeblocks.enable = true;
         showMeYourName = {
           enable = true;
-          mode = "nick-user";
+          includedNames = "{nick} {user}";
         };
         silentTyping = {
           enable = true;
-          showIcon = true;
+          chatIcon = true;
         };
-        spotifyControls = {
-          enable = true;
-          hoverControls = true;
-        };
+        spotifyControls.enable = true;
         typingTweaks.enable = true;
         userVoiceShow.enable = true;
         validReply.enable = true;
@@ -77,8 +74,9 @@
         whoReacted.enable = true;
         newGuildSettings = {
           enable = true;
-          messages = "only@Mentions";
+          messages = 1;
         };
+        petpet.enable = true;
       };
     };
   };

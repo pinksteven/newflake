@@ -7,7 +7,11 @@
     systems.url = "github:nix-systems/default-linux";
     impermanence.url = "github:nix-community/impermanence";
     # Use the yet to be merged matugen color generation
-    stylix.url = "github:make-42/stylix/matugen"; #"github:nix-community/stylix";
+    stylix = {
+      url = "github:make-42/stylix/matugen"; #"github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nur.follows = "nur";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager";
