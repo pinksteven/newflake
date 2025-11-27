@@ -12,6 +12,7 @@ in {
   systemd.user.services.stasis = lib.mkIf hasBattery {
     Unit = {
       Description = "Stasis Wayland Idle Manager";
+      ConditionEnvironment = "WAYLAND_DISPLAY";
       PartOf = ["graphical-session.target"];
       After = ["graphical-session.target"];
     };
@@ -20,8 +21,7 @@ in {
       ExecStart = "${pkgs.inputs.stasis.stasis}/bin/stasis";
       Restart = "always";
       RestartSec = "5";
-      Environment = "WAYLAND_DISPLAY=wayland-1";
-      ExecStartPre = "/bin/sh -c 'while [ ! -e /run/user/%U/wayland-1 ]; do sleep 0.1; done'";
+      PassEnvironment = "WAYLAND_DISPLAY";
     };
     Install = {
       WantedBy = ["default.target"];
@@ -48,7 +48,6 @@ in {
           "mpv"
           r".*\.exe"
           r"steam_app_.*"
-          r"firefox.*"
         ]
 
         dpms:
@@ -59,14 +58,6 @@ in {
 
         # laptop-only AC actions
         on_ac:
-
-          # Step 1: Adjust brightness (instant)
-          # define it first so it does not retrigger later
-          custom-brightness-instant:
-            timeout 0
-            command "brightnessctl set 100%"
-          end
-
           lock_screen:
             timeout 120
             command "hyprlock"
@@ -74,22 +65,19 @@ in {
 
           brightness:
             timeout 10
-            command "brightnessctl set 30%"
+            command "brightnessctl -s set 30%"
+            resume-command "brightnessctl -r"
           end
 
           dpms:
             timeout 60
             command "niri msg action power-off-monitors"
+            resume-command "niri msg action power-on-monitors"
           end
         end
 
         # Laptop-only battery actions
         on_battery:
-          custom-brightness-instant:
-            timeout 0
-            command "brightnessctl set 100%"
-          end
-
           lock_screen:
             timeout 120 # 2 minutes
             command "hyprlock"
@@ -97,12 +85,14 @@ in {
 
           brightness:
             timeout 10
-            command "brightnessctl set 30%"
+            command "brightnessctl -s set 10%"
+            resume-command "brightnessctl -r"
           end
 
           dpms:
             timeout 60
             command "niri msg action power-off-monitors"
+            resume-command "niri msg action power-on-monitors"
           end
 
           suspend:
