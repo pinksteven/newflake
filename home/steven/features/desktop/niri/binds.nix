@@ -29,6 +29,9 @@
     "Mod+Page_Down".action = focus-workspace-down;
     "Mod+Shift+Page_Up".action = move-column-to-workspace-up;
     "Mod+Shift+Page_Down".action = move-column-to-workspace-down;
+    # Monitor naviagtion
+    "Alt+Mod+Left".action = focus-monitor-left;
+    "Alt+Mod+Right".action = focus-monitor-right;
 
     # Column size management
     "Mod+R".action = switch-preset-column-width;
