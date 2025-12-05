@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  config,
   capabilities,
   ...
 }: let
@@ -13,18 +14,16 @@ in {
     Unit = {
       Description = "Stasis Wayland Idle Manager";
       ConditionEnvironment = "WAYLAND_DISPLAY";
-      PartOf = ["graphical-session.target"];
-      After = ["graphical-session.target"];
+      PartOf = [config.wayland.systemd.target];
+      After = [config.wayland.systemd.target];
     };
     Service = {
       Type = "simple";
       ExecStart = "${pkgs.inputs.stasis.stasis}/bin/stasis";
-      Restart = "always";
-      RestartSec = "5";
-      PassEnvironment = "WAYLAND_DISPLAY";
+      Restart = "on-failure";
     };
     Install = {
-      WantedBy = ["default.target"];
+      WantedBy = [config.wayland.systemd.target];
     };
   };
 
