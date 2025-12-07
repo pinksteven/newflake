@@ -42,9 +42,8 @@
   services = {
     colord.enable = true;
     logind.settings.Login = {
-      HandleLidSwitch = "suspend";
-      HandleLidSwitchExternalPower = "lock";
-      HandlePowerKey = "suspend";
+      HandleLidSwitch = "ignore";
+      HandlePowerKey = "sleep";
       HandlePowerKeyLongPress = "poweroff";
     };
   };

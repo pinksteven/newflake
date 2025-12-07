@@ -42,6 +42,9 @@ in {
         ignore_remote_media true
         respect_idle_inhibitors true
 
+        lid_close_action "suspend"
+        lid_open_action "wake"
+
         inhibit_apps [
           "vlc"
           "mpv"

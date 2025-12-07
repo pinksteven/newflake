@@ -19,8 +19,8 @@ stdenv.mkDerivation rec {
   version = "1.2.3";
 
   src = fetchurl {
-    url = "https://storage.googleapis.com/lore-forge-downloads/lore-forge_1.2.3_amd64.deb";
-    hash = "sha256-bmW96zW7B82M9vx1TBjyZ8veQDufh8ROPGKo31cN70Y=";
+    url = "https://storage.googleapis.com/lore-forge-downloads/lore-forge_1.2.4_amd64.deb";
+    hash = "sha256-j9sBMhukfMK77L6PvVG7hokmrk4liFuI/pN4KYxezRY=";
   };
   unpackCmd = "${dpkg}/bin/dpkg-deb -x $curSrc .";
 
