@@ -15,12 +15,11 @@
     ++ (builtins.attrValues outputs.homeManagerModules);
 
   nix = {
-    package = lib.mkDefault pkgs.nix;
+    package = lib.mkForce pkgs.lixPackageSets.latest.lix;
     settings = {
       experimental-features = [
         "nix-command"
         "flakes"
-        "ca-derivations"
       ];
       warn-dirty = false;
     };
