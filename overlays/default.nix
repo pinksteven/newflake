@@ -23,6 +23,14 @@
     import ../pkgs {pkgs = final;};
 
   modifications = final: prev: {
+    # Always use lix instead of nix
+    inherit
+      (prev.lixPackageSets.latest)
+      nixpkgs-review
+      nix-eval-jobs
+      nix-fast-build
+      colmena
+      ;
   };
 
   niri = inputs.niri-flake.overlays.niri;
