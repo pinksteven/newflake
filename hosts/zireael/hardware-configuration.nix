@@ -7,9 +7,11 @@
   nixpkgs.hostPlatform = "x86_64-linux";
   imports = [
     inputs.disko.nixosModules.disko
+    inputs.preload-ng.nixosModules.default
     ../common/optional/ephemeral-btrfs.nix
   ];
   hardware.cpu.amd.updateMicrocode = true;
+  services.preload-ng.enable = true;
   powerManagement.cpuFreqGovernor = "ondemand";
 
   boot = {
@@ -24,6 +26,7 @@
       ];
       kernelModules = ["amdgpu"];
     };
+    kernelParams = ["amdgpu.dcdebugmask=0x10"];
   };
   networking.useDHCP = lib.mkDefault true;
 

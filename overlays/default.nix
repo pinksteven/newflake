@@ -31,6 +31,11 @@
       nix-fast-build
       colmena
       ;
+
+    # Wrap heroic to use steam-run
+    heroic = final.writeShellScriptBin "heroic" ''
+      exec ${final.steam-run}/bin/steam-run ${prev.heroic}/bin/heroic "$@"
+    '';
   };
 
   niri = inputs.niri-flake.overlays.niri;

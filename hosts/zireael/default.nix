@@ -26,7 +26,7 @@
   networking.hostName = "zireael";
 
   boot = {
-    kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
+    kernelPackages = pkgs.linuxKernel.packages.linux_zen;
   };
 
   powerManagement.powertop.enable = true;

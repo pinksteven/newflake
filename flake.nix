@@ -57,6 +57,10 @@
       url = "github:saltnpepper97/stasis";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    preload-ng = {
+      url = "github:miguel-b-p/preload-ng";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Some programs
     spicetify = {
