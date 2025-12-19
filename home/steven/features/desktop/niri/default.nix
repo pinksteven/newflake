@@ -3,6 +3,7 @@
   pkgs,
   lib,
   monitors,
+  config,
   ...
 }: {
   imports = [
@@ -12,7 +13,6 @@
     ../common/yazi
     ../common/cliphist.nix
     ../common/anyrun.nix
-    # ../common/dms.nix
     ../common/hyprlock.nix
     ../common/stasis.nix
     ../common/swaybg.nix
@@ -37,7 +37,6 @@
   };
 
   xdg = {
-    autostart.enable = true;
     mime.enable = true;
   };
 
@@ -95,6 +94,11 @@
         enable = true;
         path = lib.getExe pkgs.xwayland-satellite-stable;
       };
+      spawn-at-startup =
+        map (app: {
+          sh = app.startupCmd;
+        })
+        config.startupPrograms;
     };
   };
 

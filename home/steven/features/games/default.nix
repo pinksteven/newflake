@@ -14,6 +14,7 @@
       ".config/unity3d" # Unity game saves apparently
       ".local/share/applications" # .desktop files from installed games
       ".renpy" # Renpy game saves
+      ".paradoxlauncher" #bc paradox is special
     ];
   };
 }

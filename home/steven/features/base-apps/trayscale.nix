@@ -3,7 +3,7 @@
 
   startupPrograms = [
     {
-      name = "trayscale";
+      delay = 7;
       command = ["trayscale" "--hide-window"];
     }
   ];

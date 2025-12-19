@@ -12,7 +12,7 @@
 
   startupPrograms = [
     {
-      name = "heroic";
+      delay = 2;
       command = ["${lib.getExe pkgs.heroic}"];
     }
   ];

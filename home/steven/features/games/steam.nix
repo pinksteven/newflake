@@ -13,7 +13,7 @@
 
   startupPrograms = [
     {
-      name = "steam";
+      delay = 1;
       command = ["steam" "-silent"];
     }
   ];

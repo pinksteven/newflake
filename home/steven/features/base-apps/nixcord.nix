@@ -215,7 +215,7 @@
 
   startupPrograms = [
     {
-      name = "vesktop";
+      delay = 2;
       command = ["${lib.getExe config.programs.nixcord.vesktop.package}"];
     }
   ];
