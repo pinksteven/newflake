@@ -21,9 +21,8 @@
         [
           "--output-width ${toString monitor.width}"
           "--output-height ${toString monitor.height}"
+          "--nested-refresh ${toString monitor.refreshRate}"
           "--prefer-output ${monitor.name}" # Doesn't do shit for nested gamescope
-          "--force-grab-cursor"
-          "--nested-unfocused-refresh 30"
           "--fullscreen"
         ]
         ++ lib.optional monitor.hdr "--hdr-enabled"

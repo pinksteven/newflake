@@ -198,6 +198,22 @@ in {
         ];
         open-floating = true;
       }
+
+      # VRR settings
+      {
+        matches = [
+          {
+            app-id = "gamescope";
+          }
+          {
+            app-id = "^.*exe$";
+          }
+          {
+            app-id = "^.*[Mm]inecraft.*";
+          }
+        ];
+        variable-refresh-rate = true;
+      }
     ];
   };
 }
