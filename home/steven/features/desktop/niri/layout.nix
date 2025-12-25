@@ -12,7 +12,7 @@ in {
         proportion 0.6667
       }
       default-column-width { proportion 0.5; }
-      preset-column-widths {
+      preset-window-heights {
         proportion 0.3333
         proportion 0.5
         proportion 0.6667
@@ -36,5 +36,6 @@ in {
         on
         color "${colors.base0D}"
       }
+    }
   '';
 }

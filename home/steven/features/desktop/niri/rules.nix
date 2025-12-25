@@ -21,7 +21,7 @@ in {
     window-rule {
       match app-id="^yazi.xdg$"
       match app-id="^org.pulseaudio.pavucontrol$"
-      match app-id title="[Pp]icture.in.[Pp]icture"
+      match title="[Pp]icture.in.[Pp]icture"
       match title="[Oo]pen"
       match title="[Ss]ave [Aa]s"
       match title="[Ll]ogin"
@@ -42,7 +42,8 @@ in {
     }
     window-rule {
         match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
-        default-floating-position x=10 y=10 relative-to="bottom-right"
+        default-floating-position x=0 y=0 relative-to="bottom-right"
+        open-focused false
     }
 
     // VRR settings
@@ -58,14 +59,14 @@ in {
     // Vesktop settings
     window-rule {
       match app-id="^vesktop$"
-      open-on-workspace="media"
-      open-focused=false
+      open-on-workspace "media"
+      open-focused false
       default-column-width { proportion ${
       if (portraitMonitor != null)
       then "1.0"
       else "0.6667"
     }; }
-      default-column-height { proportion ${
+      default-window-height { proportion ${
       if (portraitMonitor != null)
       then "0.6667"
       else "1.0"
@@ -75,14 +76,14 @@ in {
     // Spotify settings
     window-rule {
       match app-id="^spotify$"
-      open-on-workspace="media"
-      open-focused=false
+      open-on-workspace "media"
+      open-focused false
       default-column-width { proportion ${
       if (portraitMonitor != null)
       then "1.0"
       else "0.3333"
     }; }
-      default-column-height { proportion ${
+      default-window-height { proportion ${
       if (portraitMonitor != null)
       then "0.3333"
       else "1.0"

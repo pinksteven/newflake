@@ -11,6 +11,7 @@
     ];
   };
 
+  home.programs = [pkgs.deadlock-mod-manager];
   startupPrograms = [
     {
       delay = 1;
