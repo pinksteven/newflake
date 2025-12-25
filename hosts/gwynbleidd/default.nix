@@ -7,7 +7,6 @@
 }: {
   imports = [
     inputs.hardware.nixosModules.common-pc-ssd
-    inputs.hardware.nixosModules.common-gpu-nvidia-nonprime
     inputs.hardware.nixosModules.common-cpu-amd-pstate
 
     ./hardware-configuration.nix

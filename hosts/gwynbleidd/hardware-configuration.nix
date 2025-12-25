@@ -12,13 +12,17 @@
     ../common/optional/ephemeral-btrfs.nix
   ];
   hardware.cpu.amd.updateMicrocode = true;
-  services.preload-ng.enable = true;
   powerManagement.cpuFreqGovernor = "ondemand";
 
-  services.power-profiles-daemon.enable = true;
+  services = {
+    power-profiles-daemon.enable = true;
+    preload-ng.enable = true;
+    xserver.videoDrivers = ["nvidia"];
+  };
 
   boot = {
     kernelModules = ["kvm-amd"];
+    blacklistedKernelModules = ["nouveau"];
     initrd = {
       availableKernelModules = [
         "nvme"
@@ -28,7 +32,8 @@
         "usbhid"
         "sd_mod"
       ];
-      kernelModules = [];
+      # Nvidia modules??
+      kernelModules = ["nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm"];
     };
     extraModulePackages = [];
   };
