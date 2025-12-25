@@ -35,13 +35,6 @@
       (builtins.attrValues config.home-manager.users))
     pkgs.niri-stable;
 
-  # Adds Hyprland option if Hyprland enabled on any hm user
-  programs.hyprland = lib.mkIf (builtins.any (config: config.wayland.windowManager.hyprland.enable)
-    (builtins.attrValues config.home-manager.users)) {
-    enable = true;
-    withUWSM = true;
-  };
-
   security.pam.services.greetd = {
     fprintAuth = false;
     # Truly don't want to put password multiple times

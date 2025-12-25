@@ -12,8 +12,6 @@
     };
   };
 
-  wayland.windowManager.hyprland.settings.exec-once = ["uwsm app -- vesktop --start-minimized"];
-
   imports = [inputs.nixcord.homeModules.nixcord];
   stylix.targets.nixcord.enable = false;
   programs.nixcord = {
