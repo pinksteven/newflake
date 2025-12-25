@@ -16,6 +16,5 @@
           unfunction kitty-integration
       fi
     '';
-    niri.settings.binds."Mod+grave".action.spawn = ["kitty"];
   };
 }

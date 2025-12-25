@@ -9,211 +9,84 @@
     (m: !(m.primary or false) && ((m.transform.rotation or 0) == 90 || (m.transform.rotation or 0) == 270))
     null
     monitors;
-
-  primaryMonitor = lib.head (lib.filter (m: m.primary) monitors);
 in {
-  programs.niri.settings = {
-    spawn-at-startup = [{sh = "niri msg action focus-workspace \"primary\"";}];
-    # Workspace definitions and monitor assignments
-    workspaces = {
-      # Make the primary monitor open an empty workspace
-      # On my laptop it opened media workspace automatically and I don't want that
-      "primary" = {
-        open-on-output = primaryMonitor.name;
-      };
+  xdg.configFile."niri/rules.kdl".text = ''
+    //Global rules
+    window-rule {
+      geometry-corner-radius 12
+      clip-to-geometry true
+    }
 
-      # Media workspace - always exists, assigned to portrait monitor if available
-      "media" =
-        {}
-        // lib.optionalAttrs (portraitMonitor != null) {
-          open-on-output = portraitMonitor.name;
-        };
-    };
+    // Floating windows
+    window-rule {
+      match app-id="^yazi.xdg$"
+      match app-id="^org.pulseaudio.pavucontrol$"
+      match app-id title="[Pp]icture.in.[Pp]icture"
+      match title="[Oo]pen"
+      match title="[Ss]ave [Aa]s"
+      match title="[Ll]ogin"
+      match title="[Aa]uth"
+      match app-id="^firefox$" title="Downloads"
+      match app-id="^firefox$" title="Bookmarks"
+      match app-id="^firefox$" title="History"
+      match app-id="^firefox$" title="Extension"
 
-    # Global window rules
-    window-rules = [
-      {
-        geometry-corner-radius = {
-          top-left = 12.;
-          top-right = 12.;
-          bottom-left = 12.;
-          bottom-right = 12.;
-        };
-        clip-to-geometry = true;
-      }
+      open-floating true
+    }
 
-      # Vesktop - open on media workspace
-      {
-        matches = [
-          {
-            app-id = "^vesktop$";
-          }
-        ];
-        open-on-workspace = "media";
-        open-focused = false;
-        default-column-width = {
-          proportion =
-            if (portraitMonitor != null)
-            then 1.
-            else 2. / 3.;
-        };
-        default-window-height = {
-          proportion =
-            if (portraitMonitor != null)
-            then 2. / 3.
-            else 1.;
-        };
-      }
+    // Steam settings
+    window-rule {
+      match app-id="^steam$"
+      exclude title="^Steam$"
+      open-floating true
+    }
+    window-rule {
+        match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
+        default-floating-position x=10 y=10 relative-to="bottom-right"
+    }
 
-      # Spotify - open on media workspace
-      {
-        matches = [
-          {
-            app-id = "^spotify$";
-          }
-        ];
-        open-on-workspace = "media";
-        open-focused = false;
-        default-column-width = {
-          proportion =
-            if (portraitMonitor != null)
-            then 1.0
-            else 1. / 3.;
-        };
-        default-window-height = {
-          proportion =
-            if (portraitMonitor != null)
-            then 1. / 3.
-            else 1.;
-        };
-      }
+    // VRR settings
+    window-rule {
+      match app-id="^gamescope$"
+      match app-id="exe$"
+      match app-id="^[Mm]inecraft"
+      match app-id="^steam_app"
 
-      # Float yazi-xdg file picker
-      {
-        matches = [{app-id = "^yazi.xdg$";}];
-        open-floating = true;
-      }
+      variable-refresh-rate true
+    }
 
-      # Float pavucontrol (volume control)
-      {
-        matches = [{app-id = "^org.pulseaudio.pavucontrol$";}];
-        open-floating = true;
-      }
+    // Vesktop settings
+    window-rule {
+      match app-id="^vesktop$"
+      open-on-workspace="media"
+      open-focused=false
+      default-column-width { proportion ${
+      if (portraitMonitor != null)
+      then "1.0"
+      else "0.6667"
+    }; }
+      default-column-height { proportion ${
+      if (portraitMonitor != null)
+      then "0.6667"
+      else "1.0"
+    }; }
+    }
 
-      # Float Firefox picture-in-picture
-      {
-        matches = [
-          {
-            app-id = "^firefox$";
-            title = "^.*[Pp]icture.in.[Pp]icture.*$";
-          }
-        ];
-        open-floating = true;
-      }
-
-      # Float LibreOffice dialogs
-      {
-        matches = [{title = "^.*[Oo]pen.*$";}];
-        open-floating = true;
-      }
-      {
-        matches = [{title = "^.*[Ss]ave [Aa]s.*$";}];
-        open-floating = true;
-      }
-
-      # Float authentication dialogs
-      {
-        matches = [{title = "^.*[Ll]ogin.*$";}];
-        open-floating = true;
-      }
-      {
-        matches = [{title = "^.*[Aa]uth.*$";}];
-        open-floating = true;
-      }
-
-      # Float Firefox dialogs and popups
-      {
-        matches = [
-          {
-            app-id = "^firefox$";
-            title = "^.*Downloads.*$";
-          }
-        ];
-        open-floating = true;
-      }
-      {
-        matches = [
-          {
-            app-id = "^firefox$";
-            title = "^.*Bookmarks.*$";
-          }
-        ];
-        open-floating = true;
-      }
-      {
-        matches = [
-          {
-            app-id = "^firefox$";
-            title = "^.*History.*$";
-          }
-        ];
-        open-floating = true;
-      }
-      {
-        matches = [
-          {
-            app-id = "^firefox$";
-            title = "^.*Extension.*$";
-          }
-        ];
-        open-floating = true;
-      }
-      # Steam notification "fix"
-      {
-        matches = [
-          {
-            app-id = "steam";
-            title = "^.*notificationtoasts.*$";
-          }
-        ];
-        default-floating-position = {
-          relative-to = "bottom-right";
-          x = 0;
-          y = 0;
-        };
-        open-focused = false;
-        focus-ring.enable = false;
-      }
-      # Float Steam dialogs
-      {
-        matches = [
-          {
-            app-id = "steam";
-          }
-        ];
-        excludes = [
-          {
-            title = "^Steam$";
-          }
-        ];
-        open-floating = true;
-      }
-
-      # VRR settings
-      {
-        matches = [
-          {
-            app-id = "gamescope";
-          }
-          {
-            app-id = "^.*exe$";
-          }
-          {
-            app-id = "^.*[Mm]inecraft.*";
-          }
-        ];
-        variable-refresh-rate = true;
-      }
-    ];
-  };
+    // Spotify settings
+    window-rule {
+      match app-id="^spotify$"
+      open-on-workspace="media"
+      open-focused=false
+      default-column-width { proportion ${
+      if (portraitMonitor != null)
+      then "1.0"
+      else "0.3333"
+    }; }
+      default-column-height { proportion ${
+      if (portraitMonitor != null)
+      then "0.3333"
+      else "1.0"
+    }; }
+    }
+  '';
 }

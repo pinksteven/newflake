@@ -31,9 +31,9 @@
   services.displayManager.sessionPackages =
     lib.optional
     (builtins.any
-      (cfg: lib.attrByPath ["programs" "niri" "enable"] false cfg)
+      (cfg: builtins.elem pkgs.niri (cfg.home.packages or []))
       (builtins.attrValues config.home-manager.users))
-    pkgs.niri-stable;
+    pkgs.niri;
 
   security.pam.services.greetd = {
     fprintAuth = false;

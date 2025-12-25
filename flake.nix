@@ -41,10 +41,6 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    niri-flake = {
-      url = "github:sodiboo/niri-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     wakatime-ls = {
       url = "github:mrnossiom/wakatime-ls";
       inputs.nixpkgs.follows = "nixpkgs";

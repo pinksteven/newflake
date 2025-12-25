@@ -105,7 +105,7 @@
     "nvidia/nvidia-application-profiles-rc.d/50-limit-free-buffer-pool-in-wayland-compositors.json".text =
     lib.mkIf (
       builtins.any
-      (cfg: lib.attrByPath ["programs" "niri" "enable"] false cfg)
+      (cfg: builtins.elem pkgs.niri (cfg.home.packages or []))
       (builtins.attrValues config.home-manager.users)
     ) # json
     

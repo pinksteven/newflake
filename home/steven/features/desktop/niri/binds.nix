@@ -1,118 +1,59 @@
-{config, ...}: {
-  programs.niri.settings.binds = with config.lib.niri.actions; {
-    "Ctrl+Alt+Delete".action = quit;
-    "Mod+Shift+slash".action = show-hotkey-overlay;
-    "Mod+Tab".action = toggle-overview;
-    "Mod+F".action = spawn "kitty" "--hold=yes" "yazi";
-    "Mod+B".action = spawn "firefox";
-    "Mod+Q".action = close-window;
-    "F11".action = fullscreen-window;
-    "Print".action = spawn-sh "niri msg action screenshot";
-    "Shift+Print".action = spawn-sh "niri msg action screenshot-window";
-
-    # Window navigation with arrow keys
-    "Mod+Left".action = focus-column-left;
-    "Mod+Right".action = focus-column-right;
-    "Mod+Up".action = focus-window-up;
-    "Mod+Down".action = focus-window-down;
-
-    # Move windows with Shift+Mod+arrow keys
-    "Shift+Mod+Left".action = move-column-left;
-    "Shift+Mod+Right".action = move-column-right;
-    "Shift+Mod+Up".action = move-window-up;
-    "Shift+Mod+Down".action = move-window-down;
-    # Combine into column with Mod+Ctrl+arrow keys
-    "Ctrl+Mod+Left".action = consume-or-expel-window-left;
-    "Ctrl+Mod+Right".action = consume-or-expel-window-right;
-    # Workspace navigation
-    "Mod+Page_Up".action = focus-workspace-up;
-    "Mod+Page_Down".action = focus-workspace-down;
-    "Mod+Shift+Page_Up".action = move-column-to-workspace-up;
-    "Mod+Shift+Page_Down".action = move-column-to-workspace-down;
-    # Monitor naviagtion
-    "Alt+Mod+Left".action = focus-monitor-left;
-    "Alt+Mod+Right".action = focus-monitor-right;
-
-    # Column size management
-    "Mod+R".action = switch-preset-column-width;
-    "Shift+Mod+R".action = switch-preset-column-width-back;
-    "Ctrl+Mod+R".action = maximize-column;
-    "Mod+equal".action = set-column-width "+5%";
-    "Mod+minus".action = set-column-width "-5%";
-    "Shift+Mod+equal".action = set-window-height "+5%";
-    "Shift+Mod+minus".action = set-window-height "-5%";
-
-    # Tiling/floating management
-    "Alt+Tab".action = switch-focus-between-floating-and-tiling;
-    "Mod+T".action = toggle-window-floating;
-
-    # Access media workspace (Spotify + Vesktop)
-    "Mod+Shift+M".action = focus-workspace "media";
-
-    # Column navigation with scroll wheel
-    "Mod+WheelScrollUp".action = focus-column-left;
-    "Mod+WheelScrollDown".action = focus-column-right;
-
-    # DankMaterialShell keybinds
-    "Mod+N" = {
-      action = spawn "swaync-client" "-t" "-sw";
-      hotkey-overlay.title = "Toggle Notification Center";
-    };
-    "Super+Alt+L" = {
-      action = spawn "hyprlock";
-      hotkey-overlay.title = "Toggle Lock Screen";
-    };
-    # "Mod+X" = {
-    #   action = dms-ipc "powermenu" "toggle";
-    #   hotkey-overlay.title = "Toggle Power Menu";
-    # };
-    "XF86AudioRaiseVolume" = {
-      allow-when-locked = true;
-      action = spawn-sh "swayosd-client --output-volume=+2";
-    };
-    "XF86AudioLowerVolume" = {
-      allow-when-locked = true;
-      action = spawn-sh "swayosd-client --output-volume=-2";
-    };
-    "XF86AudioMute" = {
-      allow-when-locked = true;
-      action = spawn-sh "swayosd-client --output-volume=mute-toggle";
-    };
-    "XF86AudioMicMute" = {
-      allow-when-locked = true;
-      action = spawn-sh "swayosd-client --input-volume=mute-toggle";
-    };
-    "XF86AudioPrev" = {
-      allow-when-locked = true;
-      action = spawn-sh "swayosd-client --playerctl=previous";
-    };
-    "XF86AudioNext" = {
-      allow-when-locked = true;
-      action = spawn-sh "swayosd-client --playerctl=next";
-    };
-    "XF86AudioPlay" = {
-      allow-when-locked = true;
-      action = spawn-sh "swayosd-client --playerctl=play-pause";
-    };
-    "XF86AudioStop" = {
-      allow-when-locked = true;
-      action = spawn-sh "swayosd-client --playerctl=stop";
-    };
-    "XF86MonBrightnessUp" = {
-      allow-when-locked = true;
-      action = spawn-sh "swayosd-client --brightness=raise";
-    };
-    "XF86MonBrightnessDown" = {
-      allow-when-locked = true;
-      action = spawn-sh "swayosd-client --brightness=lower";
-    };
-    "Caps_Lock" = {
-      allow-when-locked = true;
-      action = spawn-sh "swayosd-client --capslock";
-    };
-
-    # Anyrun
-    "Mod+Space".action = spawn "anyrun";
-    "Mod+V".action = spawn "clipboard";
-  };
+{
+  xdg.configFile."niri/binds.kdl".text = ''
+    binds {
+        Alt+Mod+Left { focus-monitor-left; }
+        Alt+Mod+Right { focus-monitor-right; }
+        Alt+Tab { switch-focus-between-floating-and-tiling; }
+        "Caps_Lock" allow-when-locked=true { spawn-sh "swayosd-client --capslock"; }
+        Ctrl+Alt+Delete { quit; }
+        Ctrl+Mod+Left { consume-or-expel-window-left; }
+        Ctrl+Mod+R { maximize-column; }
+        Ctrl+Mod+Right { consume-or-expel-window-right; }
+        F11 { fullscreen-window; }
+        Mod+B { spawn "firefox"; }
+        Mod+Down { focus-window-down; }
+        Mod+F { spawn "kitty" "--hold=yes" "yazi"; }
+        Mod+grave { spawn "kitty"; }
+        Mod+Left { focus-column-left; }
+        Mod+N hotkey-overlay-title="Toggle Notification Center" { spawn "swaync-client" "-t" "-sw"; }
+        "Mod+Page_Down" { focus-workspace-down; }
+        "Mod+Page_Up" { focus-workspace-up; }
+        Mod+Q { close-window; }
+        Mod+R { switch-preset-column-width; }
+        Mod+Right { focus-column-right; }
+        Mod+Shift+M { focus-workspace "media"; }
+        "Mod+Shift+Page_Down" { move-column-to-workspace-down; }
+        "Mod+Shift+Page_Up" { move-column-to-workspace-up; }
+        Mod+Shift+slash { show-hotkey-overlay; }
+        Mod+Space { spawn "anyrun"; }
+        Mod+T { toggle-window-floating; }
+        Mod+Tab { toggle-overview; }
+        Mod+Up { focus-window-up; }
+        Mod+V { spawn "clipboard"; }
+        Mod+WheelScrollDown { focus-column-right; }
+        Mod+WheelScrollUp { focus-column-left; }
+        Mod+equal { set-column-width "+5%"; }
+        Mod+minus { set-column-width "-5%"; }
+        Print { spawn-sh "niri msg action screenshot"; }
+        Shift+Mod+Down { move-window-down; }
+        Shift+Mod+Left { move-column-left; }
+        Shift+Mod+R { switch-preset-column-width-back; }
+        Shift+Mod+Right { move-column-right; }
+        Shift+Mod+Up { move-window-up; }
+        Shift+Mod+equal { set-window-height "+5%"; }
+        Shift+Mod+minus { set-window-height "-5%"; }
+        Shift+Print { spawn-sh "niri msg action screenshot-window"; }
+        Super+Alt+L hotkey-overlay-title="Toggle Lock Screen" { spawn "hyprlock"; }
+        XF86AudioLowerVolume allow-when-locked=true { spawn-sh "swayosd-client --output-volume=-2"; }
+        XF86AudioMicMute allow-when-locked=true { spawn-sh "swayosd-client --input-volume=mute-toggle"; }
+        XF86AudioMute allow-when-locked=true { spawn-sh "swayosd-client --output-volume=mute-toggle"; }
+        XF86AudioNext allow-when-locked=true { spawn-sh "swayosd-client --playerctl=next"; }
+        XF86AudioPlay allow-when-locked=true { spawn-sh "swayosd-client --playerctl=play-pause"; }
+        XF86AudioPrev allow-when-locked=true { spawn-sh "swayosd-client --playerctl=previous"; }
+        XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "swayosd-client --output-volume=+2"; }
+        XF86AudioStop allow-when-locked=true { spawn-sh "swayosd-client --playerctl=stop"; }
+        XF86MonBrightnessDown allow-when-locked=true { spawn-sh "swayosd-client --brightness=lower"; }
+        XF86MonBrightnessUp allow-when-locked=true { spawn-sh "swayosd-client --brightness=raise"; }
+    }
+  '';
 }
