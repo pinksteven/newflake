@@ -3,7 +3,7 @@
     ./global
 
     ./features/stylix
-    ./features/desktop/niri
+    ./features/desktop
     ./features/base-apps
     ./features/games
     ./features/dnd
