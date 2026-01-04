@@ -7,15 +7,4 @@
     env=TERMCMD=kitty --class=yazi.xdg
   '';
   home.file.".config/xdg-desktop-portal-termfilechooser/yazi-wrapper.sh".source = "${pkgs.xdg-desktop-portal-termfilechooser}/share/xdg-desktop-portal-termfilechooser/yazi-wrapper.sh";
-
-  xdg.portal = {
-    extraPortals = [pkgs.xdg-desktop-portal-termfilechooser pkgs.xdg-desktop-portal-gnome pkgs.xdg-desktop-portal-gtk];
-    config = {
-      common.default = ["termfilechooser" "gtk"];
-      niri = {
-        default = ["termfilechooser" "gnome" "gtk"];
-        "org.freedesktop.impl.portal.FileChooser" = "termfilechooser";
-      };
-    };
-  };
 }

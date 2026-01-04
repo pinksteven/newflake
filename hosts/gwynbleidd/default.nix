@@ -23,6 +23,7 @@
     # ../common/optional/secure-boot.nix
     ../common/optional/stylix.nix
     ../common/optional/wireless.nix
+    ../common/optional/xdg-portals.nix
   ];
 
   networking.hostName = "gwynbleidd";
