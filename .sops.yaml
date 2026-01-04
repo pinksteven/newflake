@@ -2,7 +2,7 @@ keys:
   - &users:
     - &steven age16m0f9xm3ndllut4l2pj0je03vmxj0sdfvwvs90x8y9ftreka9ccs2rz8fp
   - &hosts:
-    - &gwynbleidd age1gxeca3mr24y0arz0yt4dm9fg6sy24zgmeh2ng2ax9lq2xsc70gws3fzqqm
+    - &gwynbleidd age1en3ehn3emgpvt5pegnnf3qx939kh94zxlfq7fjnlfusey293se7qd2nkcr
     - &zireael age1ntxgq09tfa5vcmuanxnddmd50u5e8kqxazwxex5csetyc8h7nv7q9qnswt
 creation_rules:
   - path_regex: hosts/common/secrets.yaml$

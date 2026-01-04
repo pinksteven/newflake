@@ -14,13 +14,13 @@
     ../common/global
     ../common/users/steven
 
-    ../common/optional/dualboot.nix
     ../common/optional/gaming.nix
     ../common/optional/greetd.nix
     ../common/optional/kdeconnect.nix
     ../common/optional/pipewire.nix
     ../common/optional/printer.nix
     ../common/optional/quietboot.nix
+    # ../common/optional/secure-boot.nix
     ../common/optional/stylix.nix
     ../common/optional/wireless.nix
   ];

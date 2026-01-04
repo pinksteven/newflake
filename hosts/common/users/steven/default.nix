@@ -32,6 +32,7 @@ in {
       ];
     openssh.authorizedKeys.keys = lib.splitString "\n" (builtins.readFile ../../../../home/steven/id_masterkey.pub);
     hashedPasswordFile = config.sops.secrets."password/steven".path;
+    # initialPassword = "password"; # In case shit breaks with sops
     packages = [pkgs.home-manager];
   };
 
