@@ -7,7 +7,7 @@
   home.persistence = {
     "/persist/home/steven" = {
       directories = [
-        ".config/vesktop"
+        ".config/equibop"
       ];
     };
   };
@@ -17,13 +17,16 @@
   programs.nixcord = {
     enable = true;
     discord.enable = false;
-    vesktop.enable = true;
+    equibop.enable = true;
     config = {
       useQuickCss = true;
       frameless = true;
       disableMinSize = true;
       themeLinks = ["https://refact0r.github.io/midnight-discord/build/midnight.css"];
-      enabledThemes = ["nixnight.css"];
+      enabledThemes = [
+        "nixnight.css"
+        "https://refact0r.github.io/midnight-discord/build/midnight.css"
+      ];
 
       plugins = {
         alwaysAnimate.enable = true;
@@ -34,11 +37,11 @@
         betterSettings.enable = true;
         betterUploadButton.enable = true;
         biggerStreamPreview.enable = true;
-        blurNsfw.enable = true;
+        BlurNSFW.enable = true;
         callTimer.enable = true;
-        clearUrLs.enable = true;
+        ClearURLs.enable = true;
         copyFileContents.enable = true;
-        copyUserUrLs.enable = true;
+        CopyUserURLs.enable = true;
         crashHandler.enable = true;
         disableCallIdle.enable = true;
         fakeNitro.enable = true;
@@ -78,7 +81,7 @@
       };
     };
   };
-  home.file."${config.programs.nixcord.vesktop.configDir}/themes/nixnight.css".text = with config.lib.stylix.colors.withHashtag; # css
+  home.file."${config.programs.nixcord.equibop.configDir}/themes/nixnight.css".text = with config.lib.stylix.colors.withHashtag; # css
   
     ''
         body {
@@ -214,7 +217,7 @@
   startupPrograms = [
     {
       delay = 2;
-      command = ["${lib.getExe config.programs.nixcord.vesktop.package}"];
+      command = ["${lib.getExe config.programs.nixcord.equibop.package}"];
     }
   ];
 }

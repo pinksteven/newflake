@@ -9,6 +9,8 @@
     (m: !(m.primary or false) && ((m.transform.rotation or 0) == 90 || (m.transform.rotation or 0) == 270))
     null
     monitors;
+
+  primaryMonitor = lib.head (lib.filter (m: m.primary) monitors);
 in {
   xdg.configFile."niri/rules.kdl".text = ''
     //Global rules
@@ -54,11 +56,12 @@ in {
       match app-id="^steam_app"
 
       variable-refresh-rate true
+      open-on-output ${primaryMonitor.name}
     }
 
-    // Vesktop settings
+    // Equibop settings
     window-rule {
-      match app-id="^vesktop$"
+      match app-id="^equibop$"
       open-on-workspace "media"
       open-focused false
       default-column-width { proportion ${

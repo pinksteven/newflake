@@ -21,8 +21,6 @@
         [
           "--output-width ${toString monitor.width}"
           "--output-height ${toString monitor.height}"
-          "--nested-refresh ${toString monitor.refreshRate}"
-          "--prefer-output ${monitor.name}" # Doesn't do shit for nested gamescope
           "--fullscreen"
         ]
         ++ lib.optional monitor.hdr "--hdr-enabled"
@@ -60,58 +58,5 @@
         };
       };
     };
-  };
-  systemd.services."gaming-suspend-fix" = let
-    # What to freeze with pkill -STOP
-    freezeProcesses = [
-      "steam"
-      "steam-run"
-      "pressure-vessel"
-      "steamwebhelper"
-    ];
-
-    freezeScript = ''
-      ${lib.concatMapStringsSep "\n" (
-          proc: ''echo "Freezing ${proc}..."; ${pkgs.procps}/bin/pkill -STOP -f "${proc}" || true''
-        )
-        freezeProcesses}
-      sleep 1
-    '';
-
-    unfreezeScript = ''
-      ${lib.concatMapStringsSep "\n" (
-          proc: ''echo "Unfreezing ${proc}..."; ${pkgs.procps}/bin/pkill -CONT -f "${proc}" || true''
-        )
-        freezeProcesses}
-    '';
-  in {
-    description = "Freeze Steam before suspend to avoid blocking";
-    before = ["sleep.target"];
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = pkgs.writeShellScript "freeze-fhs-groups" ''
-        # Freeze entire process groups for FHS environments
-        for pattern in "steam-run" "\.steam-wrapped"; do
-          for pid in $(${pkgs.procps}/bin/pgrep -f "$pattern"); do
-            pgid=$(${pkgs.procps}/bin/ps -o pgid= -p "$pid" 2>/dev/null | tr -d ' ')
-            if [ -n "$pgid" ] && [ "$pgid" -gt 1 ]; then
-              echo "Freezing FHS process group: $pgid"
-              kill -STOP -"$pgid" 2>/dev/null || true
-            fi
-          done
-        done
-      '';
-      ExecStop = pkgs.writeShellScript "unfreeze-fhs-groups" ''
-        for pattern in "steam-run" "\.steam-wrapped"; do
-          for pid in $(${pkgs.procps}/bin/pgrep -f "$pattern"); do
-            pgid=$(${pkgs.procps}/bin/ps -o pgid= -p "$pid" 2>/dev/null | tr -d ' ')
-            if [ -n "$pgid" ] && [ "$pgid" -gt 1 ]; then
-              kill -CONT -"$pgid" 2>/dev/null || true
-            fi
-          done
-        done
-      '';
-    };
-    wantedBy = ["sleep.target"];
   };
 }
