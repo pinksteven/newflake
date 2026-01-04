@@ -56,7 +56,7 @@ in {
       match app-id="^steam_app"
 
       variable-refresh-rate true
-      open-on-output ${primaryMonitor.name}
+      open-on-output "${primaryMonitor.name}"
     }
 
     // Equibop settings
