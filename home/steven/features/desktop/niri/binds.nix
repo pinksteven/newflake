@@ -54,6 +54,9 @@
         XF86AudioStop allow-when-locked=true { spawn-sh "swayosd-client --playerctl=stop"; }
         XF86MonBrightnessDown allow-when-locked=true { spawn-sh "swayosd-client --brightness=lower"; }
         XF86MonBrightnessUp allow-when-locked=true { spawn-sh "swayosd-client --brightness=raise"; }
+
+        Ctrl+Shift+M { spawn-sh "equibop --toggle-mic"; }
+        Menu { spawn-sh "equibop --toggle-mic"; }
     }
   '';
 }
