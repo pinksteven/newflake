@@ -22,11 +22,10 @@
       useQuickCss = true;
       frameless = true;
       disableMinSize = true;
-      themeLinks = ["https://refact0r.github.io/midnight-discord/build/midnight.css"];
-      enabledThemes = [
-        "nixnight.css"
-        "https://refact0r.github.io/midnight-discord/build/midnight.css"
-      ];
+      enabledThemes = ["nixnight.css"];
+      autoUpdate = true;
+      autoUpdateNotification = false;
+      notifyAboutUpdates = false;
 
       plugins = {
         alwaysAnimate.enable = true;
@@ -84,6 +83,7 @@
   home.file."${config.programs.nixcord.equibop.configDir}/themes/nixnight.css".text = with config.lib.stylix.colors.withHashtag; # css
   
     ''
+        @import url('https://refact0r.github.io/midnight-discord/build/midnight.css');
         body {
           /* font, change to "" for default discord font */
           --font: '${config.stylix.fonts.serif.name}';
