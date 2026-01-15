@@ -8,12 +8,9 @@
     "/persist/home/steven".directories = [
       ".local/share/Steam"
       ".local/share/icons/hicolor" # Steam holds it's icons here
-      ".local/share/deadlock-mod-manager"
-      ".local/share/dev.stormix.deadlock-mod-manager"
     ];
   };
 
-  home.packages = [pkgs.deadlock-mod-manager];
   startupPrograms = [
     {
       delay = 1;
