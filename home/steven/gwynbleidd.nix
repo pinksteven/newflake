@@ -12,6 +12,9 @@
     ./features/games
     ./features/dnd
     ./features/zed
+
+    ./features/games/deadlockmods.nix
+    ./features/games/nexusmods.nix
   ];
 
   home = {
