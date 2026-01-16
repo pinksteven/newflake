@@ -8,7 +8,6 @@
 }: {
   imports =
     [
-      inputs.impermanence.homeManagerModules.impermanence
       ../features/cli
       # ../features/nvim
     ]
@@ -43,7 +42,7 @@
       NH_FLAKE = "$HOME/Documents/newflake";
     };
 
-    persistence."/persist/home/steven" = {
+    persistence."/persist" = {
       directories = [
         "Desktop"
         "Documents"
@@ -56,7 +55,6 @@
         ".local/state/wireplumber"
         ".local/share/nix" # trusted settings and repl history
       ];
-      allowOther = true;
     };
   };
 }

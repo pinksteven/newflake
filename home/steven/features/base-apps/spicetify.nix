@@ -5,7 +5,7 @@
   inputs,
   ...
 }: {
-  home.persistence."/persist/home/steven" = {
+  home.persistence."/persist" = {
     directories = [
       ".config/spotify" # User data, saved credentials and so on
       ".cache/spotify/Storage" # Downloaded music for offline

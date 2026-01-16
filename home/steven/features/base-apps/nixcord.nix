@@ -5,7 +5,7 @@
   ...
 }: {
   home.persistence = {
-    "/persist/home/steven" = {
+    "/persist" = {
       directories = [
         ".config/equibop"
       ];

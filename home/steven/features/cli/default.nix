@@ -25,6 +25,6 @@
 
     # If i ever need to manually format nix from cmd
     alejandra
-    nixfmt-rfc-style
+    nixfmt
   ];
 }

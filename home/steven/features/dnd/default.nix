@@ -4,7 +4,7 @@
     dungeondraft
   ];
 
-  home.persistence."/persist/home/steven" = {
+  home.persistence."/persist" = {
     directories = [
       ".config/lore-forge"
       ".local/share/Dungeondraft"

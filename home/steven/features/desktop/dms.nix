@@ -16,7 +16,7 @@
     enableClipboard = false; # I manage clipboard on my own
     enableDynamicTheming = false;
   };
-  home.persistence."/persist/home/steven" = {
+  home.persistence."/persist" = {
     directories = [
       ".config/DankMaterialShell"
       ".local/state/DankMaterialShell"

@@ -448,7 +448,7 @@
     "x-scheme-handler/https" = ["firefox.desktop"];
   };
 
-  home.persistence."/persist/home/steven" = {
+  home.persistence."/persist" = {
     # I want my history to stay
     directories = [".mozilla/firefox"];
   };

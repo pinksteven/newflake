@@ -42,7 +42,7 @@
   home = {
     packages = with pkgs; [cloc];
     sessionVariables.EDITOR = "zeditor";
-    persistence."/persist/home/steven" = {
+    persistence."/persist" = {
       directories = [
         ".config/zed"
         ".config/github-copilot"

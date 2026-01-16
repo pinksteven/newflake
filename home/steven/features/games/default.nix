@@ -8,7 +8,7 @@
       ./steam.nix
     ];
 
-  home.persistence."/persist/home/steven" = {
+  home.persistence."/persist" = {
     directories = [
       ".config/unity3d" # Unity game saves apparently
       ".local/share/applications" # .desktop files from installed games

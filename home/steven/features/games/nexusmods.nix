@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   home = {
     packages = with pkgs; [nexusmods-app-unfree];
-    persistence."/persist/home/steven" = {
+    persistence."/persist" = {
       directories = [".local/share/NexusMods.App"];
     };
   };

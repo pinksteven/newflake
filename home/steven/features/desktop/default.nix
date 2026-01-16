@@ -36,7 +36,7 @@
       SDL_VIDEODRIVER = "wayland";
       CLUTTER_BACKEND = "wayland";
     };
-    persistence."/persist/home/steven" = {
+    persistence."/persist" = {
       directories = [".local/share/keyrings"];
     };
   };

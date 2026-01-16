@@ -4,7 +4,7 @@
     nix-direnv.enable = true;
   };
 
-  home.persistence."/persist/home/steven" = {
+  home.persistence."/persist" = {
     directories = [".local/share/direnv"];
   };
 }

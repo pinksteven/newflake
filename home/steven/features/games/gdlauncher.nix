@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   home.packages = [pkgs.gdlauncher-carbon];
 
-  home.persistence."/persist/home/steven" = {
+  home.persistence."/persist" = {
     directories = [".local/share/gdlauncher_carbon"];
   };
 }
