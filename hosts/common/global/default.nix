@@ -38,9 +38,23 @@
   boot.loader.systemd-boot.enable = lib.mkDefault true;
 
   nixpkgs = {
-    overlays = builtins.attrValues outputs.overlays;
+    overlays =
+      [
+        (final: prev: {
+          inherit
+            (prev.lixPackageSets.stable)
+            nixpkgs-review
+            nix-eval-jobs
+            nix-fast-build
+            colmena
+            ;
+        })
+      ]
+      ++ builtins.attrValues outputs.overlays;
     config = {
       allowUnfree = true;
+      # Untill i find a different mod manager
+      permittedInsecurePackages = ["nexusmods-app-unfree-0.21.1"];
     };
   };
 

@@ -23,15 +23,6 @@
     import ../pkgs {pkgs = final;};
 
   modifications = final: prev: {
-    # Always use lix instead of nix
-    inherit
-      (prev.lixPackageSets.latest)
-      nixpkgs-review
-      nix-eval-jobs
-      nix-fast-build
-      colmena
-      ;
-
     # Wrap heroic to use steam-run
     heroic = final.writeShellScriptBin "heroic" ''
       exec ${final.steam-run}/bin/steam-run ${prev.heroic}/bin/heroic "$@"
