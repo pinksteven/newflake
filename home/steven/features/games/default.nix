@@ -4,6 +4,7 @@
     then throw "Games feature requires the system to import common/optional/gaming"
     else [
       ./gdlauncher.nix
+      ./prism.nix
       ./heroic.nix
       ./steam.nix
     ];

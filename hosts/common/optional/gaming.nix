@@ -12,9 +12,17 @@
 
   imports = [inputs.nix-gaming.nixosModules.platformOptimizations];
 
+  # Create a small "game-run" wrapper
+  environment.systemPackages = with pkgs; [
+    (pkgs.writeShellScriptBin "game-run" ''
+      exec ${lib.getExe pkgs.gamescope} ${lib.concatStringsSep " " config.programs.gamescope.args} "$@"
+    '')
+  ];
+
   programs = {
     gamescope = {
       enable = true;
+      capSysNice = true;
       args = let
         monitor = lib.head (lib.filter (m: m.primary) config.monitors);
       in
@@ -51,10 +59,6 @@
           nv_powermizer_mode = 1;
           # AMD specific
           amd_performance_level = "high";
-        };
-        custom = {
-          start = "${pkgs.libnotify}/bin/notify-send 'GameMode started'";
-          end = "${pkgs.libnotify}/bin/notify-send 'GameMode ended'";
         };
       };
     };

@@ -16,7 +16,8 @@
   home.packages = with pkgs; [
     microfetch # a really fast hardcoded nixos fetcher
 
-    octaveFull # Big boy calc for all my needs
+    (octaveFull.withPackages
+      (ps: with ps; [control]))
     ripgrep
     fd
     httpie
