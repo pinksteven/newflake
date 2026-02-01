@@ -29,6 +29,7 @@
         [
           "--output-width ${toString monitor.width}"
           "--output-height ${toString monitor.height}"
+          "--nested-refresh ${toString monitor.refreshRate}"
           "--fullscreen"
         ]
         ++ lib.optional monitor.hdr "--hdr-enabled"
