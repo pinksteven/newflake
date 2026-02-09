@@ -45,10 +45,6 @@
       url = "github:mrnossiom/wakatime-ls";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    kickstart-nix = {
-      url = "github:nix-community/kickstart-nix.nvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     stasis = {
       url = "github:saltnpepper97/stasis";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -80,61 +76,10 @@
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    systems,
-    ...
-  } @ inputs: let
-    inherit (self) outputs;
-    lib = nixpkgs.lib // home-manager.lib;
-    forEachSystem = f: lib.genAttrs (import systems) (system: f pkgsFor.${system});
-    pkgsFor = lib.genAttrs (import systems) (
-      system: let
-        pkgs = import nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-        };
-        extendedPkgs = pkgs // (import ./pkgs {inherit pkgs;});
-      in
-        extendedPkgs
-    );
-  in {
-    inherit lib;
-    nixosModules = import ./modules/nixos;
-    homeManagerModules = import ./modules/home-manager;
-
-    overlays = import ./overlays {inherit inputs outputs;};
-
-    packages = forEachSystem (pkgs: import ./pkgs {inherit pkgs;});
-    devShells = forEachSystem (pkgs: import ./shell.nix {inherit pkgs;});
-    formatter = forEachSystem (pkgs: pkgs.alejandra);
-
-    nixosConfigurations = {
-      # Main desktop
-      gwynbleidd = lib.nixosSystem {
-        modules = [./hosts/gwynbleidd];
-        specialArgs = {
-          inherit inputs outputs;
-        };
-      };
-
-      # Personal laptop
-      zireael = lib.nixosSystem {
-        modules = [./hosts/zireael];
-        specialArgs = {
-          inherit inputs outputs;
-        };
-      };
-
-      # To Be Deployed Home Server
-      kaermorhen = lib.nixosSystem {
-        modules = [./hosts/kaermorhen];
-        specialArgs = {
-          inherit inputs outputs;
-        };
-      };
+  outputs = inputs @ {flake-parts, ...}:
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      imports = [
+        ./parts
+      ];
     };
-  };
 }

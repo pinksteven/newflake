@@ -1,6 +1,6 @@
 {
-  outputs,
   inputs,
+  outputs,
 }: {
   # For every flake input, aliases 'pkgs.inputs.${flake}' to
   # 'inputs.${flake}.packages.${pkgs.system}' or
@@ -19,15 +19,11 @@
       inputs;
   };
 
-  additions = final: prev:
+  # Overlay custom packages
+  custom = final: prev:
     import ../pkgs {pkgs = final;};
 
+  # Modifications to existing packages
   modifications = final: prev: {
-    # Wrap heroic to use steam-run
-    heroic = final.writeShellScriptBin "heroic" ''
-      exec ${final.steam-run}/bin/steam-run ${prev.heroic}/bin/heroic "$@"
-    '';
   };
-
-  nvim-pkg = inputs.kickstart-nix.overlays.default;
 }
