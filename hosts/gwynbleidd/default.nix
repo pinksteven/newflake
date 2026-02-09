@@ -110,6 +110,7 @@
       (builtins.attrValues config.home-manager.users)
     ) # json
     
+    
     ''
       {
           "rules": [

@@ -1,7 +1,7 @@
 {
   config,
-  monitors,
   lib,
+  osConfig,
   ...
 }: {
   stylix.targets.hyprlock.enable = false;
@@ -13,7 +13,7 @@
 
       inherit (config.lib.stylix) colors;
       font = config.stylix.fonts.serif.name;
-      primaryMonitor = lib.head (lib.filter (m: m.primary) monitors);
+      primaryMonitor = lib.head (lib.filter (m: m.primary) osConfig.monitors);
     in {
       auth.fingerprint = {
         enabled = true;

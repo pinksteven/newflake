@@ -31,8 +31,6 @@
   home-manager.useGlobalPkgs = true;
   home-manager.extraSpecialArgs = {
     inherit inputs outputs;
-    inherit (config) monitors gamingReady;
-    inherit (config.hardware) capabilities;
   };
 
   boot.loader.systemd-boot.enable = lib.mkDefault true;

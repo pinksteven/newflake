@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  capabilities,
+  osConfig,
   ...
 }: {
   stylix.targets.waybar = {
@@ -9,8 +9,8 @@
     addCss = false;
   };
   programs.waybar = let
-    hasBluetooth = capabilities.hasBluetooth or false;
-    hasBattery = capabilities.hasBattery or false;
+    hasBluetooth = osConfig.hardware.capabilities.hasBluetooth or false;
+    hasBattery = osConfig.hardware.capabilities.hasBattery or false;
   in {
     enable = true;
     systemd.enable = true;

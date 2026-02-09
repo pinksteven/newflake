@@ -1,6 +1,6 @@
-{gamingReady, ...}: {
+{osConfig, ...}: {
   imports =
-    if !gamingReady
+    if !osConfig.gamingReady
     then throw "Games feature requires the system to import common/optional/gaming"
     else [
       ./gdlauncher.nix

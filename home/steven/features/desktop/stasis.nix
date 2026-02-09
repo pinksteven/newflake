@@ -2,10 +2,10 @@
   pkgs,
   lib,
   config,
-  capabilities,
+  osConfig,
   ...
 }: let
-  hasBattery = capabilities.hasBattery or false;
+  hasBattery = osConfig.hardware.capabilities.hasBattery or false;
 in {
   home.packages = [pkgs.inputs.stasis.stasis];
 

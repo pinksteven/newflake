@@ -1,6 +1,6 @@
 {
   lib,
-  monitors,
+  osConfig,
   ...
 }: let
   # Find first non-primary portrait monitor
@@ -8,9 +8,9 @@
     lib.findFirst
     (m: !(m.primary or false) && ((m.transform.rotation or 0) == 90 || (m.transform.rotation or 0) == 270))
     null
-    monitors;
+    osConfig.monitors;
 
-  primaryMonitor = lib.head (lib.filter (m: m.primary) monitors);
+  primaryMonitor = lib.head (lib.filter (m: m.primary) osConfig.monitors);
 in {
   xdg.configFile."niri/rules.kdl".text = ''
     //Global rules

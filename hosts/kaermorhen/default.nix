@@ -3,7 +3,6 @@
     inputs.hardware.nixosModules.common-pc-ssd
 
     ./hardware-configuration.nix
-    ./services
 
     ../common/global
     ../common/users/steven
