@@ -15,7 +15,7 @@
 
       # Latency theoretical latency is quantum/rate
       # which is 1.3ms for default values
-      quantum = 64; # Default is 64
+      quantum = 128; # Default is 64, but i'm having some popping sounds under load
       rate = 48000; # Default is 48k
     };
 
