@@ -8,7 +8,6 @@
     ./nixcord.nix
     ./spicetify.nix
     ./syncthing.nix
-    ./trayscale.nix
   ];
 
   home.packages = with pkgs; [
