@@ -41,16 +41,16 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    wakatime-ls = {
-      url = "github:mrnossiom/wakatime-ls";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    stasis = {
-      url = "github:saltnpepper97/stasis";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     preload-ng = {
       url = "github:miguel-b-p/preload-ng";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell/stable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    dms-plugin-registry = {
+      url = "github:AvengeMedia/dms-plugin-registry";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -62,11 +62,6 @@
     nixcord = {
       url = "github:FlameFlag/nixcord";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    kidex = {
-      url = "github:Kirottu/kidex";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
     };
 
     # Personal repos

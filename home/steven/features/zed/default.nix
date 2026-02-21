@@ -35,7 +35,7 @@
       nixd
       nil
       alejandra
-      pkgs.inputs.wakatime-ls.default
+      # pkgs.inputs.wakatime-ls.default
     ];
   };
 

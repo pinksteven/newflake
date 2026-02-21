@@ -14,5 +14,9 @@
     homeManagerIntegration.followSystem = false;
 
     targets.plymouth.enable = false;
+    targets.regreet = {
+      enable = true;
+      colors.enable = true;
+    };
   };
 }

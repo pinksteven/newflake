@@ -4,7 +4,6 @@
         Alt+Mod+Left { focus-monitor-left; }
         Alt+Mod+Right { focus-monitor-right; }
         Alt+Tab { switch-focus-between-floating-and-tiling; }
-        "Caps_Lock" allow-when-locked=true { spawn-sh "swayosd-client --capslock"; }
         Ctrl+Alt+Delete { quit; }
         Ctrl+Mod+Left { consume-or-expel-window-left; }
         Ctrl+Mod+R { maximize-column; }
@@ -15,7 +14,6 @@
         Mod+F { spawn "kitty" "--hold=yes" "yazi"; }
         Mod+grave { spawn "kitty"; }
         Mod+Left { focus-column-left; }
-        Mod+N hotkey-overlay-title="Toggle Notification Center" { spawn "swaync-client" "-t" "-sw"; }
         "Mod+Page_Down" { focus-workspace-down; }
         "Mod+Page_Up" { focus-workspace-up; }
         Mod+Q { close-window; }
@@ -25,11 +23,11 @@
         "Mod+Shift+Page_Down" { move-column-to-workspace-down; }
         "Mod+Shift+Page_Up" { move-column-to-workspace-up; }
         Mod+Shift+slash { show-hotkey-overlay; }
-        Mod+Space { spawn "anyrun"; }
+        Mod+Space { spawn-sh "dms ipc call spotlight toggle"; }
         Mod+T { toggle-window-floating; }
         Mod+Tab { toggle-overview; }
         Mod+Up { focus-window-up; }
-        Mod+V { spawn "clipboard"; }
+        Mod+V { spawn-sh "dms ipc call clipboard toggle"; }
         Mod+WheelScrollDown { focus-column-right; }
         Mod+WheelScrollUp { focus-column-left; }
         Mod+equal { set-column-width "+5%"; }
@@ -43,17 +41,17 @@
         Shift+Mod+equal { set-window-height "+5%"; }
         Shift+Mod+minus { set-window-height "-5%"; }
         Shift+Print { spawn-sh "niri msg action screenshot-window"; }
-        Super+Alt+L hotkey-overlay-title="Toggle Lock Screen" { spawn "hyprlock"; }
-        XF86AudioLowerVolume allow-when-locked=true { spawn-sh "swayosd-client --output-volume=-2"; }
-        XF86AudioMicMute allow-when-locked=true { spawn-sh "swayosd-client --input-volume=mute-toggle"; }
-        XF86AudioMute allow-when-locked=true { spawn-sh "swayosd-client --output-volume=mute-toggle"; }
-        XF86AudioNext allow-when-locked=true { spawn-sh "swayosd-client --playerctl=next"; }
-        XF86AudioPlay allow-when-locked=true { spawn-sh "swayosd-client --playerctl=play-pause"; }
-        XF86AudioPrev allow-when-locked=true { spawn-sh "swayosd-client --playerctl=previous"; }
-        XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "swayosd-client --output-volume=+2"; }
-        XF86AudioStop allow-when-locked=true { spawn-sh "swayosd-client --playerctl=stop"; }
-        XF86MonBrightnessDown allow-when-locked=true { spawn-sh "swayosd-client --brightness=lower"; }
-        XF86MonBrightnessUp allow-when-locked=true { spawn-sh "swayosd-client --brightness=raise"; }
+        Super+Alt+L hotkey-overlay-title="Toggle Lock Screen" { spawn-sh "dms ipc call lock lock"; }
+        XF86AudioLowerVolume allow-when-locked=true { spawn-sh "dms ipc call audio decrement 2"; }
+        XF86AudioMicMute allow-when-locked=true { spawn-sh "dms ipc call audio micmute"; }
+        XF86AudioMute allow-when-locked=true { spawn-sh "dms ipc call audio mute"; }
+        XF86AudioNext allow-when-locked=true { spawn-sh "dms ipc call mpris next"; }
+        XF86AudioPlay allow-when-locked=true { spawn-sh "dms ipc call mpris playPause"; }
+        XF86AudioPrev allow-when-locked=true { spawn-sh "dms ipc call mpris previous"; }
+        XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "dms ipc call audio increment 2"; }
+        XF86AudioStop allow-when-locked=true { spawn-sh "dms ipc call mpris stop"; }
+        XF86MonBrightnessDown allow-when-locked=true { spawn-sh "dms ipc call brightness decrement 5"; }
+        XF86MonBrightnessUp allow-when-locked=true { spawn-sh "dms ipc call brightness increment 5"; }
 
         Ctrl+Shift+M { spawn-sh "equibop --toggle-mic"; }
         Menu { spawn-sh "equibop --toggle-mic"; }
