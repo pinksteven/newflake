@@ -6,9 +6,6 @@
   ...
 }: {
   imports = [
-    inputs.hardware.nixosModules.common-pc-ssd
-    inputs.hardware.nixosModules.common-cpu-amd-pstate
-
     ./hardware-configuration.nix
 
     ../common/global
@@ -110,7 +107,6 @@
       (builtins.attrValues config.home-manager.users)
     ) # json
     
-    
     ''
       {
           "rules": [
@@ -140,6 +136,7 @@
   hardware.capabilities = {
     hasBattery = false;
     hasBluetooth = false;
+    hasWifi = false;
   };
 
   base16-theme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";

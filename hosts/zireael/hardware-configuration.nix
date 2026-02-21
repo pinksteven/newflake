@@ -6,6 +6,9 @@
 }: {
   nixpkgs.hostPlatform = "x86_64-linux";
   imports = [
+    inputs.hardware.nixosModules.common-pc-ssd
+    inputs.hardware.nixosModules.framework-13-7040-amd
+
     inputs.disko.nixosModules.disko
     inputs.preload-ng.nixosModules.default
     ../common/optional/ephemeral-btrfs.nix
