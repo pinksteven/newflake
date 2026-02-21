@@ -1,4 +1,11 @@
 {
+  outputs,
+  lib,
+  config,
+  ...
+}: let
+  hosts = lib.attrNames outputs.nixosConfigurations;
+in {
   services.openssh = {
     enable = true;
     settings = {
@@ -21,5 +28,14 @@
         type = "ed25519";
       }
     ];
+  };
+
+  programs.ssh = {
+    # Each hosts public key
+    knownHosts = lib.genAttrs hosts (hostname: {
+      publicKeyFile = ../../${hostname}/ssh_host_ed25519_key.pub;
+      extraHostNames =
+        lib.mkIf (hostname == config.networking.hostName) ["localhost"];
+    });
   };
 }

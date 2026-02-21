@@ -1,12 +1,24 @@
-{inputs, ...}: {
+{
+  inputs,
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
-    inputs.hardware.nixosModules.common-pc-ssd
-
     ./hardware-configuration.nix
 
     ../common/global
     ../common/users/steven
     ../common/optional/tailscale-exit-node.nix
+
+    ./services/couchdb.nix # For obisidian livesync
+    ./services/forgejo.nix
+    ./services/grafana.nix
+    ./services/prometheus.nix
+    ./services/radicale.nix
+    ./services/tailscale-serve.nix
+    ./services/wakapi.nix
   ];
 
   networking = {
@@ -15,10 +27,16 @@
     dhcpcd.IPv6rs = true;
   };
 
+  boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
+  };
+  hardware.graphics.enable = true;
+
   # Hardware capabilities for home-manager modules
   hardware.capabilities = {
     hasBattery = false;
     hasBluetooth = false;
+    hasWifi = false;
   };
 
   system.stateVersion = "25.05";

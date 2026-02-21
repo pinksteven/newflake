@@ -4,9 +4,6 @@
   ...
 }: {
   imports = [
-    inputs.hardware.nixosModules.common-pc-ssd
-    inputs.hardware.nixosModules.framework-13-7040-amd
-
     ./hardware-configuration.nix
 
     ../common/global
@@ -67,6 +64,7 @@
   hardware.capabilities = {
     hasBattery = true;
     hasBluetooth = true;
+    hasWifi = true;
   };
 
   base16-theme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";

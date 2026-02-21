@@ -1,0 +1,5 @@
+{
+  services.wakapi = {
+    enable = true;
+  };
+}
