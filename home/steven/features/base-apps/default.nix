@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   imports = [
-    ./calibre.nix
     ./easyeffects.nix
     ./firefox.nix
     ./imv.nix

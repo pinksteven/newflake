@@ -3,7 +3,6 @@
     ./zsh
 
     ./bat.nix
-    ./bottom.nix
     ./direnv.nix
     ./eza.nix
     ./fzf.nix
