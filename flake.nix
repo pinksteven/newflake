@@ -5,12 +5,18 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     hardware.url = "github:NixOS/nixos-hardware/master";
     systems.url = "github:nix-systems/default-linux";
-    impermanence.url = "github:nix-community/impermanence";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    impermanence = {
+      url = "github:nix-community/impermanence";
+      inputs.nixpkgs.follows = "";
+      inputs.home-manager.follows = "";
+    };
     # Use the yet to be merged matugen color generation
     stylix = {
       url = "github:make-42/stylix/matugen"; #"github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nur.follows = "nur";
+      inputs.flake-parts.follows = "flake-parts";
     };
 
     home-manager = {
@@ -28,14 +34,17 @@
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.3";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
     };
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
     };
     nix-gaming = {
       url = "github:fufexan/nix-gaming";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
     };
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
@@ -62,6 +71,7 @@
     nixcord = {
       url = "github:FlameFlag/nixcord";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
     };
 
     # Personal repos

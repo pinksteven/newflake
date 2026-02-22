@@ -12,13 +12,14 @@
     ../common/users/steven
     ../common/optional/tailscale-exit-node.nix
 
-    ./services/couchdb.nix # For obisidian livesync
-    ./services/forgejo.nix
-    ./services/grafana.nix
-    ./services/prometheus.nix
-    ./services/radicale.nix
-    ./services/tailscale-serve.nix
-    ./services/wakapi.nix
+    # Disabled untill the machine gets deployed
+    # ./services/couchdb.nix # For obisidian livesync
+    # ./services/forgejo.nix
+    # ./services/grafana.nix
+    # ./services/prometheus.nix
+    # ./services/radicale.nix
+    # ./services/tailscale-serve.nix
+    # ./services/wakapi.nix
   ];
 
   networking = {

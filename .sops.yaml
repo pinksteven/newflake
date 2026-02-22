@@ -11,3 +11,7 @@ creation_rules:
           - *steven
           - *gwynbleidd
           - *zireael
+  - path_regex: hosts/kaermorhen/secrets.yaml$
+    key_groups:
+      - age:
+          - *steven
