@@ -5,6 +5,7 @@
     ./imv.nix
     ./kde-connect.nix
     ./nixcord.nix
+    ./obsidian.nix
     ./spicetify.nix
     ./syncthing.nix
   ];
