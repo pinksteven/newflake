@@ -50,8 +50,8 @@
         XF86AudioPrev allow-when-locked=true { spawn-sh "dms ipc call mpris previous"; }
         XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "dms ipc call audio increment 2"; }
         XF86AudioStop allow-when-locked=true { spawn-sh "dms ipc call mpris stop"; }
-        XF86MonBrightnessDown allow-when-locked=true { spawn-sh "dms ipc call brightness decrement 5"; }
-        XF86MonBrightnessUp allow-when-locked=true { spawn-sh "dms ipc call brightness increment 5"; }
+        XF86MonBrightnessDown allow-when-locked=true { spawn-sh "dms ipc call brightness decrement 5 \"\""; }
+        XF86MonBrightnessUp allow-when-locked=true { spawn-sh "dms ipc call brightness increment 5 \"\""; }
 
         Ctrl+Shift+M { spawn-sh "equibop --toggle-mic"; }
         Menu { spawn-sh "equibop --toggle-mic"; }
