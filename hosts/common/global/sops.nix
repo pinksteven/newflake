@@ -1,4 +1,5 @@
 {
+  pkgs,
   config,
   inputs,
   ...
@@ -8,6 +9,7 @@
   keys = builtins.filter isEd25519 config.services.openssh.hostKeys;
 in {
   imports = [inputs.sops-nix.nixosModules.sops];
+  environment.systemPackages = [pkgs.sops pkgs.ssh-to-age];
 
   sops.age.sshKeyPaths = map getKeyPath keys;
 }
