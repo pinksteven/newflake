@@ -43,9 +43,11 @@
       acMonitorTimeout = 0;
       acLockTimeout = 0;
       acSuspendTimeout = 0;
-      batteryMonitorTimeout = 0;
-      batteryLockTimeout = 0;
-      batterySuspendTimeout = 0;
+      acSuspendBehavior = 0;
+      batteryMonitorTimeout = 300;
+      batteryLockTimeout = 600;
+      batterySuspendTimeout = 660;
+      batterySuspendBehavior = 2;
       lockBeforeSuspend = true;
 
       lockScreenShowProfileImage = false;

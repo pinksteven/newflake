@@ -40,7 +40,7 @@
   services = {
     colord.enable = true;
     logind.settings.Login = {
-      HandleLidSwitch = "ignore";
+      HandleLidSwitch = "sleep";
       HandlePowerKey = "sleep";
       HandlePowerKeyLongPress = "poweroff";
     };
