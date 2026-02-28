@@ -30,7 +30,7 @@
   };
   services.tailscale.serve.services.grafana = {
     endpoints = {
-      "tcp:443" = "http://localhost:2432";
+      "tcp:443" = "https://localhost:2432";
     };
     advertised = true;
   };
