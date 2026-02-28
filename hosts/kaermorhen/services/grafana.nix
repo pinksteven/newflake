@@ -1,7 +1,7 @@
 {config, ...}: {
   sops.secrets = {
-    "grafana/secret_key".sopsFile = "../secrets.yaml";
-    "grafana/admin_password".sopsFile = "../secrets.yaml";
+    "grafana/secret_key".sopsFile = ../secrets.yaml;
+    "grafana/admin_password".sopsFile = ../secrets.yaml;
   };
   services.grafana = {
     enable = true;
