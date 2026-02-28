@@ -1,10 +1,16 @@
 {
   outputs,
+  pkgs,
   lib,
   ...
 }: let
   hostnames = builtins.attrNames outputs.nixosConfigurations;
+  export-age-key = pkgs.writeShellScriptBin "export-age-key" ''
+    mkdir -p $XDG_CONFIG_HOME/sops/age
+    SSH_TO_AGE_PASSPHRASE=$(systemd-ask-password) ssh-to-age -private-key -i $HOME/.ssh/id_masterkey -o $XDG_CONFIG_HOME/sops/age/keys.txt
+  '';
 in {
+  home.packages = [export-age-key];
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
