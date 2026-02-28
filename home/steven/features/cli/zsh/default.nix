@@ -21,7 +21,7 @@
       bindkey -v
 
       if [[ -n "$SSH_CONNECTION" ]]; then
-        ZSH_AUTOSUGGEST_DISABLE=1
+        export TERM=xterm-256color
       fi
 
       bindkey -M viins " " abbr-expand-and-insert
