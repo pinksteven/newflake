@@ -1,6 +1,6 @@
 {config, ...}: {
   sops.secrets = {
-    "grafana/secret_key".sopsFile = {
+    "grafana/secret_key" = {
       mode = "0600";
       owner = "grafana";
       sopsFile = ../secrets.yaml;

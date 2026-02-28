@@ -1,6 +1,6 @@
 {config, ...}: {
   sops.secrets = {
-    "couchdb/admin".sopsFile = {
+    "couchdb/admin" = {
       mode = "0600";
       owner = config.services.couchdb.user;
       sopsFile = ../secrets.yaml;
