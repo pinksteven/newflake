@@ -20,7 +20,6 @@
     ./services/prometheus.nix
     ./services/radicale.nix
     ./services/syncthing.nix
-    ./services/tailscale-serve.nix
     ./services/wakapi.nix
     ./services/wol.nix
   ];
@@ -30,7 +29,9 @@
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
   };
-  # hardware.graphics.enable = true;
+
+  # Enable tailscale serve to access the services
+  services.tailscale.serve.enable = true;
 
   # Hardware capabilities for home-manager modules
   hardware.capabilities = {

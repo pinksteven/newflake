@@ -24,4 +24,10 @@
       };
     };
   };
+  services.tailscale.serve.services.grafana = {
+    endpoints = {
+      "tcp:2342" = "http://localhost:2342";
+    };
+    advertised = true;
+  };
 }
