@@ -9,5 +9,8 @@
   services.wakapi = {
     enable = true;
     environmentFiles = [config.sops.secrets."wakapi/salt".path];
+    database = {
+      dialect = "sqlite3";
+    };
   };
 }
