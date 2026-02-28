@@ -8,6 +8,6 @@
   };
   services.wakapi = {
     enable = true;
-    passwordSaltFile = config.sops.secrets."wakapi/salt".path;
+    environmentFiles = [config.sops.secrets."wakapi/salt".path];
   };
 }
