@@ -38,7 +38,7 @@
   disko.devices.disk.main = let
     inherit (config.networking) hostName;
   in {
-    device = "/dev/nvme0n1";
+    device = "/dev/nvme1n1";
     type = "disk";
     content = {
       type = "gpt";

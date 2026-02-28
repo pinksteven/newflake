@@ -4,6 +4,7 @@ keys:
   - &hosts:
     - &gwynbleidd age1en3ehn3emgpvt5pegnnf3qx939kh94zxlfq7fjnlfusey293se7qd2nkcr
     - &zireael age1ntxgq09tfa5vcmuanxnddmd50u5e8kqxazwxex5csetyc8h7nv7q9qnswt
+    - &kaermorhen age1ar9ez7xe0pg8g7pcd7wmga0krshxsdm4tl7vu47pvz8kxfn9pycs32ydpr
 creation_rules:
   - path_regex: hosts/common/secrets.yaml$
     key_groups:
@@ -11,7 +12,9 @@ creation_rules:
           - *steven
           - *gwynbleidd
           - *zireael
+          - *kaermorhen
   - path_regex: hosts/kaermorhen/secrets.yaml$
     key_groups:
       - age:
           - *steven
+          - *kaermorhen
