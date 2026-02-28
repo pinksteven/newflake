@@ -20,10 +20,6 @@
     initContent = lib.mkAfter ''
       bindkey -v
 
-      if [[ -n "$SSH_CONNECTION" ]]; then
-        export TERM=xterm-256color
-      fi
-
       bindkey -M viins " " abbr-expand-and-insert
       bindkey -M viins "^ " magic-space
 

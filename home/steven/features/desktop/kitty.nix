@@ -9,12 +9,17 @@
       };
     };
 
-    zsh.initContent = ''
-      if test -n "$KITTY_SHELL_INTEGRATION"; then
-          autoload -Uz -- "$KITTY_INSTALLATION_DIR"/shell-integration/zsh/kitty-integration
-          kitty-integration
-          unfunction kitty-integration
-      fi
-    '';
+    zsh = {
+      shellAliases = {
+        ssh = "kitten ssh";
+      };
+      initContent = ''
+        if test -n "$KITTY_SHELL_INTEGRATION"; then
+            autoload -Uz -- "$KITTY_INSTALLATION_DIR"/shell-integration/zsh/kitty-integration
+            kitty-integration
+            unfunction kitty-integration
+        fi
+      '';
+    };
   };
 }
