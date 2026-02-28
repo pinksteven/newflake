@@ -22,14 +22,15 @@
       };
       server = {
         domain = "localhost";
+        protocol = "https";
         http_addr = "127.0.0.1";
-        http_port = 8080;
+        http_port = 2432;
       };
     };
   };
   services.tailscale.serve.services.grafana = {
     endpoints = {
-      "tcp:443" = "http://localhost:8080";
+      "tcp:443" = "http://localhost:2432";
     };
     advertised = true;
   };
