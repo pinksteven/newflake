@@ -24,16 +24,12 @@
     # ./services/wol.nix
   ];
 
-  networking = {
-    hostName = "kaermorhen";
-    useDHCP = true;
-    dhcpcd.IPv6rs = true;
-  };
+  networking.hostName = "kaermorhen";
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
   };
-  hardware.graphics.enable = true;
+  # hardware.graphics.enable = true;
 
   # Hardware capabilities for home-manager modules
   hardware.capabilities = {
