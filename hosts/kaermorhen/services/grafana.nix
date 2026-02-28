@@ -23,13 +23,13 @@
       server = {
         domain = "localhost";
         http_addr = "127.0.0.1";
-        http_port = 3000;
+        http_port = 8080;
       };
     };
   };
   services.tailscale.serve.services.grafana = {
     endpoints = {
-      "tcp:443" = "http://localhost:3000";
+      "tcp:443" = "http://localhost:8080";
     };
     advertised = true;
   };
