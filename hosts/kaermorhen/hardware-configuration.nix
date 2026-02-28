@@ -18,9 +18,17 @@
   powerManagement.cpuFreqGovernor = "ondemand";
 
   boot = {
-    kernelModules = [];
+    kernelModules = ["kvm-intel"];
     initrd = {
-      availableKernelModules = [];
+      availableKernelModules = [
+        "xhci_pci"
+        "thunderbolt"
+        "vmd"
+        "nvme"
+        "usbhid"
+        "usb_storage"
+        "sd_mod"
+      ];
       kernelModules = [];
     };
     kernelParams = [];

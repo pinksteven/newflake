@@ -40,7 +40,7 @@
 
   startupPrograms = [
     {
-      delay = 0;
+      delay = 5;
       command = ["${lib.getExe config.programs.spicetify.spicedSpotify}"];
     }
   ];

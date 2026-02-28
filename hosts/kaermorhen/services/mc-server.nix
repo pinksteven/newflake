@@ -1,9 +1,13 @@
 {
+  networking.firewall = {
+    allowedUDPPorts = [25565 24454];
+    allowedTCPPorts = [25565];
+  };
   virtualisation.oci-containers.containers.mc-server = {
     image = "itzg/minecraft-server:latest";
     autoStart = true;
 
-    ports = ["25565:25565"];
+    ports = ["25565:25565" "24454:24454"];
     volumes = ["/srv/mc-server:/data"];
 
     environment = {
