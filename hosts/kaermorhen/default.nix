@@ -13,15 +13,16 @@
     ../common/optional/tailscale-exit-node.nix
 
     # Disabled untill the machine gets deployed
-    # ./services/couchdb.nix # For obisidian livesync
-    # ./services/forgejo.nix
-    # ./services/grafana.nix
+    ./services/couchdb.nix # For obisidian livesync
+    ./services/forgejo.nix
+    ./services/grafana.nix
     # ./services/mc-server.nix
-    # ./services/prometheus.nix
-    # ./services/radicale.nix
-    # ./services/tailscale-serve.nix
-    # ./services/wakapi.nix
-    # ./services/wol.nix
+    ./services/prometheus.nix
+    ./services/radicale.nix
+    ./services/syncthing.nix
+    ./services/tailscale-serve.nix
+    ./services/wakapi.nix
+    ./services/wol.nix
   ];
 
   networking.hostName = "kaermorhen";
