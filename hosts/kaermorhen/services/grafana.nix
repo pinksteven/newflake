@@ -14,19 +14,23 @@
   services.grafana = {
     enable = true;
     settings = {
+      analytics.reporting_enabled = false;
       security = {
         secret_key = "\$__file{${config.sops.secrets."grafana/secret_key".path}}";
+        admin_user = "steven";
         admin_password = "\$__file{${config.sops.secrets."grafana/admin_password".path}}";
       };
       server = {
+        protocol = "https";
+        domain = "localhost";
         http_addr = "127.0.0.1";
-        http_port = 2342;
+        http_port = 443;
       };
     };
   };
   services.tailscale.serve.services.grafana = {
     endpoints = {
-      "tcp:2342" = "http://localhost:2342";
+      "tcp:443" = "https://localhost:443";
     };
     advertised = true;
   };
