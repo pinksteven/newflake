@@ -21,16 +21,15 @@
         admin_password = "\$__file{${config.sops.secrets."grafana/admin_password".path}}";
       };
       server = {
-        protocol = "https";
         domain = "localhost";
         http_addr = "127.0.0.1";
-        http_port = 443;
+        http_port = 3000;
       };
     };
   };
   services.tailscale.serve.services.grafana = {
     endpoints = {
-      "tcp:443" = "https://localhost:443";
+      "tcp:443" = "http://localhost:3000";
     };
     advertised = true;
   };
