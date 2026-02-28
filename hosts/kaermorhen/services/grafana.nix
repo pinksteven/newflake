@@ -27,10 +27,4 @@
       };
     };
   };
-  services.tailscale.serve.services.grafana = {
-    endpoints = {
-      "tcp:443" = "http://127.0.0.1:2432";
-    };
-    advertised = true;
-  };
 }

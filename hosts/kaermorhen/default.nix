@@ -30,9 +30,6 @@
     kernelPackages = pkgs.linuxPackages_latest;
   };
 
-  # Enable tailscale serve to access the services
-  services.tailscale.serve.enable = true;
-
   # Hardware capabilities for home-manager modules
   hardware.capabilities = {
     hasBattery = false;
