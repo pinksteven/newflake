@@ -20,6 +20,8 @@ in {
       # Let WAYLAND_DISPLAY be forwarded
       AcceptEnv = ["WAYLAND_DISPLAY"];
       X11Forwarding = true;
+      X11UseLocalhost = true;
+      X11DisplayOffset = 10;
     };
 
     hostKeys = [
