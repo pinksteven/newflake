@@ -12,5 +12,15 @@
     database = {
       dialect = "sqlite3";
     };
+    settings = {
+      app = {
+        leaderboard_enabled = false;
+      };
+      security = {
+        allow_signup = false;
+        invite_codes = true;
+        disable_frontpage = true;
+      };
+    };
   };
 }
