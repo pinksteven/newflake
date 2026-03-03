@@ -38,8 +38,8 @@ in {
         system = "x86_64-linux";
         sshKey = "/persist/etc/ssh/ssh_host_ed25519_key";
         protocol = "ssh-ng";
-        maxJobs = 8;
-        speedFactor = 10;
+        maxJobs = 4;
+        speedFactor = 20;
         supportedFeatures = ["nixos-test" "kvm" "big-parallel"];
       }
     ];
