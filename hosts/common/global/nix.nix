@@ -10,11 +10,10 @@ in {
   nix = {
     package = pkgs.lixPackageSets.latest.lix;
     settings = {
-      substituters =
-        []
-        ++ lib.optionals (config.networking.hostName != "kaermorhen") ["ssh-ng://kaermorhen"];
+      extra-substituters = [];
       trusted-public-keys = [];
 
+      max-jobs = lib.mkIf (config.networking.hostName != "kaermorhen") 1;
       trusted-users = ["root" "@wheel" "@builders"];
       auto-optimise-store = lib.mkDefault true;
       experimental-features = [
@@ -31,13 +30,6 @@ in {
     optimise = {
       automatic = true;
     };
-    sshServe = lib.mkIf (config.networking.hostName == "kaermorhen") {
-      enable = true;
-      protocol = "ssh-ng";
-      keys = builtins.map (hostname:
-        lib.removeSuffix "\n" (builtins.readFile ../../${hostname}/ssh_host_ed25519_key.pub))
-      (builtins.filter (x: x != "kaermorhen") hosts);
-    };
     distributedBuilds = lib.mkIf (config.networking.hostName != "kaermorhen") true;
     buildMachines = lib.mkIf (config.networking.hostName != "kaermorhen") [
       {
@@ -46,6 +38,8 @@ in {
         system = "x86_64-linux";
         sshKey = "/persist/etc/ssh/ssh_host_ed25519_key";
         protocol = "ssh-ng";
+        maxJobs = 8;
+        speedFactor = 10;
         supportedFeatures = ["nixos-test" "kvm" "big-parallel"];
       }
     ];
