@@ -10,10 +10,12 @@ in {
   nix = {
     package = pkgs.lixPackageSets.latest.lix;
     settings = {
-      substituters = [] ++ lib.optionals (config.networking.hostName != "kaermorhen") ["kaermorhen"];
+      substituters =
+        []
+        ++ lib.optionals (config.networking.hostName != "kaermorhen") ["ssh-ng://nix-ssh@kaermorhen"];
       trusted-public-keys = [];
 
-      trusted-users = ["root" "@wheel"];
+      trusted-users = ["root" "@wheel" "@builders"];
       auto-optimise-store = lib.mkDefault true;
       experimental-features = [
         "nix-command"
@@ -42,7 +44,7 @@ in {
     buildMachines = lib.mkIf (config.networking.hostName != "kaermorhen") [
       {
         hostName = "kaermorhen";
-        sshUser = "steven";
+        sshUser = "builder";
         system = "x86_64-linux";
         sshKey = "/persist/etc/ssh/ssh_host_ed25519_key";
         protocol = "ssh-ng";
@@ -54,4 +56,12 @@ in {
     '';
   };
   programs.nix-ld.enable = true;
+  users.groups.builders = {};
+  users.users.builder = lib.mkIf (config.networking.hostName == "kaermorhen") {
+    description = "Account for remote building";
+    isSystemUser = true;
+    group = "builders";
+    shell = pkgs.bashInteractive;
+    openssh.authorizedKeys.keyFiles = builtins.map (hostname: ../../${hostname}/ssh_host_ed25519_key.pub) hosts;
+  };
 }
