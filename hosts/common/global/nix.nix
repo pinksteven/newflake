@@ -10,7 +10,7 @@ in {
   nix = {
     package = pkgs.lixPackageSets.latest.lix;
     settings = {
-      substituters = [] ++ lib.optionals (config.networking.hostName != "kaermorhen") "kaermorhen";
+      substituters = [] ++ lib.optionals (config.networking.hostName != "kaermorhen") ["kaermorhen"];
       trusted-public-keys = [];
 
       trusted-users = ["root" "@wheel"];
