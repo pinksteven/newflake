@@ -10,13 +10,7 @@ in {
   nix = {
     package = pkgs.lixPackageSets.latest.lix;
     settings = {
-      substituters = [
-        (
-          if (config.networking.hostName != "kaermorhen")
-          then "ssh-ng://kaermorhen"
-          else null
-        )
-      ];
+      substituters = [] ++ lib.optionals (config.networking.hostName != "kaermorhen") "kaermorhen";
       trusted-public-keys = [];
 
       trusted-users = ["root" "@wheel"];
