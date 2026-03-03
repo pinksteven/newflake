@@ -12,7 +12,7 @@ in {
     settings = {
       substituters =
         []
-        ++ lib.optionals (config.networking.hostName != "kaermorhen") ["ssh-ng://nix-ssh@kaermorhen"];
+        ++ lib.optionals (config.networking.hostName != "kaermorhen") ["ssh-ng://kaermorhen"];
       trusted-public-keys = [];
 
       trusted-users = ["root" "@wheel" "@builders"];
@@ -34,11 +34,9 @@ in {
     sshServe = lib.mkIf (config.networking.hostName == "kaermorhen") {
       enable = true;
       protocol = "ssh-ng";
-      keys = builtins.filter (x: x != null) (builtins.map (hostname:
-        if hostname != "kaermorhen"
-        then (builtins.readFile ../../${hostname}/ssh_host_ed25519_key.pub)
-        else null)
-      hosts);
+      keys = builtins.map (hostname:
+        lib.removeSuffix "\n" (builtins.readFile ../../${hostname}/ssh_host_ed25519_key.pub))
+      (builtins.filter (x: x != "kaermorhen") hosts);
     };
     distributedBuilds = lib.mkIf (config.networking.hostName != "kaermorhen") true;
     buildMachines = lib.mkIf (config.networking.hostName != "kaermorhen") [
