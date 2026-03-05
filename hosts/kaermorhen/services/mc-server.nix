@@ -29,7 +29,7 @@
       ENABLE_WHITELIST = "true";
       VANILLATWEAKS_SHARECODE = "e3C092\nwkxjVD";
       ALLOW_FLIGHT = "true";
-      RCON_PASSWORD_FILE = config.sops.secrets."mc-server/rcon_password".path;
+      RCON_PASSWORD_FILE = "/data/rcon_password";
     };
 
     extraOptions = [
