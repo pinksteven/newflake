@@ -19,6 +19,7 @@
     environment = {
       EULA = "TRUE";
       TYPE = "NEOFORGE";
+      VERSION = "1.21.1";
       MEMORY = "8192M";
       MAX_PLAYERS = "10";
       USE_MEOWICE_FLAGS = "true";
