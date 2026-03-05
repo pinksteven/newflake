@@ -1,18 +1,24 @@
-{
+{config, ...}: {
+  sops.secrets = {
+    "mc-server/rcon_password" = {
+      sopsFile = ../secrets.yaml;
+    };
+  };
   networking.firewall = {
     allowedUDPPorts = [25565 24454];
     allowedTCPPorts = [25565];
   };
   virtualisation.oci-containers.containers.mc-server = {
     image = "itzg/minecraft-server:latest";
+    pull = "newer";
     autoStart = true;
 
-    ports = ["25565:25565" "24454:24454"];
     volumes = ["/srv/mc-server:/data"];
+    ports = ["25565:25565" "24454:24454"];
 
     environment = {
       EULA = "TRUE";
-      TYPE = "MODRINTH";
+      TYPE = "NEOFORGE";
       MEMORY = "8192M";
       MAX_PLAYERS = "10";
       USE_MEOWICE_FLAGS = "true";
@@ -21,14 +27,15 @@
       SPAWN_PROTECTION = "0";
       REGION_FILE_COMPRESSION = "lz4";
       ENABLE_WHITELIST = "true";
+      VANILLATWEAKS_SHARECODE = "e3C092\nwkxjVD";
       ALLOW_FLIGHT = "true";
-      RCON_PASSWORD = "";
+      RCON_PASSWORD_FILE = config.sops.secrets."mc-server/rcon_password".path;
     };
 
     extraOptions = [
       "--cpus=4"
       "--cpu-shares=512"
-      "--memory=8g"
+      "--memory=9g"
     ];
   };
 }
