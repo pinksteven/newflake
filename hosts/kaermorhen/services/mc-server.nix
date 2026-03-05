@@ -29,8 +29,8 @@
       ENABLE_WHITELIST = "true";
       VANILLATWEAKS_SHARECODE = "e3C092\nwkxjVD";
       ALLOW_FLIGHT = "true";
-      RCON_PASSWORD_FILE = "/data/rcon_password";
     };
+    environmentFiles = [config.sops.secrets."mc-server/rcon_password".path];
 
     extraOptions = [
       "--cpus=4"
