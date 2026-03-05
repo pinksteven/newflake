@@ -36,6 +36,7 @@
       "--cpus=4"
       "--cpu-shares=512"
       "--memory=9g"
+      "--no-healthcheck"
     ];
   };
 }
