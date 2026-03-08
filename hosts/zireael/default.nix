@@ -29,9 +29,6 @@
 
   powerManagement.powertop.enable = true;
   programs = {
-    light = {
-      enable = true;
-    };
     dconf.enable = true;
   };
   environment.systemPackages = [pkgs.brightnessctl];
