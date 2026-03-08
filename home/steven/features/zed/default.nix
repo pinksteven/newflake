@@ -48,7 +48,6 @@
         ".config/github-copilot"
         ".local/share/zed"
       ];
-      files = [".wakatime.cfg"];
     };
   };
 }
