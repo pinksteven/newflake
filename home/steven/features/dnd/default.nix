@@ -1,13 +1,14 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    loreforge
     dungeondraft
+    wonderdraft
   ];
 
   home.persistence."/persist" = {
     directories = [
       ".config/lore-forge"
       ".local/share/Dungeondraft"
+      ".local/share/Wonderdraft"
     ];
   };
 }

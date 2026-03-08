@@ -4,7 +4,7 @@
   ...
 }: {
   home = {
-    packages = [pkgs.nvim-pkg];
+    packages = [pkgs.inputs.stevenvim];
     sessionVariables.EDITOR = lib.mkDefault "nvim";
     persistence."/persist" = {
       files = [".wakatime.cfg"];

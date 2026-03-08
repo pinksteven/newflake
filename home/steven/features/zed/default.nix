@@ -41,7 +41,7 @@
 
   home = {
     packages = with pkgs; [cloc];
-    sessionVariables.EDITOR = "zeditor";
+    # sessionVariables.EDITOR = "zeditor";
     persistence."/persist" = {
       directories = [
         ".config/zed"

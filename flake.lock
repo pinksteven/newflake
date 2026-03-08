@@ -581,6 +581,22 @@
         "type": "github"
       }
     },
+    "plugins-neovim-session-manager": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1769416169,
+        "narHash": "sha256-d7lXPIy6qJDPvFk8twwkqKUWI205HfTqXMspnVRkng0=",
+        "owner": "Shatur",
+        "repo": "neovim-session-manager",
+        "rev": "89d253a6c68af60b49570044591d5b8701866601",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Shatur",
+        "repo": "neovim-session-manager",
+        "type": "github"
+      }
+    },
     "pre-commit": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -665,6 +681,7 @@
         "preload-ng": "preload-ng",
         "sops-nix": "sops-nix",
         "spicetify": "spicetify",
+        "stevenvim": "stevenvim",
         "stylix": "stylix",
         "systems": "systems_5",
         "wallpapers": "wallpapers"
@@ -729,6 +746,31 @@
       "original": {
         "owner": "Gerg-L",
         "repo": "spicetify-nix",
+        "type": "github"
+      }
+    },
+    "stevenvim": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "plugins-neovim-session-manager": "plugins-neovim-session-manager",
+        "wrappers": "wrappers"
+      },
+      "locked": {
+        "lastModified": 1771418790,
+        "narHash": "sha256-2IWR7FfKdDbXa7lieVZBhVM4raqP8dLD3F/PD2uwicU=",
+        "owner": "pinksteven",
+        "repo": "stevenvim",
+        "rev": "447825c9d0871b6ea1482f36aa9449b2dba6079b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pinksteven",
+        "repo": "stevenvim",
         "type": "github"
       }
     },
@@ -941,6 +983,27 @@
       "original": {
         "owner": "pinksteven",
         "repo": "wallpapers",
+        "type": "github"
+      }
+    },
+    "wrappers": {
+      "inputs": {
+        "nixpkgs": [
+          "stevenvim",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1770519351,
+        "narHash": "sha256-Tsnoa5e0oUDrXk6wgvzZ3jQ898yaNcmbYD+5dEL4Nqg=",
+        "owner": "BirdeeHub",
+        "repo": "nix-wrapper-modules",
+        "rev": "fe93d0c1e2f736ec8cc281bf82cc5dc8b25abe29",
+        "type": "github"
+      },
+      "original": {
+        "owner": "BirdeeHub",
+        "repo": "nix-wrapper-modules",
         "type": "github"
       }
     }
