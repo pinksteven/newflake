@@ -34,8 +34,7 @@
     environmentFiles = [config.sops.secrets."mc-server/rcon_password".path];
 
     extraOptions = [
-      "--cpus=4"
-      "--cpu-shares=512"
+      "--cpu-shares=256"
       "--memory=9g"
       "--no-healthcheck"
     ];
