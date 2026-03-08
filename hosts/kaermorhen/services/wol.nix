@@ -23,5 +23,6 @@ in {
   };
   environment.systemPackages = with pkgs; [
     wakeonlan
+    wol
   ];
 }
