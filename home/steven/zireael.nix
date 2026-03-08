@@ -17,5 +17,5 @@
     };
   };
 
-  wallpaper = "${inputs.wallpapers}/" + "girl.jpg";
+  wallpaper = "${inputs.wallpapers}/" + "coffee.jpg";
 }
