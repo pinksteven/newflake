@@ -170,7 +170,10 @@
     };
   };
 
-  xdg.configFile."DankMaterialShell/.firstlaunch".text = '''';
+  home.persistence."/persist" = {
+    directories = [".config/DankMaterialShell"];
+  };
+
   xdg.configFile."DankMaterialShell/stylix.json".text = let
     colors = config.lib.stylix.colors.withHashtag;
   in
