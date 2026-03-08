@@ -26,7 +26,7 @@
     };
   };
 
-  wallpaper = "${inputs.wallpapers}/" + "purple-girl.jpg";
+  wallpaper = "${inputs.wallpapers}/" + "purple-girl.png";
 
   fontProfiles = {
     monospace = {
