@@ -4,10 +4,9 @@
   ...
 }: {
   home = {
-    packages = [pkgs.inputs.stevenvim.default];
+    packages = [pkgs.neovim];
     sessionVariables.EDITOR = lib.mkDefault "nvim";
     persistence."/persist" = {
-      files = [".wakatime.cfg"];
       directories = [".local/share/nvim/site/spell"]; # Don't re-download dictionaries every time
     };
   };

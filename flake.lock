@@ -326,6 +326,27 @@
         "type": "github"
       }
     },
+    "gitignore_3": {
+      "inputs": {
+        "nixpkgs": [
+          "wakatime-ls",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1762808025,
+        "narHash": "sha256-XmjITeZNMTQXGhhww6ed/Wacy2KzD6svioyCX7pkUu4=",
+        "owner": "hercules-ci",
+        "repo": "gitignore.nix",
+        "rev": "cb5e3fdca1de58ccbc3ef53de65bd372b48f567c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "gitignore.nix",
+        "type": "github"
+      }
+    },
     "gnome-shell": {
       "flake": false,
       "locked": {
@@ -581,22 +602,6 @@
         "type": "github"
       }
     },
-    "plugins-neovim-session-manager": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1769416169,
-        "narHash": "sha256-d7lXPIy6qJDPvFk8twwkqKUWI205HfTqXMspnVRkng0=",
-        "owner": "Shatur",
-        "repo": "neovim-session-manager",
-        "rev": "89d253a6c68af60b49570044591d5b8701866601",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Shatur",
-        "repo": "neovim-session-manager",
-        "type": "github"
-      }
-    },
     "pre-commit": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -681,9 +686,9 @@
         "preload-ng": "preload-ng",
         "sops-nix": "sops-nix",
         "spicetify": "spicetify",
-        "stevenvim": "stevenvim",
         "stylix": "stylix",
         "systems": "systems_5",
+        "wakatime-ls": "wakatime-ls",
         "wallpapers": "wallpapers"
       }
     },
@@ -700,6 +705,27 @@
         "owner": "oxalica",
         "repo": "rust-overlay",
         "rev": "769156779b41e8787a46ca3d7d76443aaf68be6f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "rust-overlay_2": {
+      "inputs": {
+        "nixpkgs": [
+          "wakatime-ls",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1769742225,
+        "narHash": "sha256-roSD/OJ3x9nF+Dxr+/bLClX3U8FP9EkCQIFpzxKjSUM=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "bcdd8d37594f0e201639f55889c01c827baf5c75",
         "type": "github"
       },
       "original": {
@@ -746,31 +772,6 @@
       "original": {
         "owner": "Gerg-L",
         "repo": "spicetify-nix",
-        "type": "github"
-      }
-    },
-    "stevenvim": {
-      "inputs": {
-        "flake-parts": [
-          "flake-parts"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "plugins-neovim-session-manager": "plugins-neovim-session-manager",
-        "wrappers": "wrappers"
-      },
-      "locked": {
-        "lastModified": 1771418790,
-        "narHash": "sha256-2IWR7FfKdDbXa7lieVZBhVM4raqP8dLD3F/PD2uwicU=",
-        "owner": "pinksteven",
-        "repo": "stevenvim",
-        "rev": "447825c9d0871b6ea1482f36aa9449b2dba6079b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "pinksteven",
-        "repo": "stevenvim",
         "type": "github"
       }
     },
@@ -970,6 +971,28 @@
         "type": "github"
       }
     },
+    "wakatime-ls": {
+      "inputs": {
+        "gitignore": "gitignore_3",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "rust-overlay": "rust-overlay_2"
+      },
+      "locked": {
+        "lastModified": 1770482328,
+        "narHash": "sha256-IFhqBGgL4sXU6Sv1jWmLc3MN/uiHBCET71N+sC33aro=",
+        "owner": "mrnossiom",
+        "repo": "wakatime-ls",
+        "rev": "c2dc1e1825f59cd4e7876b8d7573905854aff231",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mrnossiom",
+        "repo": "wakatime-ls",
+        "type": "github"
+      }
+    },
     "wallpapers": {
       "flake": false,
       "locked": {
@@ -983,27 +1006,6 @@
       "original": {
         "owner": "pinksteven",
         "repo": "wallpapers",
-        "type": "github"
-      }
-    },
-    "wrappers": {
-      "inputs": {
-        "nixpkgs": [
-          "stevenvim",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1770519351,
-        "narHash": "sha256-Tsnoa5e0oUDrXk6wgvzZ3jQ898yaNcmbYD+5dEL4Nqg=",
-        "owner": "BirdeeHub",
-        "repo": "nix-wrapper-modules",
-        "rev": "fe93d0c1e2f736ec8cc281bf82cc5dc8b25abe29",
-        "type": "github"
-      },
-      "original": {
-        "owner": "BirdeeHub",
-        "repo": "nix-wrapper-modules",
         "type": "github"
       }
     }
