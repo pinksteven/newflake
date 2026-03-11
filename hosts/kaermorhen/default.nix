@@ -11,8 +11,8 @@
     ../common/global
     ../common/users/steven
     ../common/optional/tailscale-exit-node.nix
+    ../common/optional/builder.nix
 
-    # Disabled untill the machine gets deployed
     ./services/couchdb.nix # For obisidian livesync
     ./services/forgejo.nix
     ./services/grafana.nix

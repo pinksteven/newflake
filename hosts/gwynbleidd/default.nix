@@ -11,6 +11,7 @@
     ../common/global
     ../common/users/steven
 
+    ../common/optional/builder.nix
     ../common/optional/gaming.nix
     ../common/optional/greetd.nix
     ../common/optional/kdeconnect.nix

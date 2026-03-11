@@ -5,7 +5,27 @@
   pkgs,
   ...
 }: let
-  hosts = lib.attrNames outputs.nixosConfigurations;
+  hosts = outputs.nixosConfigurations;
+
+  # All host names where `config.builder = true`
+  builderHostNames =
+    lib.filter
+    (name: (hosts.${name}.config.builder.enable or false))
+    (lib.attrNames outputs.nixosConfigurations);
+
+  # Build machine entries for all builder hosts except self
+  buildMachinesForThisHost =
+    map (name: {
+      hostName = name;
+      sshUser = "builder";
+      system = hosts.${name}.pkgs.stdenv.hostPlatform.system;
+      sshKey = "/persist/etc/ssh/ssh_host_ed25519_key";
+      protocol = "ssh-ng";
+      maxJobs = hosts.${name}.config.builder.maxJobs;
+      speedFactor = hosts.${name}.config.builder.speedFactor;
+      supportedFeatures = ["nixos-test" "kvm" "big-parallel"];
+    })
+    (lib.filter (name: name != config.networking.hostName) builderHostNames);
 in {
   nix = {
     package = pkgs.lixPackageSets.latest.lix;
@@ -13,7 +33,7 @@ in {
       extra-substituters = [];
       trusted-public-keys = [];
 
-      max-jobs = lib.mkIf (config.networking.hostName != "kaermorhen") 1;
+      max-jobs = lib.mkDefault 1;
       trusted-users = ["root" "@wheel" "@builders"];
       auto-optimise-store = lib.mkDefault true;
       experimental-features = [
@@ -30,30 +50,11 @@ in {
     optimise = {
       automatic = true;
     };
-    distributedBuilds = lib.mkIf (config.networking.hostName != "kaermorhen") true;
-    buildMachines = lib.mkIf (config.networking.hostName != "kaermorhen") [
-      {
-        hostName = "kaermorhen";
-        sshUser = "builder";
-        system = "x86_64-linux";
-        sshKey = "/persist/etc/ssh/ssh_host_ed25519_key";
-        protocol = "ssh-ng";
-        maxJobs = 4;
-        speedFactor = 20;
-        supportedFeatures = ["nixos-test" "kvm" "big-parallel"];
-      }
-    ];
-    extraOptions = lib.mkIf (config.networking.hostName != "kaermorhen") ''
+    distributedBuilds = lib.mkDefault true;
+    buildMachines = buildMachinesForThisHost;
+    extraOptions = ''
       builders-use-substitutes = true
     '';
   };
   programs.nix-ld.enable = true;
-  users.groups.builders = {};
-  users.users.builder = lib.mkIf (config.networking.hostName == "kaermorhen") {
-    description = "Account for remote building";
-    isSystemUser = true;
-    group = "builders";
-    shell = pkgs.bashInteractive;
-    openssh.authorizedKeys.keyFiles = builtins.map (hostname: ../../${hostname}/ssh_host_ed25519_key.pub) hosts;
-  };
 }
