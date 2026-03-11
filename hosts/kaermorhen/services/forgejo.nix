@@ -2,6 +2,10 @@
   services.forgejo = {
     enable = true;
     lfs.enable = true;
-    dump.type = "tar.gz";
+    settings = {
+      server = {
+        HTTP_PORT = 2137;
+      };
+    };
   };
 }
