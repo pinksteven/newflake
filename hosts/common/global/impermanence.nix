@@ -19,6 +19,7 @@
       ];
       directories = [
         "/var/lib/fprint"
+        "/var/lib/power-profiles-daemon"
         "/var/lib/systemd"
         "/var/lib/nixos"
         "/var/log"

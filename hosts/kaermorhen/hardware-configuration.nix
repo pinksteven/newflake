@@ -15,7 +15,12 @@
   ];
   hardware.cpu.intel.updateMicrocode = true;
   services.preload-ng.enable = true;
-  powerManagement.cpuFreqGovernor = "ondemand";
+  powerManagement.cpuFreqGovernor = "performance";
+  services.scx = {
+    enable = true;
+    scheduler = "scx_flash";
+    extraArgs = ["-m all" "-s" "20000" "-S" "1000" "-I" "-1" "-D" "-L"];
+  };
 
   boot = {
     kernelModules = ["kvm-intel"];

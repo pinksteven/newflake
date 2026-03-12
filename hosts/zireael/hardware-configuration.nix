@@ -17,7 +17,12 @@
   ];
   hardware.cpu.amd.updateMicrocode = true;
   services.preload-ng.enable = true;
-  powerManagement.cpuFreqGovernor = "ondemand";
+  powerManagement.cpuFreqGovernor = "schedutil";
+  services.scx = {
+    enable = true;
+    scheduler = "scx_lavd";
+    extraArgs = ["--autopower"];
+  };
 
   boot = {
     kernelModules = ["kvm-amd"];

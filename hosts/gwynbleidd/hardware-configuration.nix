@@ -18,7 +18,12 @@
     ../common/optional/ephemeral-btrfs.nix
   ];
   hardware.cpu.amd.updateMicrocode = true;
-  powerManagement.cpuFreqGovernor = "ondemand";
+  powerManagement.cpuFreqGovernor = "schedutil";
+  services.scx = {
+    enable = true;
+    scheduler = "scx_lavd";
+    extraArgs = ["--performance"];
+  };
 
   services = {
     power-profiles-daemon.enable = true;
