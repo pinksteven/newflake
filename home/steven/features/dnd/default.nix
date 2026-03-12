@@ -6,7 +6,6 @@
 
   home.persistence."/persist" = {
     directories = [
-      ".config/lore-forge"
       ".local/share/Dungeondraft"
       ".local/share/Wonderdraft"
     ];

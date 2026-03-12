@@ -1,8 +1,8 @@
 {
   services.udiskie = {
     enable = true;
-    notify = true;
-    automount = true;
+    notify = false;
+    automount = false;
     tray = "never";
   };
 }

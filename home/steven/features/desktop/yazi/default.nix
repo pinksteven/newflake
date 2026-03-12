@@ -8,9 +8,9 @@
 
   programs.yazi = {
     enable = true;
-    package = pkgs.yazi.override {
-      _7zz = pkgs._7zz.override {enableUnfree = true;};
-    };
+    # package = pkgs.yazi.override {
+    #   _7zz = pkgs._7zz.override {enableUnfree = true;};
+    # };
     enableZshIntegration = true;
     shellWrapperName = "y";
 
@@ -48,7 +48,7 @@
     plugins = {
       chmod = pkgs.yaziPlugins.chmod;
       full-border = pkgs.yaziPlugins.full-border;
-      max-preview = pkgs.yaziPlugins.toggle-pane;
+      toggle-pane = pkgs.yaziPlugins.toggle-pane;
       mount = pkgs.yaziPlugins.mount;
       git = pkgs.yaziPlugins.git;
       lazygit = pkgs.yaziPlugins.lazygit;
@@ -56,12 +56,15 @@
       starship = pkgs.yaziPlugins.starship;
       piper = pkgs.yaziPlugins.piper;
       wl-clipboard = pkgs.yaziPlugins.wl-clipboard;
+      recycle-bin = pkgs.yaziPlugins.recycle-bin;
+      compress = pkgs.yaziPlugins.compress;
     };
 
     initLua = ''
       require("full-border"):setup()
       require("git"):setup()
       require("starship"):setup()
+      require("recycle-bin"):setup()
 
       if os.getenv("NVIM") then
       	require("toggle-pane"):entry("min-preview")
@@ -70,20 +73,12 @@
   };
 
   home.packages = with pkgs; [
-    ffmpegthumbnailer
-    jq
-    poppler
-    fd
-    ripgrep
-    fzf
-    zoxide
-    imagemagick
-    exiftool
-
-    # For custom settings and plugins
-    eza
     dragon-drop
     wl-clipboard
     glow
+    rich-cli
+    trash-cli
+    # Want this in path as well
+    _7zz
   ];
 }

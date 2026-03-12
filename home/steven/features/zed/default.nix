@@ -15,13 +15,6 @@
           command = "alejandra";
           arguments = ["--quiet" "--"];
         };
-        LaTeX = {
-          language_servers = ["texpresso-lsp" "texlab"];
-        };
-      };
-
-      lsp = {
-        texlab.settings.texlab.build.onSave = false;
       };
     };
     # userTasks = {};
@@ -38,7 +31,7 @@
 
       # MCP servers
       "mcp-server-context7"
-      # "mcp-server-github" waiting untill pat can be stored not in settings.json
+      # "mcp-server-github" waiting until pat can be stored not in settings.json
 
       # Snippets
       "snippets"
@@ -47,14 +40,11 @@
       # Utils
       "wakatime"
       "typos"
-      "texpresso"
     ];
     extraPackages = with pkgs; [
       nixd
       nil
       alejandra
-      texpresso
-      pkgs.inputs.wakatime-ls.default
     ];
   };
 
