@@ -19,7 +19,7 @@
   services.scx = {
     enable = true;
     scheduler = "scx_flash";
-    extraArgs = ["--primary-domain all" "-s 20000" "-S 1000" "-I -1" "-D" "-L"];
+    extraArgs = ["-s 20000" "-S 1000" "-I -1" "-D" "-L"];
   };
 
   boot = {
