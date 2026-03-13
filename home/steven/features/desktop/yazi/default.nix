@@ -4,6 +4,7 @@
     ./fetchers.nix
     ./open.nix
     ./previewers.nix
+    ./vfs.nix
   ];
 
   programs.yazi = {
