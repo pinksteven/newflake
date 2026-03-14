@@ -14,7 +14,7 @@
     autoStart = true;
 
     volumes = ["/srv/mc-server:/data"];
-    ports = ["25565:25565" "24454:24454"];
+    ports = ["25565:25565" "24454:24454/udp"];
 
     environment = {
       EULA = "TRUE";
@@ -30,6 +30,7 @@
       ENABLE_WHITELIST = "true";
       VANILLATWEAKS_SHARECODE = "e3C092\nwkxjVD";
       ALLOW_FLIGHT = "true";
+      MOTD = "\u00a7l   \u00a7r           \u00a76\u00a7l\u00a7kbuh\u00a7d Greetings traveler! \u00a76\u00a7l\u00a7kbuh\u00a7r\n\u00a7l   \u00a7r @me on discord for whitelist if you can't join";
     };
     environmentFiles = [config.sops.secrets."mc-server/rcon_password".path];
 
