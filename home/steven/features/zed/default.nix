@@ -48,6 +48,12 @@
     ];
   };
 
+  stylix.targets.zed = {
+    enable = true;
+    colors.enable = true;
+    fonts.enable = true;
+  };
+
   home = {
     packages = with pkgs; [cloc];
     sessionVariables.EDITOR = "zeditor";
