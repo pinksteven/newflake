@@ -16,6 +16,11 @@
           arguments = ["--quiet" "--"];
         };
       };
+      lsp = {
+        nil.settings = {
+          nix.flake.autoArchive = true;
+        };
+      };
     };
     # userTasks = {};
     # userKeymaps = {};

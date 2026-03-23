@@ -34,7 +34,7 @@ in {
         extra-substituters = ["https://cache.nixos-cuda.org"];
         extra-trusted-public-keys = ["cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M="];
 
-        max-jobs = lib.mkDefault 1;
+        max-jobs = lib.mkDefault 2;
         trusted-users = ["root" "@wheel" "@builders"];
         auto-optimise-store = lib.mkDefault true;
         experimental-features = [
