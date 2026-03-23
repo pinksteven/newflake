@@ -13,6 +13,7 @@
 
   programs.regreet = {
     enable = true;
+    cageArgs = ["-s" "-d" "-m" "last"];
   };
 
   environment.persistence = {
