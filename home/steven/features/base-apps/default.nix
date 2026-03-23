@@ -7,6 +7,7 @@
     ./obsidian.nix
     ./spicetify.nix
     ./syncthing.nix
+    ./zen-browser.nix
   ];
 
   home.packages = with pkgs; [
