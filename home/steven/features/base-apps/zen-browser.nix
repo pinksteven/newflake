@@ -41,6 +41,8 @@
         "media.hardware-video-decoding.force-enabled" = true;
         "media.rdd-ffmpeg.enabled" = lib.mkIf (config.home.sessionVariables.LIBVA_DRIVER_NAME == "nvidia") true;
         "gfx.x11-egl.force-enabled" = lib.mkIf (config.home.sessionVariables.LIBVA_DRIVER_NAME == "nvidia") true;
+        # Auto enable extensions
+        "extensions.autoDisableScopes" = 0;
       };
       extensions = {
         force = true;
@@ -49,7 +51,7 @@
           return-youtube-dislikes
           sponsorblock
           istilldontcareaboutcookies
-          qwant-tracker-blocker
+          qwant-search
         ];
       };
       search = {

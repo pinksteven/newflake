@@ -9,7 +9,7 @@
         Ctrl+Mod+R { maximize-column; }
         Ctrl+Mod+Right { consume-or-expel-window-right; }
         F11 { fullscreen-window; }
-        Mod+B { spawn "firefox"; }
+        Mod+B { spawn "zen-beta"; }
         Mod+Down { focus-window-down; }
         Mod+F { spawn "kitty" "--hold=yes" "yazi"; }
         Mod+grave { spawn "kitty"; }

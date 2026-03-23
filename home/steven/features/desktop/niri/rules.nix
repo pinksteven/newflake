@@ -28,10 +28,10 @@ in {
       match title="[Ss]ave [Aa]s"
       match title="[Ll]ogin"
       match title="[Aa]uth"
-      match app-id="^firefox$" title="Downloads"
-      match app-id="^firefox$" title="Bookmarks"
-      match app-id="^firefox$" title="History"
-      match app-id="^firefox$" title="Extension"
+      match app-id="^zen-beta$" title="Downloads"
+      match app-id="^zen-beta$" title="Bookmarks"
+      match app-id="^zen-beta$" title="History"
+      match app-id="^zen-beta$" title="Extension"
 
       open-floating true
     }
