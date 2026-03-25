@@ -35,10 +35,12 @@
       isDefault = true;
       settings = {
         "browser.tabs.closeWindowWithLastTab" = false;
-        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         "widget.use-xdg-desktop-portal.file-picker" = 1;
+
+        # Hardware acceleration
         "media.ffmpeg.vaapi.enabled" = true;
         "media.hardware-video-decoding.force-enabled" = true;
+        "widget.dmabuf.force-enabled" = lib.mkIf (config.home.sessionVariables.LIBVA_DRIVER_NAME == "nvidia") true; # Fix from issue #10555 crahses on nvidia
         "media.rdd-ffmpeg.enabled" = lib.mkIf (config.home.sessionVariables.LIBVA_DRIVER_NAME == "nvidia") true;
         "gfx.x11-egl.force-enabled" = lib.mkIf (config.home.sessionVariables.LIBVA_DRIVER_NAME == "nvidia") true;
         # Auto enable extensions
@@ -51,14 +53,26 @@
           return-youtube-dislikes
           sponsorblock
           istilldontcareaboutcookies
-          qwant-search
         ];
       };
+      mods = [
+        "d8b79d4a-6cba-4495-9ff6-d6d30b0e94fe" # Better Active Tab
+        "81fcd6b3-f014-4796-988f-6c3cb3874db8" # Zen Context Menu
+        "a6335949-4465-4b71-926c-4a52d34bc9c0" # Better Find Bar
+        "72f8f48d-86b9-4487-acea-eb4977b18f21" # Better CtrlTab Panel
+      ];
       search = {
         force = true;
         default = "qwant";
         privateDefault = "qwant";
         engines = {
+          qwant = {
+            name = "Qwant";
+            urls = [
+              {template = "https://www.qwant.com/?q={searchTerms}";}
+            ];
+            icon = "https://about.qwant.com/wp-content/uploads/2021/03/qwant-logo-square.svg";
+          };
           nix-packages = {
             name = "Nix Packages";
             urls = [
