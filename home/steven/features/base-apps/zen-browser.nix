@@ -63,8 +63,7 @@
       ];
       search = {
         force = true;
-        default = "Qwant";
-        privateDefault = "Qwant";
+        default = "qwant";
         engines = {
           qwant = {
             name = "Qwant";
