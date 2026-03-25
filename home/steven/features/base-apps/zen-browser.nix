@@ -63,8 +63,8 @@
       ];
       search = {
         force = true;
-        default = "qwant";
-        privateDefault = "qwant";
+        default = "Qwant";
+        privateDefault = "Qwant";
         engines = {
           qwant = {
             name = "Qwant";
@@ -72,6 +72,7 @@
               {template = "https://www.qwant.com/?q={searchTerms}";}
             ];
             icon = "https://about.qwant.com/wp-content/uploads/2021/03/qwant-logo-square.svg";
+            definedAliases = ["@qw" "@qwant"];
           };
           nix-packages = {
             name = "Nix Packages";
