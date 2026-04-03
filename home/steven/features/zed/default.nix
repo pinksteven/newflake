@@ -33,6 +33,7 @@
       "qml"
       "basher"
       "neocmake"
+      "zig"
 
       # MCP servers
       "mcp-server-context7"
