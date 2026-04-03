@@ -25,7 +25,7 @@
   };
 
   boot = {
-    kernelModules = ["kvm-amd"];
+    kernelModules = ["kvm-amd" "ntsync"];
     initrd = {
       availableKernelModules = [
         "nvme"

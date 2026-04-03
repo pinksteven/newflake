@@ -32,7 +32,7 @@
   };
 
   boot = {
-    kernelModules = ["kvm-amd"];
+    kernelModules = ["kvm-amd" "ntsync"];
     blacklistedKernelModules = ["nouveau"];
     initrd = {
       availableKernelModules = [
