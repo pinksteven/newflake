@@ -19,6 +19,7 @@
     ../common/optional/quietboot.nix
     # ../common/optional/secure-boot.nix
     ../common/optional/stylix.nix
+    ../common/optional/sunshine.nix
     ../common/optional/wireless.nix
     ../common/optional/xdg-portals.nix
   ];

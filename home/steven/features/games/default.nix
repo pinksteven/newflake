@@ -7,6 +7,7 @@
       ./prism.nix
       ./heroic.nix
       ./steam.nix
+      ./moonlight.nix
     ];
 
   home.persistence."/persist" = {

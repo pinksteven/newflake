@@ -12,7 +12,7 @@
 
   imports = [inputs.nix-gaming.nixosModules.platformOptimizations];
 
-  # Create a small "game-run" wrapper
+  # Create a small "game-run" wrapper (to be replaced with scopebuddy)
   environment.systemPackages = with pkgs; [
     (pkgs.writeShellScriptBin "game-run" ''
       exec ${lib.getExe pkgs.gamescope} ${lib.concatStringsSep " " config.programs.gamescope.args} "$@"
@@ -23,6 +23,7 @@
     gamescope = {
       enable = true;
       capSysNice = true;
+      # To be replaced with scopebuddy
       args = let
         monitor = lib.head (lib.filter (m: m.primary) config.monitors);
       in
