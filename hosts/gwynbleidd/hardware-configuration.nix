@@ -48,7 +48,10 @@
     };
     extraModulePackages = [];
   };
-  networking.useDHCP = lib.mkDefault true;
+  networking = {
+    useDHCP = lib.mkDefault true;
+    interfaces.enp6s0.wakeOnLan.enable = true;
+  };
 
   hardware.nvidia = {
     modesetting.enable = true;
