@@ -8,9 +8,7 @@
     settings = {
       locale = "pl";
       sunshine_name = config.networking.hostName;
-      global_prep_cmd = [
-        # TODO
-      ];
+      global_prep_cmd = ""; # TODO
     };
   };
 }

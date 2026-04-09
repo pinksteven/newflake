@@ -61,7 +61,7 @@ in {
 
     // Equibop settings
     window-rule {
-      match app-id="^equibop$"
+      match app-id="^electron$" title=".*Discord.*"
       open-on-workspace "media"
       open-focused false
       default-column-width { proportion ${

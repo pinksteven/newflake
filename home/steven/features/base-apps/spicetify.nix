@@ -32,7 +32,6 @@
       copyToClipboard
       history
       betterGenres
-      lastfm
       hidePodcasts
       playNext
     ];
