@@ -3,7 +3,26 @@
   lib,
   pkgs,
   ...
-}: {
+}: let
+  greetd-autologin = {
+    inherit (config.services.greetd) settings;
+    initial-session = {
+      user = "steven";
+      command = "niri-session";
+    };
+  };
+  toml = pkgs.formats.toml {};
+  autologin-toml = toml.generate "autologin.toml" greetd-autologin;
+  greetd-toml = toml.generate "greetd.toml" config.services.greetd.settings;
+
+  # This is a hacky way to actually login to graphical session via ssh
+  # So that sunshine can work
+  login-steven = pkgs.writeShellScriptBin "login-steven" ''
+    touch /run/greetd-autologin
+    systemctl restart greetd
+  '';
+in {
+  environment.systemPackages = [login-steven];
   services = {
     greetd.enable = true;
     # When running greetd the assumption is there will be a graphical session
@@ -26,6 +45,19 @@
       }
     ];
   };
+
+  systemd.services.greetd.serviceConfig.ExecStart = lib.mkForce (pkgs.writeShellScript "greetd-wrapper" ''
+    TRIGGER="/run/greetd-autologin"
+
+    if [ -f "$TRIGGER" ]; then
+      echo "Autologin mode"
+      rm "$TRIGGER"
+      exec ${pkgs.greetd}/bin/greetd --config ${autologin-toml}
+    else
+      echo "Normal mode"
+      exec ${pkgs.greetd}/bin/greetd --config ${greetd-toml}
+    fi
+  '');
 
   # Adds Niri option if Niri enabled on any hm user
   services.displayManager.sessionPackages =

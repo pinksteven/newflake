@@ -14,7 +14,6 @@
     ++ (builtins.attrValues outputs.homeManagerModules);
 
   nix = {
-    package = lib.mkForce pkgs.lixPackageSets.latest.lix;
     settings = {
       experimental-features = [
         "nix-command"
