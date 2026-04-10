@@ -1,8 +1,7 @@
 {
-  inputs,
   lib,
-  pkgs,
   config,
+  osConfig,
   outputs,
   ...
 }: {
@@ -42,18 +41,20 @@
     };
 
     persistence."/persist" = {
-      directories = [
-        "Desktop"
-        "Documents"
-        "Downloads"
-        "Pictures"
-        "Videos"
-        "Sync"
-        ".ssh"
-        ".local/bin"
-        ".local/state/wireplumber"
-        ".local/share/nix" # trusted settings and repl history
-      ];
+      directories =
+        [
+          "Desktop"
+          "Documents"
+          "Downloads"
+          "Pictures"
+          "Videos"
+          "Sync"
+          ".ssh"
+          ".local/bin"
+          ".local/state/wireplumber"
+          ".local/share/nix" # trusted settings and repl history
+        ]
+        ++ lib.optional (osConfig.services.sunshine.enable) ".config/sunshine";
     };
   };
 }
