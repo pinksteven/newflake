@@ -12,8 +12,8 @@
   boot = {
     plymouth = {
       enable = true;
-      theme = "blahaj";
-      themePackages = [pkgs.plymouth-blahaj-theme];
+      theme = "spinner";
+      # themePackages = [pkgs.plymouth-blahaj-theme];
     };
     loader = {
       grub.timeoutStyle = "hidden";

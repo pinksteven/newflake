@@ -5,7 +5,16 @@
   ...
 }: {
   services = {
-    greetd.enable = true;
+    greetd = {
+      enable = true;
+      settings = {
+        # Enable autologin on the the desktop
+        initial_session = lib.mkIf (config.networking.hostName == "gwynbleidd") {
+          user = "steven";
+          command = "niri-session";
+        };
+      };
+    };
     # When running greetd the assumption is there will be a graphical session
     # some apps in said graphical session might use libsecrets so we enable gnome-keyring for it
     gnome.gnome-keyring.enable = true;
