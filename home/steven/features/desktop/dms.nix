@@ -28,7 +28,7 @@
     settings = {
       currentThemeName = "custom";
       currentThemeCategory = "custom";
-      customThemeFile = "${config.xdg.configHome}/DankMaterialShell/stylix.json";
+      # customThemeFile = "${config.xdg.configHome}/DankMaterialShell/stylix.json";
       runUserMatugenTemplates = false;
       runDmsMatugenTemplates = false;
 

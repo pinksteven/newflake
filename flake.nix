@@ -11,9 +11,8 @@
       inputs.nixpkgs.follows = "";
       inputs.home-manager.follows = "";
     };
-    # Use the yet to be merged matugen color generation
     stylix = {
-      url = "github:make-42/stylix/matugen"; #"github:nix-community/stylix";
+      url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nur.follows = "nur";
       inputs.flake-parts.follows = "flake-parts";

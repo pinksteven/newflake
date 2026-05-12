@@ -52,4 +52,5 @@
       terminal = 12;
     };
   };
+  base16-theme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
 }

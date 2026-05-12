@@ -59,7 +59,7 @@
         shikiCodeblocks.enable = true;
         showMeYourName = {
           enable = true;
-          includedNames = "{nick} {user}";
+          includedNames = "{custom, friend, nick} {user}";
         };
         silentTyping = {
           enable = true;

@@ -1,4 +1,8 @@
-{inputs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   imports = [
     ./global
 
@@ -18,4 +22,5 @@
   };
 
   wallpaper = "${inputs.wallpapers}/" + "girl.jpg";
+  base16-theme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
 }

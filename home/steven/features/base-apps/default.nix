@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   imports = [
     ./easyeffects.nix
-    ./firefox.nix
     ./kde-connect.nix
     ./nixcord.nix
     ./obsidian.nix
