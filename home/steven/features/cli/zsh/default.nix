@@ -24,6 +24,7 @@
       bindkey -M viins "^ " magic-space
 
       bindkey "^[[3~" delete-char
+      eval "$(devenv hook zsh)"
       microfetch
     '';
 

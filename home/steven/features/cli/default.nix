@@ -22,6 +22,7 @@
     httpie
     jq
     playerctl
+    devenv
 
     # If i ever need to manually format nix from cmd
     alejandra
