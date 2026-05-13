@@ -5,6 +5,9 @@
   };
 
   home.persistence."/persist" = {
-    directories = [".local/share/direnv"];
+    directories = [
+      ".local/share/direnv"
+      ".local/share/devenv"
+    ];
   };
 }
