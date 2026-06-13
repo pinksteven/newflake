@@ -8,7 +8,7 @@
   home.persistence."/persist" = {
     directories = [
       ".config/spotify" # User data, saved credentials and so on
-      ".cache/spotify/Storage" # Downloaded music for offline
+      ".cache/spotify" # Downloaded music for offline and some shit i don't even know
     ];
   };
 
