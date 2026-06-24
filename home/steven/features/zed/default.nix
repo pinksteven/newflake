@@ -34,6 +34,7 @@
       "basher"
       "neocmake"
       "zig"
+      "hlsl"
 
       # MCP servers
       "mcp-server-context7"
