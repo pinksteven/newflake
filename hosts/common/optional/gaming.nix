@@ -13,28 +13,29 @@
   imports = [inputs.nix-gaming.nixosModules.platformOptimizations];
 
   # Create a small "game-run" wrapper (to be replaced with scopebuddy)
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = [
     (pkgs.writeShellScriptBin "game-run" ''
-      exec ${lib.getExe pkgs.gamescope} ${lib.concatStringsSep " " config.programs.gamescope.args} "$@"
+      exec gamemoderun gamescope "$@"
     '')
   ];
 
   programs = {
     gamescope = {
       enable = true;
-      capSysNice = true;
+      enableWsi = true;
+      # capSysNice = true;
       # To be replaced with scopebuddy
       args = let
         monitor = lib.head (lib.filter (m: m.primary) config.monitors);
-      in
-        [
-          "--output-width ${toString monitor.width}"
-          "--output-height ${toString monitor.height}"
-          "--nested-refresh ${toString monitor.refreshRate}"
-          "--fullscreen"
-        ]
-        ++ lib.optional monitor.hdr "--hdr-enabled"
-        ++ lib.optional monitor.vrr "--adaptive-sync";
+      in [
+        "-W ${toString monitor.width}"
+        "-H ${toString monitor.height}"
+        "-w ${toString monitor.width}"
+        "-h ${toString monitor.height}"
+        "--fullscreen"
+      ];
+      # ++ lib.optional monitor.hdr "--hdr-enabled"
+      # ++ lib.optional monitor.vrr "--adaptive-sync";
     };
     steam = {
       enable = true;
@@ -52,15 +53,6 @@
         general = {
           softrealtime = "on";
           inhibit_screensaver = 1;
-        };
-        gpu = {
-          apply_gpu_optimisations = "accept-responsibility";
-          gpu_device = lib.mkDefault 0;
-
-          # NVIDIA specific
-          nv_powermizer_mode = 1;
-          # AMD specific
-          amd_performance_level = "high";
         };
       };
     };

@@ -3,7 +3,15 @@
   pkgs,
   ...
 }: {
-  home.packages = [pkgs.heroic];
+  home.packages = with pkgs; [
+    (heroic.override {
+      extraPkgs = pkgs':
+        with pkgs'; [
+          gamescope
+          gamemode
+        ];
+    })
+  ];
 
   home.persistence."/persist" = {
     # Persisit entire heroic dir (can't be bothered to seperate cache)

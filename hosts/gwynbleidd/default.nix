@@ -72,8 +72,8 @@
       width = 2560;
       height = 1440;
       position = {
-        x = -2560;
-        y = 240;
+        x = 0;
+        y = 0;
       };
       workspace = [1 2 3 4 5 6 7 8 9 10];
       primary = true;
@@ -86,6 +86,10 @@
       name = "HDMI-A-1";
       width = 1920;
       height = 1080;
+      position = {
+        x = 2560;
+        y = -240;
+      };
       transform.rotation = 270;
       workspace = [11 12 13 14 15 16 17 18 19 20];
       refreshRate = 60;

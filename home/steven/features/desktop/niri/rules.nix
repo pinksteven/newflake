@@ -51,9 +51,11 @@ in {
     // VRR settings
     window-rule {
       match app-id="^gamescope$"
-      match app-id="exe$"
+      match app-id="(?i)\\.exe$"
       match app-id="^[Mm]inecraft"
       match app-id="^steam_app"
+      match app-id="^deadbydaylight-egs-shipping.exe$"
+      match app-id="(?i)deadbydaylight" title="(?i)deadbydaylight"
 
       variable-refresh-rate true
       open-on-output "${primaryMonitor.name}"
@@ -79,7 +81,7 @@ in {
 
     // Spotify settings
     window-rule {
-      match app-id="^spotify$"
+      match app-id="^[Ss]potify$"
       open-on-workspace "media"
       open-focused false
       default-column-width { proportion ${

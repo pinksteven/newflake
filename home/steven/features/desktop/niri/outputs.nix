@@ -1,5 +1,6 @@
 {
   lib,
+  pkgs,
   osConfig,
   ...
 }: let
@@ -58,4 +59,11 @@ in {
 
       spawn-sh-at-startup "niri msg action focus-workspace \"primary\""
     '';
+
+  startupPrograms = [
+    {
+      delay = 5;
+      command = ["${lib.getExe pkgs.xrandr} --output ${primaryMonitor.name} --primary"];
+    }
+  ];
 }

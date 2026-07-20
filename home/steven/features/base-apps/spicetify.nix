@@ -38,26 +38,14 @@
       fixLikedIcon
       hideFriendActivityButton
       hideWhatsNewButton
-      hideLyricsButton
+      # hideLyricsButton
       removePopular
     ];
 
-    enabledCustomApps = with spice.apps; [
-      marketplace
-      historyInSidebar
-      {
-        # The source of the customApp
-        # make sure you're using the correct branch
-        # It could also be a sub-directory of the repo
-        src = pkgs.fetchFromGitHub {
-          owner = "Xndr2";
-          repo = "listening-stats";
-          rev = "v2.0.0";
-          hash = "sha256-6EKv1HwYlkyA/fZ6orBNLeUh8vLWnGNwrpak+S8W700=";
-        };
-        name = "listening-stats";
-      }
-    ];
+    # # Uncomment for looking through marketplace
+    # enabledCustomApps = with spice.apps; [
+    #   marketplace
+    # ];
   };
 
   startupPrograms = [

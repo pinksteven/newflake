@@ -65,7 +65,7 @@
           enable = true;
           chatIcon = true;
         };
-        spotifyControls.enable = true;
+        # spotifyControls.enable = true;
         typingTweaks.enable = true;
         userVoiceShow.enable = true;
         validReply.enable = true;
