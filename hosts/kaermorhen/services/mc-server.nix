@@ -9,7 +9,7 @@
     allowedTCPPorts = [25565];
   };
   virtualisation.oci-containers.containers.mc-server = {
-    image = "itzg/minecraft-server:latest";
+    image = "itzg/minecraft-server:java21";
     pull = "newer";
     autoStart = true;
 
