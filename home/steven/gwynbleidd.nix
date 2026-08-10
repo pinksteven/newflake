@@ -26,6 +26,8 @@
     };
   };
 
+  programs.distrobox.enable = true;
+
   wallpaper = "${inputs.wallpapers}/" + "purple-girl.png";
 
   fontProfiles = {

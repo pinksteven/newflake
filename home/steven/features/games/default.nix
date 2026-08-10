@@ -19,6 +19,7 @@
       ".local/share/Paradox Interactive" #Paradox is very special...
       ".local/state/Larian Studios"
       ".local/share/Larian Studios"
+      ".local/share/godot"
     ];
   };
 }

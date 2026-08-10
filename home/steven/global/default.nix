@@ -53,6 +53,7 @@
           ".local/bin"
           ".local/state/wireplumber"
           ".local/share/nix" # trusted settings and repl history
+          ".local/share/containers"
         ]
         ++ lib.optional (osConfig.services.sunshine.enable) ".config/sunshine";
     };

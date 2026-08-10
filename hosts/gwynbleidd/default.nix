@@ -22,6 +22,7 @@
     ../common/optional/sunshine.nix
     ../common/optional/wireless.nix
     ../common/optional/xdg-portals.nix
+    ../common/optional/docker.nix
   ];
 
   networking.hostName = "gwynbleidd";

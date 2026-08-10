@@ -7,6 +7,7 @@
     ./spicetify.nix
     ./syncthing.nix
     ./zen-browser.nix
+    ./winboat.nix
   ];
 
   home.packages = with pkgs; [
