@@ -7,6 +7,7 @@
   networking.firewall = {
     allowedUDPPorts = [25565 24454];
     allowedTCPPorts = [25565];
+    checkReversePath = "loose";
   };
   virtualisation.oci-containers.containers.mc-server = {
     image = "itzg/minecraft-server:java21";
